@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light dark;
+  --proj-card-bg-color: #333333;
+  --intro-bg-color: #000000;
+  --svg-invert: 1;
+}
+
+.project-card {
+  background-color: var(--proj-card-bg-color);
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.clip-circle {
+  clip-path: circle(0% at center);
+  animation: reveal 3s ease-in forwards;
+  height: 100dvh;
+}
+
+.intro {
+  background-color: var(--intro-bg-color);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-fix-position {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.fade-in {
+  animation: fade-in 1s ease-in forwards;
+}
+
+.fade-out {
+  animation: fade-out 0.3s ease-in forwards;
+}
+
+.svg-invert {
+  filter: invert(var(--svg-invert));
+}
+
+.modal-image-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    --proj-card-bg-color: #eaeaea;
+    --intro-bg-color: #ffffff;
+    --svg-invert: 0;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    clip-path: circle(0% at center);
+  }
+  80% {
+    clip-path: circle(200% at center);
+  }
+  100% {
+    clip-path: none;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.3;
+    display: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
