@@ -16,6 +16,9 @@ export default function ImageModal({ open, setOpen, image }) {
     >
       <Box
         width={{ xs: "100%", sm: "90%", md: "80%", lg: "70%", xl: "60%" }}
+        borderRadius={1}
+        overflow={"hidden"}
+        boxShadow={10}
         className={"modal-image-container"}
       >
         <img src={image} alt="modal" width={"100%"} height={"100%"} />
