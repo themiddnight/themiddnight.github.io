@@ -28,7 +28,7 @@ export default function ProfileCard() {
             display: "flex",
             alignItems: "center",
             gap: 2,
-            mb: 1,
+            my: 1,
             flexDirection: { xs: "column", sm: "row" },
           }}
         >

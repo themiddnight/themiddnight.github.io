@@ -56,13 +56,14 @@ function App() {
   return (
     <ThemeProvider theme={memoTheme}>
       <CssBaseline />
-      <div className={!isEnter ? "intro" : "intro fade-out"}>
-        <div className="fade-in" style={{ textAlign: 'center' }}>
-          <Typography variant="h2" gutterBottom>Welcome to my resume</Typography>
+      <Box className={!isEnter ? "intro" : "intro fade-out"} >
+        <Box className={!isEnter ? "fade-in" : "scale-up"} style={{ textAlign: 'center' }}>
+          <Typography variant="h2">Hello!</Typography>
+          <Typography variant="h3" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
           <Button variant="contained" color="primary" size="large" className="pulse" onClick={() => setIsEnter(true)}>Drill in!</Button>
-        </div>
-      </div>
-      <div className={isEnter ? "clip-circle" : "" }>
+        </Box>
+      </Box>
+      <Box className={isEnter ? "clip-circle" : "" }>
         <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 10} }} className={!isEnter ? "intro-fix-position" : ""}>
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
             <Box
@@ -110,7 +111,7 @@ function App() {
             </Box>
           </Box>
         </Container>
-      </div>
+      </Box>
       <ImageModal open={isImageModalOpen} setOpen={setIsImageModalOpen} image={imageModalSrc} />
     </ThemeProvider>
   );
