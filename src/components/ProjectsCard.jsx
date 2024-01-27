@@ -1,5 +1,6 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
 import { projectsData } from "../../data/data";
+import { GitHub, Language } from "@mui/icons-material";
 
 export default function ProjectsCard() {
   return (
@@ -32,7 +33,11 @@ export default function ProjectsCard() {
                 alignItems={"center"}
                 justifyContent={"center"}
                 overflow={"hidden"}
+                position={"relative"}
               >
+                <Box position={'absolute'} top={10} left={10}>
+                  <Language />
+                </Box>
                 <img
                   src={project.image}
                   alt={project.title}
@@ -40,11 +45,17 @@ export default function ProjectsCard() {
                   height={"100%"}
                 />
               </Box>
+
               <Box display={"flex"} flexDirection={"column"} p={2}>
                 <Typography fontSize={"small"} fontStyle={"italic"}>
                   {project.tags}
                 </Typography>
-                <Typography fontWeight={"bold"}>{project.title}</Typography>
+                <Link href="#">
+                  <Stack direction={"row"} spacing={1} alignItems={'center'}>
+                    <Typography fontWeight={"bold"}>{project.title}</Typography>
+                    <GitHub color={"primary"} fontSize="small" />
+                  </Stack>
+                </Link>
                 <Typography fontSize={"small"}>{project.createdAt}</Typography>
                 <Typography>{project.description}</Typography>
               </Box>

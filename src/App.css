@@ -67,7 +67,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    --proj-card-bg-color: #eaeaea;
+    --proj-card-bg-color: #efefef;
     --intro-bg-color: #ffffff;
     --svg-invert: 0;
   }

@@ -7,7 +7,7 @@ export default function ProfileCard() {
         <Typography variant="h4" gutterBottom>
           Education
         </Typography>
-        <Typography fontWeight={"bold"}>
+        <Typography fontWeight={"bold"} fontSize={'large'}>
           Information and Communication Technology - B.S.
         </Typography>
         <Typography fontWeight={"bold"}>Silpakorn University</Typography>
