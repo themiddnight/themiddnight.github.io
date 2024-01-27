@@ -17,9 +17,9 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
           Certificates
         </Typography>
         <Box display={"flex"} flexDirection={"column"} gap={2}>
-          {certificatesData.map((cert) => (
+          {certificatesData.map((cert, index) => (
             <Box
-              key={cert.title}
+              key={index}
               display={"flex"}
               alignItems={"center"}
               gap={2}
@@ -39,7 +39,7 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
                   alt={cert.title}
                   width={"100%"}
                   height={"100%"}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", objectFit: "cover" }}
                   onClick={handleOpenModal}
                 />
               </Box>
@@ -54,7 +54,7 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
                 <Typography fontSize={"small"}>
                   Issued by {cert.issuedBy}
                 </Typography>
-                <Typography fontSize={"small"}>{cert.issuedDate}</Typography>
+                <Typography fontSize={"small"} fontWeight='light'>{cert.issuedDate}</Typography>
                 <Typography fontSize={"small"}>
                   ID: {cert.credentialId}
                 </Typography>

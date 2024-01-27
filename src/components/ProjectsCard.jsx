@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
 import { projectsData } from "../../data/data";
-import { GitHub, Language } from "@mui/icons-material";
+import { GitHub, OpenInNew } from "@mui/icons-material";
 
 export default function ProjectsCard() {
   return (
@@ -10,20 +10,21 @@ export default function ProjectsCard() {
           variant="h4"
           gutterBottom
           paddingBlockStart={3}
-          paddingInlineStart={4}
+          paddingInlineStart={3}
         >
           Projects
         </Typography>
-        <Box display={"flex"} overflow={"scroll"} gap={2} px={4}>
-          {projectsData.map((project) => (
+        <Box display={"flex"} overflow={"scroll"} gap={2} px={3}>
+          {projectsData.map((project, index) => (
             <Box
-              key={project.title}
+              key={index}
               flexBasis={420}
               flexShrink={0}
               display={"flex"}
               borderRadius={"10px"}
               my={1}
               overflow={"hidden"}
+              boxShadow={1}
               className={"project-card"}
             >
               <Box
@@ -34,15 +35,32 @@ export default function ProjectsCard() {
                 justifyContent={"center"}
                 overflow={"hidden"}
                 position={"relative"}
-              >
-                <Box position={'absolute'} top={10} left={10}>
-                  <Language />
-                </Box>
+              > 
+              {project.publiclink && (
+                <Link href={project.publiclink} target={'_blank'}>
+                  <Box
+                    width={36}
+                    height={36}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    borderRadius={1}
+                    position={"absolute"}
+                    bottom={10}
+                    right={10}
+                    boxShadow={2}
+                    className={"basic-bg"}
+                  >
+                    <OpenInNew />
+                  </Box>
+                </Link>
+              )}
                 <img
-                  src={project.image}
+                  src={`images/projects/${project.image}`}
                   alt={project.title}
                   width={"100%"}
                   height={"100%"}
+                  style={{ objectFit: "cover" }}
                 />
               </Box>
 
@@ -50,13 +68,13 @@ export default function ProjectsCard() {
                 <Typography fontSize={"small"} fontStyle={"italic"}>
                   {project.tags}
                 </Typography>
-                <Link href="#">
-                  <Stack direction={"row"} spacing={1} alignItems={'center'}>
+                <Link href={project.githublink} target={'_blank'}>
+                  <Stack direction={"row"} spacing={1} alignItems={"center"}>
                     <Typography fontWeight={"bold"}>{project.title}</Typography>
                     <GitHub color={"primary"} fontSize="small" />
                   </Stack>
                 </Link>
-                <Typography fontSize={"small"}>{project.createdAt}</Typography>
+                <Typography fontSize={"small"} fontWeight='light'>{project.createdAt}</Typography>
                 <Typography>{project.description}</Typography>
               </Box>
             </Box>

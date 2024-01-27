@@ -15,11 +15,14 @@ export default function ImageModal({ open, setOpen, image }) {
       }}
     >
       <Box
-        width={{ xs: "100%", sm: "90%", md: "80%", lg: "70%", xl: "60%" }}
-        borderRadius={1}
+        width={{ sm: "100%", md: "80%", lg: "70%", xl: "60%" }}
+        borderRadius={{ sm: 0, md: 1 }}
         overflow={"hidden"}
         boxShadow={10}
-        className={"modal-image-container"}
+        position={'absolute'}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
       >
         <img src={image} alt="modal" width={"100%"} height={"100%"} />
       </Box>

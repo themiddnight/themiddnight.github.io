@@ -6,16 +6,16 @@ export default function LevelList({ data, color }) {
   return (
     <>
       <Box display={"flex"} flexDirection={"column"} mx={{ xs: 0, sm: 2 }}>
-        {data.map((data) => (
-          <Box key={data.title} my={1}>
+        {data.map((item, index) => (
+          <Box key={index} my={1}>
             <Box display={"flex"} alignItems={"center"}>
               <Box width={iconSize} height={iconSize} sx={{ marginInlineEnd: 2 }}>
                 <img
-                  src={`icons/${data.icon}`}
-                  alt={data.title}
+                  src={`icons/${item.icon}`}
+                  alt={item.title}
                   width={iconSize}
                   height={iconSize}
-                  className={ data.isMono ? "svg-invert" : ""}
+                  className={ item.isMono ? "svg-invert" : ""}
                 />
               </Box>
               <Box width={"100%"}>
@@ -25,20 +25,20 @@ export default function LevelList({ data, color }) {
                   alignItems={"center"}
                   width={"100%"}
                 >
-                  <Typography fontWeight={"bold"}>{data.title}</Typography>
+                  <Typography fontWeight={"bold"}>{item.title}</Typography>
                   <Typography fontSize={"small"} fontStyle={"italic"}>
-                    {data.level}
+                    {item.level}
                   </Typography>
                 </Box>
                 <LinearProgress
                   variant="determinate"
-                  value={data.value}
+                  value={item.value}
                   sx={{ height: "8px", borderRadius: 5, my: 1 }}
                   color={color}
                 />
               </Box>
             </Box>
-            <Typography fontSize={"small"}>{data.description}</Typography>
+            <Typography fontSize={"small"}>{item.description}</Typography>
           </Box>
         ))}
       </Box>

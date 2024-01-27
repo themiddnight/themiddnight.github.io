@@ -11,7 +11,7 @@ export default function ProfileCard() {
           Information and Communication Technology - B.S.
         </Typography>
         <Typography fontWeight={"bold"}>Silpakorn University</Typography>
-        <Typography>2009 - 2014</Typography>
+        <Typography fontWeight='light'>2009 - 2014</Typography>
       </CardContent>
     </Card>
   );

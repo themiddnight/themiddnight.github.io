@@ -11,9 +11,9 @@ export default function FrameworksCard() {
     <Card>
       <CardContent>
         <Typography variant="h4" gutterBottom>
-          Tools/Frameworks
+          Tools / Frameworks
         </Typography>
-        <LevelList data={frameworksData} color='primary' />
+        <LevelList data={frameworksData} color='warning' />
       </CardContent>
     </Card>
   );

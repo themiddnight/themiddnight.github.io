@@ -47,7 +47,9 @@ export default function ProfileCard() {
             <Typography variant="h4" fontWeight={"bold"}>
               Pathonpong Thitithan
             </Typography>
-            <Typography variant="h6">Full-stack Developer</Typography>
+            <Typography variant="body1" fontWeight="light">
+              Who seeking the way of developer
+            </Typography>
           </Box>
         </Box>
         <List>
@@ -67,7 +69,10 @@ export default function ProfileCard() {
             <ListItemIcon>
               <Email color={"primary"} />
             </ListItemIcon>
-            <Link href="mailto:the.middnight.k.0173@gmail.com">
+            <Link
+              sx={{ paddingBlock: "4px" }}
+              href="mailto:the.middnight.k.0173@gmail.com"
+            >
               the.midnight.k.0173@gmail.com
             </Link>
           </ListItem>
@@ -76,6 +81,7 @@ export default function ProfileCard() {
               <LinkedIn color={"primary"} />
             </ListItemIcon>
             <Link
+              sx={{ paddingBlock: "4px" }}
               href="https://www.linkedin.com/in/pathompong-thitithan-b2a2829b"
               target={"_blank"}
             >
@@ -86,7 +92,11 @@ export default function ProfileCard() {
             <ListItemIcon>
               <GitHub color={"primary"} />
             </ListItemIcon>
-            <Link href="https://github.com/themiddnight" target={"_blank"}>
+            <Link
+              sx={{ paddingBlock: "4px" }}
+              href="https://github.com/themiddnight"
+              target={"_blank"}
+            >
               GitHub
             </Link>
           </ListItem>

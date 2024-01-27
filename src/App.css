@@ -1,44 +1,27 @@
 :root {
-  color-scheme: light dark;
   --proj-card-bg-color: #333333;
-  --intro-bg-color: #000000;
+  --basic-bg-color: #000000;
   --svg-invert: 1;
 }
 
-.body {
-  overflow-x: hidden;
+@media (prefers-color-scheme: light) {
+  :root {
+    --proj-card-bg-color: #efefef;
+    --basic-bg-color: #ffffff;
+    --svg-invert: 0;
+  }
 }
 
 .project-card {
   background-color: var(--proj-card-bg-color);
 }
 
+.basic-bg {
+  background-color: var(--basic-bg-color);
+}
+
 .pulse {
   animation: pulse 2s ease-in-out infinite;
-}
-
-.clip-circle {
-  clip-path: circle(0% at center);
-  animation: reveal 3s ease-in forwards;
-  height: 100dvh;
-}
-
-.intro {
-  background-color: var(--intro-bg-color);
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.intro-fix-position {
-  height: 100vh;
-  overflow: hidden;
 }
 
 .fade-in {
@@ -57,34 +40,6 @@
   filter: invert(var(--svg-invert));
 }
 
-.modal-image-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    --proj-card-bg-color: #efefef;
-    --intro-bg-color: #ffffff;
-    --svg-invert: 0;
-  }
-}
-
-@keyframes reveal {
-  0% {
-    clip-path: circle(0% at center);
-  }
-  80% {
-    clip-path: circle(200% at center);
-  }
-  100% {
-    clip-path: none;
-  }
-}
-
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -100,7 +55,6 @@
   }
   100% {
     opacity: 0;
-    display: none;
   }
 }
 
@@ -108,11 +62,8 @@
   0% {
     transform: scale(1);
   }
-  99% {
-    transform: scale(1.5);
-  }
   100% {
-    transform: scale(1);
+    transform: scale(1.5);
   }
 }
 

@@ -36,51 +36,83 @@ const certificatesData = [
 
 const projectsData = [
   {
+    title: "Web Resume",
+    tags: "React.js, Material UI",
+    description: "This is project 3",
+    image: "web-resume.jpg",
+    githublink: "https://github.com/themiddnight/themiddnight.github.io",
+    publiclink: "https://themiddnight.github.io/",
+    createdAt: "January 2024",
+  },
+  {
+    title: "Basic CRUD API",
+    tags: "Nest.js, Swagger",
+    description: "This is project 4",
+    image: "basic-crud.jpg",
+    githublink: "https://github.com/themiddnight/NestJS-Study",
+    publiclink: null,
+    createdAt: "January 2024",
+  },
+  {
+    title: "Developer Online Learning",
+    tags: "Next.js, Tailwind, Prisma, PostgreSQL",
+    description: "This is project 3",
+    image: "developer-online-learning.webp",
+    githublink: "https://github.com/themiddnight/BorntoDev-FEBC-Final",
+    publiclink: "https://ake-borntodev-febc-final.vercel.app/",
+    createdAt: "January 2024",
+  },
+  {
+    title: "Music Online Learning",
+    tags: "HTML, Bootstrap, JavaScript",
+    description: "This is project 2",
+    image: "music-online-learning.jpg",
+    githublink: "https://github.com/themiddnight/BorntoDev-FEBC-Homeworks/tree/main/DAY-17-Midterm",
+    publiclink: "https://themiddnight.github.io/BorntoDev-FEBC-Homeworks/DAY-17-Midterm/index.html",
+    createdAt: "October 2023",
+  },
+  {
     title: "Thai Random Dish",
     tags: "HTML, CSS, JavaScript",
     description: "This is project 1",
-    image: "https://picsum.photos/200",
-    link: "https://www.google.com",
-    createdAt: "August 2021",
+    image: "thai-random-dish.jpg",
+    githublink: "https://github.com/themiddnight/Thai-Random-Dishes",
+    publiclink: "https://themiddnight.github.io/Thai-Random-Dishes/",
+    createdAt: "September 2023",
   },
   {
-    title: "Thai Random Dish",
-    tags: "HTML, CSS, JavaScript",
-    description: "This is project 2",
-    image: "https://picsum.photos/200",
-    link: "https://www.google.com",
-    createdAt: "August 2021",
-  },
-  {
-    title: "Thai Random Dish",
-    tags: "HTML, CSS, JavaScript",
-    description: "This is project 3",
-    image: "https://picsum.photos/200",
-    link: "https://www.google.com",
-    createdAt: "August 2021",
-  },
-  {
-    title: "Thai Random Dish",
-    tags: "HTML, CSS, JavaScript",
-    description: "This is project 4",
-    image: "https://picsum.photos/200",
-    link: "https://www.google.com",
-    createdAt: "August 2021",
-  },
-  {
-    title: "Thai Random Dish",
-    tags: "HTML, CSS, JavaScript",
+    title: "OOP Study",
+    tags: "Python",
     description: "This is project 5",
-    image: "https://picsum.photos/200",
-    link: "https://www.google.com",
-    createdAt: "August 2021",
+    image: "OOP-study.webp",
+    githublink: "https://github.com/themiddnight/Turnbase-Game-Study",
+    publiclink: null,
+    createdAt: "September 2023",
+  },
+  {
+    title: "Finance Log",
+    tags: "Python, Tkinter, Matplotlib, SQLite",
+    description: "This is project 5",
+    image: "finance-log.jpg",
+    githublink: "https://github.com/themiddnight/Finance-Log-GUI",
+    publiclink: null,
+    createdAt: "August 2023",
+  },
+  {
+    title: "Layout Tools",
+    tags: "Maya Python, PyMel",
+    description: "This is project 5",
+    image: "layout-tools.png",
+    githublink: "https://github.com/themiddnight/LayoutTools-for-Maya",
+    publiclink: null,
+    createdAt: "2019 - 2023",
   },
 ];
 
 const skillsData = [
   {
     title: "HTML/CSS",
-    value: 80,
+    value: 70,
     level: "Advanced",
     description: "Can create a website from scratch",
     icon: "html-5-svgrepo-com.svg",
@@ -117,6 +149,14 @@ const skillsData = [
     description: "Querying with basic joins and aggregate functions",
     icon: "sql-svgrepo-com.svg",
     isMono: false,
+  },
+  {
+    title: "Shell Script",
+    value: 20,
+    level: "Beginner",
+    description: "Can manage files and directories, and run some basic commands",
+    icon: "terminal-svgrepo-com.svg",
+    isMono: true,
   },
 ];
 
@@ -177,13 +217,46 @@ const frameworksData = [
     icon: "github-142-svgrepo-com.svg",
     isMono: true,
   },
+];
+
+const languagesData = [
   {
-    title: "Shell Script",
-    value: 20,
-    level: "Beginner",
-    description: "Can manage files and directories, and run some basic commands",
-    icon: "terminal-svgrepo-com.svg",
-    isMono: true,
+    title: "Thai",
+    read: {
+      value: 100,
+      level: "Native",
+    },
+    write: {
+      value: 100,
+      level: "Native",
+    },
+    listen: {
+      value: 100,
+      level: "Native",
+    },
+    speak: {
+      value: 100,
+      level: "Native",
+    },
+  },
+  {
+    title: "English",
+    read: {
+      value: 60,
+      level: "Advanced",
+    },
+    write: {
+      value: 40,
+      level: "Intermediate",
+    },
+    listen: {
+      value: 20,
+      level: "Novice",
+    },
+    speak: {
+      value: 20,
+      level: "Novice",
+    },
   },
 ];
 
@@ -193,4 +266,5 @@ export {
   projectsData,
   skillsData,
   frameworksData,
+  languagesData,
 };
