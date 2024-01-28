@@ -1,14 +1,16 @@
 import { Card, CardContent, Typography, Box, Link } from "@mui/material";
 import { certificatesData } from "../../data/data";
-import { PropTypes } from "prop-types";
+import { useContext } from "react";
+import { ModalContext } from "../Home";
 import CardHeader from "./elements/CardHeader";
 
-export default function CertificatesCard({ setOpen, setImageModalSrc }) {
+export default function CertificatesCard() {
+  const { setIsImageModalOpen, setImageModalSrc } = useContext(ModalContext);
+  
   function handleOpenModal(e) {
     e.preventDefault();
     setImageModalSrc(e.target.src);
-    setOpen(true);
-    console.log(e.target.src);
+    setIsImageModalOpen(true);
   }
 
   return (
@@ -72,8 +74,3 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
     </Card>
   );
 }
-
-CertificatesCard.propTypes = {
-  setImageModalSrc: PropTypes.func.isRequired,
-  setOpen: PropTypes.func.isRequired,
-};

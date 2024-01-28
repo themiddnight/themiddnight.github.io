@@ -1,11 +1,14 @@
 import { Box, Modal } from "@mui/material";
-import { PropTypes } from "prop-types";
+import { useContext } from "react";
+import { ModalContext } from "../../Home";
 
-export default function ImageModal({ open, setOpen, image }) {
+export default function ImageModal() {
+  const { isImageModalOpen, setIsImageModalOpen, imageModalSrc } = useContext(ModalContext);
+  
   return (
     <Modal
-      open={open}
-      onClose={() => setOpen(false)}
+      open={isImageModalOpen}
+      onClose={() => setIsImageModalOpen(false)}
       aria-labelledby="image-modal"
       aria-describedby="image-modal"
       sx={{
@@ -24,14 +27,8 @@ export default function ImageModal({ open, setOpen, image }) {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <img src={image} alt="modal" width={"100%"} height={"100%"} />
+        <img src={imageModalSrc} alt="modal" width={"100%"} height={"100%"} />
       </Box>
     </Modal>
   );
 }
-
-ImageModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
-  image: PropTypes.string.isRequired,
-};
