@@ -6,7 +6,7 @@ const experiencesData = [
     description: "Working with photo composition in the animation works. And I started to work as Technical Director, which working with Python coding to make the production flows.",
   },
   {
-    title: "Lead Layout/Technical Director",
+    title: "Lead Layout",
     company: "Yggdrazil Group",
     year: "2017 - 2023",
     description: "Working with photo composition in the animation works. And I started to work as Technical Director, which working with Python coding to make the production flows.",
@@ -38,7 +38,7 @@ const projectsData = [
   {
     title: "Web Resume",
     tags: "React.js, Material UI",
-    description: "This is project 3",
+    description: "This is project 3 aaaasdfkljal;shdlg;kjasl adjkfhal;k sjdglha;s djf;lasd h;lgakjasdf ",
     image: "web-resume.jpg",
     githublink: "https://github.com/themiddnight/themiddnight.github.io",
     publiclink: "https://themiddnight.github.io/",
@@ -46,7 +46,7 @@ const projectsData = [
   },
   {
     title: "Basic CRUD API",
-    tags: "Nest.js, Swagger",
+    tags: "Nest.js, Sequelize, PostgreSQL, Swagger",
     description: "This is project 4",
     image: "basic-crud.jpg",
     githublink: "https://github.com/themiddnight/NestJS-Study",
@@ -55,12 +55,12 @@ const projectsData = [
   },
   {
     title: "Developer Online Learning",
-    tags: "Next.js, Tailwind, Prisma, PostgreSQL",
+    tags: "Next.js, Tailwind, Prisma, MySQL",
     description: "This is project 3",
     image: "developer-online-learning.webp",
     githublink: "https://github.com/themiddnight/BorntoDev-FEBC-Final",
     publiclink: "https://ake-borntodev-febc-final.vercel.app/",
-    createdAt: "January 2024",
+    createdAt: "December 2023",
   },
   {
     title: "Music Online Learning",
@@ -72,7 +72,7 @@ const projectsData = [
     createdAt: "October 2023",
   },
   {
-    title: "Thai Random Dish",
+    title: "Thai-Random-Dishes",
     tags: "HTML, CSS, JavaScript",
     description: "This is project 1",
     image: "thai-random-dish.jpg",
@@ -162,7 +162,7 @@ const skillsData = [
 
 const frameworksData = [
   {
-    title: "Bootstrap/Tailwind CSS",
+    title: "Bootstrap/Tailwind",
     value: 70,
     level: "Advanced",
     description: "Can manage layouts with some complex components",
@@ -242,7 +242,7 @@ const languagesData = [
   {
     title: "English",
     read: {
-      value: 60,
+      value: 70,
       level: "Advanced",
     },
     write: {
@@ -250,7 +250,7 @@ const languagesData = [
       level: "Intermediate",
     },
     listen: {
-      value: 20,
+      value: 30,
       level: "Novice",
     },
     speak: {

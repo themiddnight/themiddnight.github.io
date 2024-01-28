@@ -21,6 +21,7 @@ export default function LevelList({ data, color }) {
               <Box width={"100%"}>
                 <Box
                   display={"flex"}
+                  flexWrap={"wrap"}
                   justifyContent={"space-between"}
                   alignItems={"center"}
                   width={"100%"}

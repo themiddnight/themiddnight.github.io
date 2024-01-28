@@ -48,7 +48,7 @@ export default function ProfileCard() {
               Pathonpong Thitithan
             </Typography>
             <Typography variant="body1" fontWeight="light">
-              Who seeking the way of developer
+              Who seeking the way to be a developer.
             </Typography>
           </Box>
         </Box>

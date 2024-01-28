@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography, Box, Link } from "@mui/material";
 import { certificatesData } from "../../data/data";
 import { PropTypes } from "prop-types";
+import CardHeader from "./elements/CardHeader";
 
 export default function CertificatesCard({ setOpen, setImageModalSrc }) {
   function handleOpenModal(e) {
@@ -13,25 +14,30 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
+        <CardHeader
+          sx={{
+            paddingBlockEnd: 1,
+          }}
+        >
           Certificates
-        </Typography>
-        <Box display={"flex"} flexDirection={"column"} gap={2}>
+        </CardHeader>
+        <Box display={"flex"} flexDirection={"column"} gap={{ xs: 3, sm: 2 }}>
           {certificatesData.map((cert, index) => (
             <Box
               key={index}
               display={"flex"}
-              alignItems={"center"}
-              gap={2}
+              flexDirection={{ xs: "column", sm: "row" }}
+              alignItems={{ xs: 'start', sm: 'center'}}
+              gap={{ xs: 1, sm: 2 }}
             >
               <Box
-                width={120}
                 height={90}
                 flexBasis={120}
                 flexShrink={0}
                 display={"flex"}
                 alignItems={"center"}
                 justifyContent={"center"}
+                borderRadius={'5px'}
                 overflow={"hidden"}
               >
                 <img

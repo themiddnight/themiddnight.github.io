@@ -1,12 +1,11 @@
 import { Card, CardContent, Typography } from "@mui/material";
+import CardHeader from "./elements/CardHeader";
 
 export default function ProfileCard() {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
-          Education
-        </Typography>
+        <CardHeader>Education</CardHeader>
         <Typography fontWeight={"bold"} fontSize={'large'}>
           Information and Communication Technology - B.S.
         </Typography>

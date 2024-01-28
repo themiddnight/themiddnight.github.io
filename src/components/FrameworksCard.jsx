@@ -1,18 +1,18 @@
 import {
   Card,
   CardContent,
-  Typography,
 } from "@mui/material";
 import { frameworksData } from "../../data/data";
 import LevelList from "./elements/LevelList";
+import CardHeader from "./elements/CardHeader";
 
 export default function FrameworksCard() {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
+        <CardHeader>
           Tools / Frameworks
-        </Typography>
+        </CardHeader>
         <LevelList data={frameworksData} color='warning' />
       </CardContent>
     </Card>

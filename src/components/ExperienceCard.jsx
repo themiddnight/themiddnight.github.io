@@ -1,13 +1,14 @@
 import { Card, CardContent, Divider, Typography, Box } from "@mui/material";
 import { experiencesData } from "../../data/data";
+import CardHeader from "./elements/CardHeader";
 
 export default function ProfileCard() {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
+        <CardHeader>
           Experiences
-        </Typography>
+        </CardHeader>
         
         {experiencesData.map((item, index) => (
           <Box key={index}>

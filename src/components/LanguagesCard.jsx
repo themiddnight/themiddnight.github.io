@@ -7,14 +7,15 @@ import {
 import { MenuBook, DriveFileRenameOutline, RecordVoiceOver, Hearing } from "@mui/icons-material";
 import CircularProgressWithLabel from "./elements/CircularProgressWithLabel";
 import { languagesData } from "../../data/data";
+import CardHeader from "./elements/CardHeader";
 
 export default function LanguagesCard() {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h4" gutterBottom>
+        <CardHeader>
           Languages
-        </Typography>
+        </CardHeader>
         <Box display={'flex'} flexDirection={'column'} gap={2}>
 
           {languagesData.map((item, index) => (
@@ -24,14 +25,14 @@ export default function LanguagesCard() {
             <Box display={'flex'} flexWrap={'wrap'} justifyContent={'space-around'} gap={2}>
               <Box display={'flex'} justifyContent={'space-around'} flexGrow={1} gap={2}>
 
-                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1}>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.read.value}>
                     <MenuBook />
                   </CircularProgressWithLabel>
                   <Typography fontWeight={"light"} fontSize={'small'} fontStyle={'italic'}>{item.read.level}</Typography>
                 </Box>
 
-                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1}>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.write.value}>
                     <DriveFileRenameOutline />
                   </CircularProgressWithLabel>
@@ -42,14 +43,14 @@ export default function LanguagesCard() {
 
               <Box display={'flex'} justifyContent={'space-around'} flexGrow={1}  gap={2}>
 
-                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1}>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.listen.value}>
                     <Hearing />
                   </CircularProgressWithLabel>
                   <Typography fontWeight={"light"} fontSize={'small'} fontStyle={'italic'}>{item.listen.level}</Typography>
                 </Box>
 
-                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1}>
+                <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.speak.value}>
                     <RecordVoiceOver />
                   </CircularProgressWithLabel>
