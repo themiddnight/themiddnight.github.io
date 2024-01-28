@@ -58,7 +58,7 @@ export default function CertificatesCard({ setOpen, setImageModalSrc }) {
                   {cert.title}
                 </Link>
                 <Typography fontSize={"small"}>
-                  Issued by {cert.issuedBy}
+                  Issued by: {cert.issuedBy}
                 </Typography>
                 <Typography fontSize={"small"} fontWeight='light'>{cert.issuedDate}</Typography>
                 <Typography fontSize={"small"}>

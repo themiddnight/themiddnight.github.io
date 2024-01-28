@@ -26,10 +26,10 @@ export default function ProjectsCard() {
           {projectsData.map((project, index) => (
             <Box
               key={index}
-              flexBasis={{ xs: 290, sm: 480 }}
+              flexBasis={{ xs: 300, lg: 500 }}
               flexShrink={0}
               display={"flex"}
-              flexDirection={{ xs: "column", sm: "row" }}
+              flexDirection={{ xs: "column", lg: "row" }}
               borderRadius={"10px"}
               overflow={"hidden"}
               boxShadow={1}
@@ -41,8 +41,8 @@ export default function ProjectsCard() {
               }}
             >
               <Box
-                width={{ xs: 290, sm: 175 }}
-                height={175}
+                width={{ xs: 300, lg: 175 }}
+                height={{ xs: 150, lg: 175 }}
                 flexShrink={0}
                 position={"relative"}
               >
@@ -81,7 +81,7 @@ export default function ProjectsCard() {
                 <Link href={project.githublink} target={"_blank"}>
                   <Stack direction={"row"} spacing={1} alignItems={"center"}>
                     <Typography fontWeight={"bold"}>{project.title}</Typography>
-                    <GitHub color={"primary"} fontSize="small" />
+                    <GitHub color={"primary"} fontSize="lgall" />
                   </Stack>
                 </Link>
                 <Typography fontSize={"small"} fontWeight="light" gutterBottom>

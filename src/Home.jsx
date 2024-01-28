@@ -44,9 +44,9 @@ function Home() {
         className={isEnter ? "fade-out" : ""}
       >
         <Box className={!isEnter ? "fade-in" : "scale-up"} style={{ textAlign: 'center' }}>
-          <Typography variant="h2">Hello!</Typography>
+          <Typography variant="h2">Hi!</Typography>
           <Typography variant="h3" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
-          <Button variant="contained" color="primary" size="large" className="pulse" onClick={handleEnter}>Drill in!</Button>
+          <Button variant="contained" color="primary" size="large" className="pulse" onClick={handleEnter}>Let&apos;s Jump in!</Button>
         </Box>
       </Box>
     )
@@ -63,10 +63,12 @@ function Home() {
               flexDirection="column"
               gap={2}
             >
-              <Zoom in={isEnter} timeout={1000}><div><ProfileCard /></div></Zoom>
-              <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><AboutCard /></div></Zoom>
-              <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><EducationCard /></div></Zoom>
-              <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><ExperienceCard /></div></Zoom>
+              <Zoom in={isEnter} timeout={1000}><Box><ProfileCard /></Box></Zoom>
+              <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><AboutCard /></Box></Zoom>
+              <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><EducationCard /></Box></Zoom>
+              <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ExperienceCard /></Box></Zoom>
+              <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box display={{ xs:'none', md: 'block', xl: 'none' }}><LanguagesCard /></Box></Zoom>
+                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box display={{ xs:'none', md: 'block', xl: 'none' }}><CertificatesCard  setOpen={setIsImageModalOpen} setImageModalSrc={setImageModalSrc} /></Box></Zoom>
             </Box>
 
             <Box
@@ -75,7 +77,7 @@ function Home() {
               flexDirection="column"
               gap={2}
             >
-              <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><ProjectsCard /></div></Zoom>
+              <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ProjectsCard /></Box></Zoom>
 
               <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2}>
                 <Box
@@ -84,8 +86,8 @@ function Home() {
                   flexDirection="column"
                   gap={2}
                 >
-                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><LanguagesCard /></div></Zoom>
-                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><SkillsCard /></div></Zoom>
+                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box display={{ xs: 'block', md: 'none', xl: 'block' }}><LanguagesCard /></Box></Zoom>
+                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><SkillsCard /></Box></Zoom>
                 </Box>
 
                 <Box
@@ -94,8 +96,8 @@ function Home() {
                   flexDirection="column"
                   gap={2}
                 >
-                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><FrameworksCard /></div></Zoom>
-                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><div><CertificatesCard  setOpen={setIsImageModalOpen} setImageModalSrc={setImageModalSrc} /></div></Zoom>
+                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><FrameworksCard /></Box></Zoom>
+                  <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box display={{ xs: 'block', md: 'none', xl: 'block' }}><CertificatesCard  setOpen={setIsImageModalOpen} setImageModalSrc={setImageModalSrc} /></Box></Zoom>
                 </Box>
                 
               </Box>
