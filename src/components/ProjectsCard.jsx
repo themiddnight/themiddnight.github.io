@@ -1,9 +1,15 @@
 import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
-import { projectsData } from "../../data/data";
 import { GitHub, OpenInNew } from "@mui/icons-material";
 import CardHeader from "./elements/CardHeader";
+import { PropTypes } from "prop-types";
 
-export default function ProjectsCard() {
+export default function ProjectsCard({ projectsData }) {
+  function convertTimestamp(timestamp) {
+    const d = new Date(timestamp);
+    const year = d.getFullYear();
+    const month = d.toLocaleString("en-US", { month: "long" });
+    return `${month} ${year}`;
+  }
   return (
     <Card sx={{ p: 0 }}>
       <CardContent sx={{ p: 0 }}>
@@ -46,8 +52,8 @@ export default function ProjectsCard() {
                 flexShrink={0}
                 position={"relative"}
               >
-                {project.publiclink && (
-                  <Link href={project.publiclink} target={"_blank"}>
+                {project.homepage && (
+                  <Link href={project.homepage} target={"_blank"}>
                     <Box
                       width={36}
                       height={36}
@@ -78,14 +84,18 @@ export default function ProjectsCard() {
                 <Typography fontSize={"small"} fontStyle={"italic"}>
                   {project.tags}
                 </Typography>
-                <Link href={project.githublink} target={"_blank"}>
+                <Link href={project.html_url} target={"_blank"}>
                   <Stack direction={"row"} spacing={1} alignItems={"center"}>
                     <Typography fontWeight={"bold"}>{project.title}</Typography>
                     <GitHub color={"primary"} fontSize="lgall" />
                   </Stack>
                 </Link>
                 <Typography fontSize={"small"} fontWeight="light" gutterBottom>
-                  {project.createdAt}
+                  {convertTimestamp(project.createdAt)}
+                  {convertTimestamp(project.updatedAt) ===
+                  convertTimestamp(project.createdAt)
+                    ? ""
+                    : " - " + convertTimestamp(project.updatedAt)}
                 </Typography>
                 <Typography>{project.description}</Typography>
               </Box>
@@ -96,3 +106,7 @@ export default function ProjectsCard() {
     </Card>
   );
 }
+
+ProjectsCard.propTypes = {
+  projectsData: PropTypes.array.isRequired,
+};

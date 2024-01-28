@@ -5,7 +5,9 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
+
+import { projectsData } from "../data/data";
 
 import ProfileCard from "./components/ProfileCard";
 import AboutCard from "./components/AboutCard";
@@ -15,9 +17,8 @@ import ProjectsCard from "./components/ProjectsCard";
 import FrameworksCard from "./components/FrameworksCard";
 import SkillsCard from "./components/SkillsCard";
 import CertificatesCard from "./components/CertificatesCard";
-
-import ImageModal from "./components/elements/ImageModal";
 import LanguagesCard from "./components/LanguagesCard";
+import ImageModal from "./components/elements/ImageModal";
 
 export const ModalContext = createContext();
 
@@ -26,6 +27,8 @@ function Home() {
   const [isEntered, setIsEntered] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [imageModalSrc, setImageModalSrc] = useState("");
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [projectsDataState, setProjectsDataState] = useState([]);
 
   function handleEnter() {
     setIsEnter(true);
@@ -33,6 +36,23 @@ function Home() {
       setIsEntered(true);
     }, 300);
   }
+
+  useEffect(() => {
+    for (let i = 0; i < projectsData.length; i++) {
+      fetch(`https://api.github.com/repositories/${projectsData[i].repoID}`)
+        .then((res) => res.json())
+        .then((data) => {
+          projectsData[i].html_url = data.html_url;
+          projectsData[i].description = data.description;
+          projectsData[i].createdAt = data.created_at;
+          projectsData[i].updatedAt = data.updated_at;
+          projectsData[i].homepage = data.homepage;
+          console.log(data.homepage)
+        });
+    }
+    setProjectsDataState(projectsData);
+    setIsDataLoaded(true);
+  }, []);
 
   if (!isEntered) {
     return (
@@ -48,7 +68,15 @@ function Home() {
         <Box className={!isEnter ? "fade-in" : "scale-up"} style={{ textAlign: 'center' }}>
           <Typography variant="h2">Hi!</Typography>
           <Typography variant="h3" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
-          <Button variant="contained" color="primary" size="large" className="pulse" onClick={handleEnter}>Let&apos;s Jump in!</Button>
+          <Button 
+            variant="outlined" 
+            color="primary" 
+            size="large" 
+            className="pulse" 
+            disabled={isDataLoaded? false : true} 
+            onClick={handleEnter}>
+              {isDataLoaded? "Let's Jump in!" : 'Loading...'}
+            </Button>
         </Box>
       </Box>
     )
@@ -80,7 +108,7 @@ function Home() {
                 flexDirection="column"
                 gap={2}
               >
-                <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ProjectsCard /></Box></Zoom>
+                <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ProjectsCard projectsData={projectsDataState} /></Box></Zoom>
 
                 <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2}>
                   <Box
