@@ -24,16 +24,16 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-.fade-in {
+.intro-in__div {
   animation: fade-in 1s ease-in forwards;
 }
 
-.fade-out {
-  animation: fade-out 0.3s ease-in forwards;
+.intro-out__div {
+  animation: fade-out 0.5s ease-out forwards, scale-up 0.5s ease-out forwards;
 }
 
-.scale-up {
-  animation: scale-up 0.3s ease-in forwards;
+.intro-out__button {
+  animation: fade-out 0.3s ease-out forwards, flash 0.3s ease-out forwards;
 }
 
 .svg-invert {
@@ -63,7 +63,7 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(2);
   }
 }
 
@@ -76,5 +76,14 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
   }
 }

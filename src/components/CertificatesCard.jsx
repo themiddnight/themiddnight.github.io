@@ -33,8 +33,9 @@ export default function CertificatesCard() {
               gap={{ xs: 1, sm: 2 }}
             >
               <Box
-                height={90}
-                flexBasis={120}
+                height={110}
+                width={150}
+                flexBasis={{ xs: 110, sm: 150 }}
                 flexShrink={0}
                 display={"flex"}
                 alignItems={"center"}

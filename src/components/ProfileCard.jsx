@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import {
   Email,
-  PhoneIphone,
   LocationOn,
   LinkedIn,
   GitHub,
@@ -58,12 +57,6 @@ export default function ProfileCard() {
               <LocationOn />
             </ListItemIcon>
             <ListItemText>Bangkok, Thailand</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <PhoneIphone />
-            </ListItemIcon>
-            <ListItemText>+66846412667</ListItemText>
           </ListItem>
           <ListItem>
             <ListItemIcon>

@@ -5,9 +5,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { useState, createContext, useEffect } from "react";
-
-import { projectsData } from "../data/data";
+import { useState, createContext } from "react";
 
 import ProfileCard from "./components/ProfileCard";
 import AboutCard from "./components/AboutCard";
@@ -27,32 +25,13 @@ function Home() {
   const [isEntered, setIsEntered] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [imageModalSrc, setImageModalSrc] = useState("");
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [projectsDataState, setProjectsDataState] = useState([]);
 
   function handleEnter() {
     setIsEnter(true);
     setTimeout(() => {
       setIsEntered(true);
-    }, 300);
+    }, 500);
   }
-
-  useEffect(() => {
-    for (let i = 0; i < projectsData.length; i++) {
-      fetch(`https://api.github.com/repositories/${projectsData[i].repoID}`)
-        .then((res) => res.json())
-        .then((data) => {
-          projectsData[i].html_url = data.html_url;
-          projectsData[i].description = data.description;
-          projectsData[i].createdAt = data.created_at;
-          projectsData[i].updatedAt = data.updated_at;
-          projectsData[i].homepage = data.homepage;
-          console.log(data.homepage)
-        });
-    }
-    setProjectsDataState(projectsData);
-    setIsDataLoaded(true);
-  }, []);
 
   if (!isEntered) {
     return (
@@ -61,23 +40,23 @@ function Home() {
         top={0} left={0} right={0} bottom={0}
         zIndex={10}
         display={'flex'}
+        flexDirection={'column'}
         alignItems={'center'}
         justifyContent={'center'}
-        className={isEnter ? "fade-out" : ""}
+        className={"intro-in__div"}
       >
-        <Box className={!isEnter ? "fade-in" : "scale-up"} style={{ textAlign: 'center' }}>
+        <Box textAlign={'center'} className={!isEnter ? "" : "intro-out__div"}>
           <Typography variant="h2">Hi!</Typography>
           <Typography variant="h3" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
-          <Button 
-            variant="outlined" 
-            color="primary" 
-            size="large" 
-            className="pulse" 
-            disabled={isDataLoaded? false : true} 
-            onClick={handleEnter}>
-              {isDataLoaded? "Let's Jump in!" : 'Loading...'}
-            </Button>
         </Box>
+        <Button 
+          variant={isEnter ? "contained" : "outlined"}
+          color="primary" 
+          size="large" 
+          className={!isEnter ? "pulse" : "intro-out__button"}
+          onClick={handleEnter}>
+            Let&apos;s Jump in!
+          </Button>
       </Box>
     )
   }
@@ -108,7 +87,7 @@ function Home() {
                 flexDirection="column"
                 gap={2}
               >
-                <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ProjectsCard projectsData={projectsDataState} /></Box></Zoom>
+                <Zoom in={isEnter} timeout={Math.random()*1000+500}><Box><ProjectsCard /></Box></Zoom>
 
                 <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2}>
                   <Box
