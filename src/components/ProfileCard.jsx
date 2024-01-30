@@ -28,7 +28,8 @@ export default function ProfileCard() {
             alignItems: "center",
             gap: 2,
             my: 1,
-            flexDirection: { xs: "column", sm: "row" },
+            flexDirection: { xs: "column", md: "row" },
+            flexWrap: "wrap",
           }}
         >
           <Avatar
@@ -40,7 +41,8 @@ export default function ProfileCard() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              textAlign: { xs: "center", sm: "left" },
+              flexBasis: 0,
+              textAlign: { xs: "center", md: "left" },
             }}
           >
             <Typography variant="h4" fontWeight={"bold"}>
@@ -63,7 +65,7 @@ export default function ProfileCard() {
               <Email color={"primary"} />
             </ListItemIcon>
             <Link
-              sx={{ paddingBlock: "4px" }}
+              sx={{ paddingBlock: "4px"}}
               href="mailto:the.middnight.k.0173@gmail.com"
             >
               the.midnight.k.0173@gmail.com

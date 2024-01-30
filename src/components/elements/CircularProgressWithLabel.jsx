@@ -18,7 +18,7 @@ export default function CircularProgressWithLabel({ children, value }) {
         <CircularProgress
           variant="determinate"
           value={100}
-          size={70}
+          size={60}
           thickness={5}
           color={"success"}
           sx={{ opacity: 0.2 }}
@@ -30,7 +30,7 @@ export default function CircularProgressWithLabel({ children, value }) {
         top={0} left={0} bottom={0} right={0}
         variant="determinate"
         value={value}
-        size={70}
+        size={60}
         thickness={5}
         color={"success"}
       />

@@ -22,6 +22,7 @@ export default function ProjectsCard() {
           gap={2}
           px={3}
           sx={{ scrollSnapType: "x mandatory" }}
+          className={"project-section"}
         >
           {projectsData.map((project, index) => (
             <Box
@@ -30,14 +31,15 @@ export default function ProjectsCard() {
               flexShrink={0}
               display={"flex"}
               flexDirection={{ xs: "column", lg: "row" }}
+              my={'1px'}
               borderRadius={"10px"}
               overflow={"hidden"}
               boxShadow={1}
               className={"project-card"}
               sx={{
-                scrollSnapAlign: { xs: "center", sm: "start" },
+                scrollSnapAlign: 'start',
                 scrollSnapStop: "always",
-                scrollMarginInlineStart: { xs: 0, sm: 25 },
+                scrollMarginInlineStart: 25,
               }}
             >
               <Box

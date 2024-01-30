@@ -16,14 +16,14 @@ export default function LanguagesCard() {
         <CardHeader>
           Languages
         </CardHeader>
-        <Box display={'flex'} flexDirection={'column'} gap={2}>
+        <Box display={'flex'} flexDirection={'column'} gap={1}>
 
           {languagesData.map((item, index) => (
           <Box key={index}>
             <Typography fontWeight={"bold"} fontSize={'large'} gutterBottom>{item.title}</Typography>
             
-            <Box display={'flex'} flexWrap={'wrap'} justifyContent={'space-around'} gap={2}>
-              <Box display={'flex'} justifyContent={'space-around'} flexGrow={1} gap={2}>
+            <Box display={'flex'} flexWrap={'wrap'} justifyContent={'space-around'} gap={1}>
+              <Box display={'flex'} justifyContent={'space-around'} flexGrow={1} gap={1}>
 
                 <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.read.value}>
@@ -41,7 +41,7 @@ export default function LanguagesCard() {
 
               </Box>
 
-              <Box display={'flex'} justifyContent={'space-around'} flexGrow={1}  gap={2}>
+              <Box display={'flex'} justifyContent={'space-around'} flexGrow={1}  gap={1}>
 
                 <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={1} width={70}>
                   <CircularProgressWithLabel value={item.listen.value}>
