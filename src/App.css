@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --proj-card-bg-color: #efefef;
+    --proj-card-bg-color: #e8e8e8;
     --basic-bg-color: #ffffff;
     --svg-invert: 0;
   }

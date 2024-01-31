@@ -1,7 +1,7 @@
-import { Typography, Box, LinearProgress } from "@mui/material";
+import { Typography, Box, /*LinearProgress*/ } from "@mui/material";
 import { PropTypes } from "prop-types";
 
-export default function LevelList({ data, color }) {
+export default function LevelList({ data, /*color*/ }) {
   const iconSize = 30;
   return (
     <>
@@ -22,24 +22,26 @@ export default function LevelList({ data, color }) {
                 <Box
                   display={"flex"}
                   flexWrap={"wrap"}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
+                  // justifyContent={"space-between"}
+                  gap={1}
+                  alignItems={"baseline"}
                   width={"100%"}
                 >
                   <Typography fontWeight={"bold"}>{item.title}</Typography>
-                  <Typography fontSize={"small"} fontStyle={"italic"}>
+                  <Typography fontSize={"small"} fontStyle={"italic"} sx={{ opacity: 0.5 }}>
                     {item.level}
                   </Typography>
                 </Box>
-                <LinearProgress
+                {/* <LinearProgress
                   variant="determinate"
                   value={item.value}
                   sx={{ height: "8px", borderRadius: 5, my: 1 }}
                   color={color}
-                />
+                /> */}
+                <Typography fontWeight={'light'}>{item.description}</Typography>
               </Box>
             </Box>
-            <Typography fontSize={"small"}>{item.description}</Typography>
+            {/* <Typography fontSize={"small"}>{item.description}</Typography> */}
           </Box>
         ))}
       </Box>

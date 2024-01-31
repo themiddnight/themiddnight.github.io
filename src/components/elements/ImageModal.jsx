@@ -1,6 +1,6 @@
 import { Box, Modal } from "@mui/material";
 import { useContext } from "react";
-import { ModalContext } from "../../Home";
+import { ModalContext } from "../../App";
 
 export default function ImageModal() {
   const { isImageModalOpen, setIsImageModalOpen, imageModalSrc } = useContext(ModalContext);

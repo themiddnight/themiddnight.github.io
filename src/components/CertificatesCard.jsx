@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography, Box, Link } from "@mui/material";
 import { certificatesData } from "../../data/data";
 import { useContext } from "react";
-import { ModalContext } from "../Home";
+import { ModalContext } from "../App";
 import CardHeader from "./elements/CardHeader";
 
 export default function CertificatesCard() {
@@ -28,14 +28,14 @@ export default function CertificatesCard() {
             <Box
               key={index}
               display={"flex"}
-              flexDirection={{ xs: "column", sm: "row" }}
+              // flexDirection={{ xs: "column", sm: "row" }}
               alignItems={{ xs: 'start', sm: 'center'}}
               gap={{ xs: 1, sm: 2 }}
             >
               <Box
-                height={110}
-                width={150}
-                flexBasis={{ xs: 110, sm: 150 }}
+                height={90}
+                width={90}
+                flexBasis={{ xs: 90, sm: 90 }}
                 flexShrink={0}
                 display={"flex"}
                 alignItems={"center"}
