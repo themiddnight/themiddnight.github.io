@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <>
       <Box>
-        <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 10} }}>
+        <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 8} }}>
           <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
             <Box
               gridColumn={{ xs: "span 12", sm: "span 6", lg: "span 4" }}
@@ -72,7 +72,7 @@ export default function Home() {
               <Box className={'card3'}><EducationCard /></Box>
               <Box className={'card4'}><ExperienceCard /></Box>
               <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard /></Box>
-              <Box className={'card6'} display={{ xs:'none', sm: 'block', lg: 'none' }}><CertificatesCard /></Box>
+              {/* <Box className={'card6'} display={{ xs:'none', sm: 'block', lg: 'none' }}><CertificatesCard /></Box> */}
             </Box>
 
             <Box
@@ -91,7 +91,7 @@ export default function Home() {
                   gap={2}
                 >
                   <Box className={'card3'}><SkillsCard /></Box>
-                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><CertificatesCard /></Box>
+                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard /></Box>
                 </Box>
 
                 <Box
@@ -100,10 +100,9 @@ export default function Home() {
                   flexDirection="column"
                   gap={2}
                 >
-                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard /></Box>
-                  <Box className={'card5'}><FrameworksCard /></Box>
+                  <Box className={'card4'}><FrameworksCard /></Box>
                   <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard /></Box>
-                  <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><CertificatesCard /></Box>
+                  <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}><CertificatesCard /></Box>
                 </Box>
                 
               </Box>

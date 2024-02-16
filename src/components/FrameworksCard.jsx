@@ -1,9 +1,12 @@
 import {
+  Box,
   Card,
   CardContent,
+  Tooltip,
+  Typography,
 } from "@mui/material";
-import { frameworksData } from "../../data/data";
-import LevelList from "./elements/LevelList";
+import { ConstructionRounded } from "@mui/icons-material";
+import { frameworksData_icons } from "../../data/data";
 import CardHeader from "./elements/CardHeader";
 
 export default function FrameworksCard() {
@@ -11,9 +14,37 @@ export default function FrameworksCard() {
     <Card>
       <CardContent>
         <CardHeader>
+          <ConstructionRounded fontSize="large" />
           Tools / Frameworks
         </CardHeader>
-        <LevelList data={frameworksData} color='warning' />
+        <Typography>
+          I&apos;ve some experience with:
+        </Typography>
+        <Box display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={4} mt={3} px={1}>
+          {frameworksData_icons.map((item, index) => (
+            <Tooltip 
+              key={index}
+              placement="top"
+              enterTouchDelay={0}
+              leaveTouchDelay={5000}
+              arrow 
+              title={
+                <>
+                  <Typography fontSize={'small'} fontWeight={"bold"}>{item.title}</Typography>
+                  <Typography fontSize={'small'}>{item.description}</Typography>
+                </>
+              }
+            >
+              <img
+                src={`icons/frameworks/${item.icon}`}
+                alt={item.icon}
+                width={40}
+                height={40}
+                className={item.isMono ? "svg-invert icon" : "icon"}
+              />
+            </Tooltip>
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );

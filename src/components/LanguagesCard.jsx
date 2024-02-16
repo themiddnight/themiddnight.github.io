@@ -4,7 +4,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { MenuBook, DriveFileRenameOutline, RecordVoiceOver, Hearing } from "@mui/icons-material";
+import { MenuBook, DriveFileRenameOutline, RecordVoiceOver, Hearing, Language } from "@mui/icons-material";
 import CircularProgressWithLabel from "./elements/CircularProgressWithLabel";
 import { languagesData } from "../../data/data";
 import CardHeader from "./elements/CardHeader";
@@ -14,6 +14,7 @@ export default function LanguagesCard() {
     <Card>
       <CardContent>
         <CardHeader>
+          <Language fontSize="large" />
           Languages
         </CardHeader>
         <Box display={'flex'} flexDirection={'column'} gap={1}>

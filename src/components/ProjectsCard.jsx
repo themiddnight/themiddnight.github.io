@@ -1,6 +1,6 @@
 import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
 import { projectsData } from "../../data/data";
-import { GitHub, OpenInNew } from "@mui/icons-material";
+import { GitHub, OpenInNew, AccountTreeRounded } from "@mui/icons-material";
 import CardHeader from "./elements/CardHeader";
 
 export default function ProjectsCard() {
@@ -14,6 +14,7 @@ export default function ProjectsCard() {
             paddingInlineStart: 3,
           }}
         >
+          <AccountTreeRounded fontSize="large" />
           Projects
         </CardHeader>
         <Box
@@ -21,6 +22,7 @@ export default function ProjectsCard() {
           overflow={"scroll"}
           gap={2}
           px={3}
+          py={0}
           sx={{ scrollSnapType: "x mandatory" }}
           className={"project-section"}
         >
@@ -37,9 +39,9 @@ export default function ProjectsCard() {
               boxShadow={1}
               className={"project-card"}
               sx={{
-                scrollSnapAlign: 'start',
+                scrollSnapAlign: { xs: "center", sm: "start"},
                 scrollSnapStop: "always",
-                scrollMarginInlineStart: 25,
+                scrollMarginInlineStart: { xs: 0, sm: 25 },
               }}
             >
               <Box
@@ -77,7 +79,7 @@ export default function ProjectsCard() {
               </Box>
 
               <Box p={2}>
-                <Typography fontSize={"small"} fontStyle={"italic"}>
+                <Typography fontSize={"small"} fontStyle={"italic"} fontWeight={'light'}>
                   {project.tags}
                 </Typography>
                 <Link href={project.githublink} target={"_blank"}>
@@ -86,7 +88,7 @@ export default function ProjectsCard() {
                     <GitHub color={"primary"} fontSize="lgall" />
                   </Stack>
                 </Link>
-                <Typography fontSize={"small"} fontWeight="light" mb={1}>
+                <Typography fontSize={"small"} mb={1}>
                   {project.createdAt}
                 </Typography>
                 <Typography>{project.description}</Typography>

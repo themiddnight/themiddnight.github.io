@@ -168,64 +168,35 @@ const skillsData = [
   },
 ];
 
-const frameworksData = [
-  {
-    title: "Bootstrap/Tailwind",
-    value: 70,
-    level: "Advanced",
-    description: "Can manage layouts with some complex components",
-    icon: "tailwind-svgrepo-com.svg",
-    isMono: false,
-  },
-  {
-    title: "React.js",
-    value: 60,
-    level: "Intermediate",
-    description: "Know how to use hooks and context API",
-    icon: "react-svgrepo-com.svg",
-    isMono: false,
-  },
-  {
-    title: "Next.js/NextUI",
-    value: 50,
-    level: "Intermediate",
-    description: "Know basic concepts of SSR/SSG, route handling, and API routes",
-    icon: "next-js-svgrepo-com.svg",
-    isMono: true,
-  },
-  {
-    title: "Material UI",
-    value: 50,
-    level: "Intermediate",
-    description: "Used in some projects. This website is built with MUI",
-    icon: "material-ui-svgrepo-com.svg",
-    isMono: false,
-  },
-  {
-    title: "Express.js",
-    value: 50,
-    level: "Intermediate",
-    description: "Known the basic of routing and middleware",
-    icon: "express-svgrepo-com.svg",
-    isMono: true,
-  },
-  {
-    title: "Nest.js",
-    value: 45,
-    level: "Beginner",
-    description: "Known the basic of mudules, controllers, and services. I'm currently learning this framework",
-    icon: "nest-middleware-ts-svgrepo-com.svg",
-    isMono: false,
-  },
-  {
-    title: "Git/Github",
-    value: 40,
-    level: "Beginner",
-    description: "Add, commit, push, pull, and merge.",
-    icon: "github-142-svgrepo-com.svg",
-    isMono: true,
-  },
-];
+const frameworksData_icons = [
+  { title: 'React', description: 'Know the basic hooks', icon: 'react-svgrepo-com.svg', isMono: false },
+  { title: 'Next.js', description: 'Know the concept of SSR and the basic of route handling', icon: 'next-js-svgrepo-com.svg', isMono: true },
+
+  { title: 'Tailwind CSS', description: 'Can manage layouts with some complex components', icon: 'tailwind-svgrepo-com.svg', isMono: false },
+  { title: 'Bootstrap', description: 'Can manage layouts with some complex components', icon: 'bootstrap-svgrepo-com.svg', isMono: false },
+  { title: 'Material UI', description: 'Used in some projects. This website is built with MUI', icon: 'material-ui-svgrepo-com.svg', isMono: false },
+  
+  { title: 'Express', description: 'Known of routing and middleware, using hash and JWT for authentication/authorization', icon: 'express-svgrepo-com.svg', isMono: true },
+  { title: 'Nest.js', description: 'Known the basic of mudules, controllers, and services. I\'m currently learning this framework', icon: 'nest-middleware-ts-svgrepo-com.svg', isMono: false },
+  
+  { title: 'Prisma', description: '', icon: 'prisma-svgrepo-com.svg', isMono: true },
+  { title: 'Sequelize', description: '', icon: 'sequelize-svgrepo-com.svg', isMono: false },
+
+  { title: 'Swagger', description: '', icon: 'swagger-svgrepo-com.svg', isMono: false },
+  // { title: 'Passport.js', description: '', icon: 'passport-svgrepo-com.svg', isMono: false },
+
+  { title: 'MySQL', description: '', icon: 'mysql-logo-svgrepo-com.svg', isMono: false },
+  { title: 'PostgreSQL', description: '', icon: 'postgresql-svgrepo-com.svg', isMono: false },
+  { title: 'MongoDB', description: '', icon: 'mongo-svgrepo-com.svg', isMono: false },
+  // { title: 'Firebase', description: '', icon: 'firebase-svgrepo-com.svg', isMono: false },
+  // { title: 'Redis', description: '', icon: 'redis-svgrepo-com.svg', isMono: false },
+  
+  { title: 'VS Code', description: '', icon: 'vscode-svgrepo-com.svg', isMono: false },
+  { title: 'Postman', description: '', icon: 'postman-icon-svgrepo-com.svg', isMono: false },
+  { title: 'Figma', description: '', icon: 'figma-svgrepo-com.svg', isMono: false },
+  { title: 'GitHub', description: 'Add, commit, push, pull, and merge.', icon: 'github-142-svgrepo-com.svg', isMono: true },
+  // { title: 'Docker', description: '', icon: 'docker-svgrepo-com.svg', isMono: false },
+]
 
 const languagesData = [
   {
@@ -273,6 +244,6 @@ export {
   certificatesData,
   projectsData,
   skillsData,
-  frameworksData,
+  frameworksData_icons,
   languagesData,
 };

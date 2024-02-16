@@ -1,16 +1,17 @@
 import { Card, CardContent, Typography } from "@mui/material";
+import { PersonRounded } from "@mui/icons-material";
 import CardHeader from "./elements/CardHeader";
 
 export default function ProfileCard() {
   return (
     <Card>
       <CardContent>
-        <CardHeader>Profile</CardHeader>
+        <CardHeader><PersonRounded fontSize="large" />Profile</CardHeader>
         <Typography>
-          A self-learner web developer experienced in Python in the CG industry.
-          Learned Front-end in boot-camps and self-learned for the back-end.
-          Graduated BS for Information and Communication Technology from
-          Silpakorn University
+          Experienced animation layout artist skilled in Python for workflow
+          optimization. Transitioning to web development with a keen interest in
+          emerging technologies. Adept at merging creativity with coding to
+          craft visually compelling and functional digital experiences.
         </Typography>
       </CardContent>
     </Card>

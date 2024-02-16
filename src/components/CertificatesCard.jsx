@@ -1,4 +1,5 @@
 import { Card, CardContent, Typography, Box, Link } from "@mui/material";
+import { CardMembershipRounded } from "@mui/icons-material";
 import { certificatesData } from "../../data/data";
 import { useContext } from "react";
 import { ModalContext } from "../App";
@@ -21,7 +22,8 @@ export default function CertificatesCard() {
             paddingBlockEnd: 1,
           }}
         >
-          Certificates
+          <CardMembershipRounded fontSize="large" />
+          Certifications
         </CardHeader>
         <Box display={"flex"} flexDirection={"column"} gap={{ xs: 3, sm: 2 }}>
           {certificatesData.map((cert, index) => (

@@ -1,4 +1,5 @@
 import { Card, CardContent, Divider, Typography, Box } from "@mui/material";
+import { WorkRounded } from "@mui/icons-material";
 import { experiencesData } from "../../data/data";
 import CardHeader from "./elements/CardHeader";
 
@@ -7,6 +8,7 @@ export default function ProfileCard() {
     <Card>
       <CardContent>
         <CardHeader>
+          <WorkRounded fontSize="large" />
           Experiences
         </CardHeader>
         

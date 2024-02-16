@@ -34,6 +34,7 @@ export default function Themes({ children }) {
             styleOverrides: {
               root: {
                 padding: 10,
+                paddingBottom: 3,
                 boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2)",
                 borderTop: "1px solid #ffffff11",
                 borderInline: "1px solid #00000022",
@@ -49,6 +50,16 @@ export default function Themes({ children }) {
               root: {
                 paddingTop: 1,
                 paddingBottom: 1,
+              },
+            },
+          },
+          MuiTooltip: {
+            styleOverrides: {
+              tooltipArrow: {
+                padding: 8,
+                borderRadius: 5,
+                filter: "drop-shadow(0 3px 5px rgba(0,0,0,0.5))",
+                backdropFilter: "blur(5px)",
               },
             },
           },
