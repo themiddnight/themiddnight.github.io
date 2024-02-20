@@ -16,7 +16,7 @@ import {
   LinkedIn,
   GitHub,
 } from "@mui/icons-material";
-import profilePic from "/images/profile.jpeg";
+import profilePic from "/images/profile3.jpeg";
 
 export default function ProfileCard() {
   return (
@@ -33,7 +33,7 @@ export default function ProfileCard() {
           }}
         >
           <Avatar
-            alt="Pathompong Thitithan"
+            alt="Pathompong Thitithan's profile picture"
             src={profilePic}
             sx={{ width: 140, height: 140, boxShadow: 3 }}
           />
@@ -42,14 +42,15 @@ export default function ProfileCard() {
               display: "flex",
               flexDirection: "column",
               flexBasis: 0,
+              flexGrow: 1,
               textAlign: { xs: "center", md: "left" },
             }}
           >
             <Typography variant="h4" fontWeight={"bold"} gutterBottom>
               Pathonpong Thitithan
             </Typography>
-            <Typography variant="body1" fontWeight="light">
-              Who seeking the way to be a developer.
+            <Typography variant="body2" fontWeight="light">
+              Who seeks the way to be a developer.
             </Typography>
           </Box>
         </Box>

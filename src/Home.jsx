@@ -51,7 +51,7 @@ export default function Home() {
           size="large" 
           className={!isEnter ? "intro-in__button" : "intro-out__button"}
           onClick={handleEnter}>
-            Let&apos;s Jump in!
+            Let&apos;s Get Started
           </Button>
       </Box>
     )

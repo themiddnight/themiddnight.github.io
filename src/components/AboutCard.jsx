@@ -9,7 +9,7 @@ export default function ProfileCard() {
       <CardContent>
         <CardHeader>
           <PersonRounded fontSize="large" />
-          Profile
+          I am...
         </CardHeader>
         
         {aboutData.map((item, index) => (

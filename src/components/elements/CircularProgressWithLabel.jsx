@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 
 export default function CircularProgressWithLabel({ children, value }) {
   return (
-    <Box display={"flex"} position={"relative"}>
+    <Box display={"flex"} position={"relative"} my={1}>
       <Box
         position={"absolute"}
         top={0} left={0} bottom={0} right={0}
