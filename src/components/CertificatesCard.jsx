@@ -25,6 +25,7 @@ export default function CertificatesCard() {
           <CardMembershipRounded fontSize="large" />
           Certifications
         </CardHeader>
+        
         <Box display={"flex"} flexDirection={"column"} gap={{ xs: 3, sm: 2 }}>
           {certificatesData.map((cert, index) => (
             <Box

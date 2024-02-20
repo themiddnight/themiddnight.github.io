@@ -27,7 +27,7 @@ export default function ProfileCard() {
             display: "flex",
             alignItems: "center",
             gap: 2,
-            my: 1,
+            mb: 2,
             flexDirection: { xs: "column", md: "row" },
             flexWrap: "wrap",
           }}
@@ -35,7 +35,7 @@ export default function ProfileCard() {
           <Avatar
             alt="Pathompong Thitithan"
             src={profilePic}
-            sx={{ width: 130, height: 130, boxShadow: 3 }}
+            sx={{ width: 140, height: 140, boxShadow: 3 }}
           />
           <Box
             sx={{
@@ -45,7 +45,7 @@ export default function ProfileCard() {
               textAlign: { xs: "center", md: "left" },
             }}
           >
-            <Typography variant="h4" fontWeight={"bold"}>
+            <Typography variant="h4" fontWeight={"bold"} gutterBottom>
               Pathonpong Thitithan
             </Typography>
             <Typography variant="body1" fontWeight="light">
@@ -53,7 +53,7 @@ export default function ProfileCard() {
             </Typography>
           </Box>
         </Box>
-        <List>
+        <List disablePadding>
           <ListItem>
             <ListItemIcon>
               <LocationOn />

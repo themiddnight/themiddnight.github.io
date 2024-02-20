@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import { CodeRounded } from "@mui/icons-material";
+import { TerminalRounded } from "@mui/icons-material";
 import { skillsData } from "../../data/data";
 import LevelList from "./elements/LevelList";
 import CardHeader from "./elements/CardHeader";
@@ -12,7 +12,7 @@ export default function FrameworksCard() {
     <Card>
       <CardContent>
         <CardHeader>
-          <CodeRounded fontSize="large" />
+          <TerminalRounded fontSize="large" />
           Skills
         </CardHeader>
         <LevelList data={skillsData} src_path='icons/skills' color='secondary' />

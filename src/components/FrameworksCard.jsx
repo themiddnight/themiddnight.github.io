@@ -20,6 +20,7 @@ export default function FrameworksCard() {
         <Typography>
           I&apos;ve some experience with:
         </Typography>
+        
         <Box display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={4} mt={3} px={1}>
           {frameworksData_icons.map((item, index) => (
             <Tooltip 

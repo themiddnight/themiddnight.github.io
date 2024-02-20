@@ -1,15 +1,31 @@
+const aboutData = [
+  `Experienced animation layout artist skilled in Python for workflow
+  optimization. Transitioning to web development with a keen interest in
+  emerging technologies. Adept at merging creativity with coding to
+  craft visually compelling and functional digital experiences.`
+]
+
+const educationData = [
+  {
+    title: "Information and Communication Technology",
+    degree: "B.S.",
+    school: "Silpakorn University",
+    year: "2009 - 2014",
+  },
+];
+
 const experiencesData = [
   {
     title: "Layout Artist",
     company: "Riff Animation Studio",
-    year: "2013 - 2017",
-    description: "Working with photo composition in the animation works. And I started to work as Technical Director, which working with Python coding to make the production flows.",
+    year: "2014 - 2018",
+    description: "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work.",
   },
   {
     title: "Lead Layout",
     company: "Yggdrazil Group",
-    year: "2017 - 2023",
-    description: "Working with photo composition in the animation works. And I started to work as Technical Director, which working with Python coding to make the production flows.",
+    year: "2018 - 2024",
+    description: "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period.",
   },
 ];
 
@@ -59,7 +75,7 @@ const projectsData = [
     title: "Developer Online Learning",
     tags: "Next.js-Typescript, Tailwind, Prisma, MySQL",
     repoID: 734964588,
-    image: "developer-online-learning.webp",
+    image: "developer-online-learning.jpg",
     description: "A final project for BorntoDev Front-end Bootcamp. Built with Next.js, NextUI, Prisma ORM",
     githublink: "https://github.com/themiddnight/BorntoDev-FEBC-Final",
     publiclink: "https://ake-borntodev-febc-final.vercel.app/",
@@ -89,7 +105,7 @@ const projectsData = [
     title: "OOP Study",
     tags: "Python",
     repoID: 688326981,
-    image: "OOP-study.webp",
+    image: "OOP-study.jpg",
     description: "A turn-based game project for learning about concept of OOP in Python.",
     githublink: "https://github.com/themiddnight/Turnbase-Game-Study",
     publiclink: null,
@@ -119,9 +135,9 @@ const projectsData = [
 
 const skillsData = [
   {
-    title: "HTML/CSS",
+    title: "HTML / CSS",
     value: 70,
-    level: "Advanced",
+    level: "Intermediate",
     description: "Can create a website from scratch",
     icon: "html-5-svgrepo-com.svg",
     isMono: false,
@@ -130,15 +146,15 @@ const skillsData = [
     title: "JavaScript",
     value: 70,
     level: "Intermediate",
-    description: "Can create some complex dynamic websites",
+    description: "Can manage DOM, events and some basic of OOP",
     icon: "javascript-svgrepo-com.svg",
     isMono: false,
   },
   {
     title: "TypeScript",
     value: 60,
-    level: "Intermediate",
-    description: "Known the concept of OOP, types and interfaces",
+    level: "Beginner",
+    description: "Known the basic of OOP",
     icon: "typescript-svgrepo-com.svg",
     isMono: false,
   },
@@ -154,7 +170,7 @@ const skillsData = [
     title: "SQL",
     value: 40,
     level: "Beginner",
-    description: "Querying with basic joins and aggregate functions",
+    description: "Basic qureying and concept of procedures and transactions",
     icon: "sql-svgrepo-com.svg",
     isMono: false,
   },
@@ -162,7 +178,7 @@ const skillsData = [
     title: "Shell Script",
     value: 20,
     level: "Beginner",
-    description: "Can manage files and directories, and run some basic commands",
+    description: "Manage files and directories, and run some basic commands",
     icon: "terminal-svgrepo-com.svg",
     isMono: true,
   },
@@ -195,12 +211,13 @@ const frameworksData_icons = [
   { title: 'Postman', description: '', icon: 'postman-icon-svgrepo-com.svg', isMono: false },
   { title: 'Figma', description: '', icon: 'figma-svgrepo-com.svg', isMono: false },
   { title: 'GitHub', description: 'Add, commit, push, pull, and merge.', icon: 'github-142-svgrepo-com.svg', isMono: true },
-  // { title: 'Docker', description: '', icon: 'docker-svgrepo-com.svg', isMono: false },
+  { title: 'Docker', description: 'Basic build, push, pull and run', icon: 'docker-svgrepo-com.svg', isMono: false },
 ]
 
 const languagesData = [
   {
     title: "Thai",
+    native: true,
     read: {
       value: 100,
       level: "Native",
@@ -220,6 +237,7 @@ const languagesData = [
   },
   {
     title: "English",
+    native: false,
     read: {
       value: 70,
       level: "Advanced",
@@ -239,11 +257,33 @@ const languagesData = [
   },
 ];
 
+const otherProfilesData = [
+  {
+    title: "HackerRank",
+    url: "https://www.hackerrank.com/themiddnight",
+  },
+  {
+    title: "FreeCodeCamp",
+    url: "https://www.freecodecamp.org/middnight",
+  },
+  {
+    title: "LeetCode",
+    url: "https://leetcode.com/themiddnight/",
+  },
+  {
+    title: "BornToDev DevLab",
+    url: "https://borntodev.com/devlab/profile?user=57431",
+  }
+];
+
 export {
+  aboutData,
+  educationData,
   experiencesData,
   certificatesData,
   projectsData,
   skillsData,
   frameworksData_icons,
   languagesData,
+  otherProfilesData,
 };

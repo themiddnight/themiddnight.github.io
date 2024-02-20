@@ -15,6 +15,7 @@ import FrameworksCard from "./components/FrameworksCard";
 import SkillsCard from "./components/SkillsCard";
 import CertificatesCard from "./components/CertificatesCard";
 import LanguagesCard from "./components/LanguagesCard";
+import OtherProfileCard from "./components/OtherProfileCard";
 import ImageModal from "./components/elements/ImageModal";
 
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
               <Box className={'card3'}><EducationCard /></Box>
               <Box className={'card4'}><ExperienceCard /></Box>
               <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard /></Box>
-              {/* <Box className={'card6'} display={{ xs:'none', sm: 'block', lg: 'none' }}><CertificatesCard /></Box> */}
+              <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}><OtherProfileCard /></Box>
             </Box>
 
             <Box
@@ -103,6 +104,7 @@ export default function Home() {
                   <Box className={'card4'}><FrameworksCard /></Box>
                   <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard /></Box>
                   <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}><CertificatesCard /></Box>
+                  <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}><OtherProfileCard /></Box>
                 </Box>
                 
               </Box>
