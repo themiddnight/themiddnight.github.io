@@ -80,7 +80,7 @@ export default function ProfileCard() {
             </ListItemIcon>
             <Link
               sx={{ paddingBlock: "4px" }}
-              href="https://www.linkedin.com/in/pathompong-thitithan-b2a2829b"
+              href="https://www.linkedin.com/in/ปฐมพงศ์-ฐิติธัญ-b2a2829b/?locale=en_US"
               target={"_blank"}
             >
               LinkedIn

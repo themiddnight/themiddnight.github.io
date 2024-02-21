@@ -1,6 +1,7 @@
 import {
   Card,
   CardContent,
+  List,
   ListItem,
   ListItemIcon,
   Link,
@@ -15,19 +16,21 @@ export default function OtherProfileCard() {
       <CardContent>
         <CardHeader>
           <GroupsRounded fontSize="large" />
-          Other Profile
+          Other Profiles
         </CardHeader>
 
-        {otherProfilesData.map((item, index) => (
-          <ListItem key={index}>
-            <Link href={item.url} target="_blank" rel="noopener noreferrer">
-              {item.title}
-            </Link>
-            <ListItemIcon sx={{ mx: 1 }}>
-              <OpenInNewRounded fontSize="small" color="primary" />
-            </ListItemIcon>
-          </ListItem>
-        ))}
+        <List disablePadding>
+          {otherProfilesData.map((item, index) => (
+            <ListItem key={index} sx={{ py: 0.5 }}>
+              <Link href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </Link>
+              <ListItemIcon sx={{ mx: 1 }}>
+                <OpenInNewRounded fontSize="small" color="primary" />
+              </ListItemIcon>
+            </ListItem>
+          ))}
+        </List>
       </CardContent>
     </Card>
   );
