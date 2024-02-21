@@ -86,7 +86,7 @@ export default function ProjectsCard() {
                 <Link href={project.githublink} target={"_blank"}>
                   <Stack direction={"row"} spacing={1} alignItems={"center"}>
                     <Typography fontWeight={"bold"}>{project.title}</Typography>
-                    <GitHub color={"primary"} fontSize="lgall" />
+                    <GitHub color={"primary"} fontSize="small" />
                   </Stack>
                 </Link>
                 <Typography fontSize={"small"} mb={1}>

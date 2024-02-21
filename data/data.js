@@ -55,7 +55,7 @@ const projectsData = [
     repoID: 703004313,
     image: "web-resume.jpg",
     description:
-      "A website showcasing my resume and projects. Built with React and Material UI.",
+      "This website which showcasing my resume. Built with React and Material UI.",
     githublink: "https://github.com/themiddnight/themiddnight.github.io",
     publiclink: "https://themiddnight.github.io/",
     createdAt: "January 2024",
