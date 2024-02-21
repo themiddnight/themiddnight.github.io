@@ -110,7 +110,7 @@ const projectsData = [
     repoID: 688326981,
     image: "OOP-study.jpg",
     description:
-      "A turn-based CLI game project for learning the concepts of OOP in Python.",
+      "A CLI turn-based game project for learning the concepts of OOP in Python.",
     githublink: "https://github.com/themiddnight/Turnbase-Game-Study",
     publiclink: null,
     createdAt: "September 2023",
@@ -233,7 +233,7 @@ const frameworksData_icons = [
   {
     title: "Nest.js",
     description:
-      "Known the basic of mudules, controllers, and services. I'm currently learning this framework.",
+      "Known the basics of modules, controllers, and services. I'm currently learning this framework.",
     icon: "nest-middleware-ts-svgrepo-com.svg",
     isMono: false,
   },
