@@ -16,6 +16,7 @@ import ImageModal from "./components/elements/ImageModal";
 export default function Home() {
   const [isEnter, setIsEnter] = useState(false);
   const [isEntered, setIsEntered] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   function handleEnter() {
     localStorage.setItem("isEnterTime", new Date().getTime());
@@ -39,9 +40,10 @@ export default function Home() {
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("isEnterTime", new Date().getTime());
     });
+    setIsReady(true);
   }, []);
 
-  if (!isEntered) {
+  if (isReady && !isEntered) {
     return (
       <Box 
         position={'fixed'}
@@ -67,6 +69,8 @@ export default function Home() {
           </Button>
       </Box>
     )
+  } else if (!isReady) {
+    return null;
   }
 
   return (
