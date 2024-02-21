@@ -24,22 +24,28 @@ export default function Home() {
     setTimeout(() => {
       setIsEntered(true);
     }, 500);
+    addPageHideListener();
   }
 
-  // Check if user has entered the site before within 5 sec. If not, show the intro screen.
+  // Add pagehide event listener to store the time when user leaves the site
+  function addPageHideListener() {
+    window.addEventListener("pagehide", () => {
+      localStorage.setItem("isEnterTime", new Date().getTime());
+    });
+  }
+  
+  // Check if user has entered the site before within 3 sec. If not, show the intro screen.
   useEffect(() => {
     const isEnterTime = localStorage.getItem("isEnterTime");
     try {
-      if (+isEnterTime > new Date().getTime() - 5000) {
+      if (+isEnterTime > new Date().getTime() - 3000) {
         setIsEnter(true);
         setIsEntered(true);
+        addPageHideListener();
       }
     } catch {
       localStorage.setItem("isEnterTime", new Date().getTime());
     }
-    window.addEventListener("pagehide", () => {
-      localStorage.setItem("isEnterTime", new Date().getTime());
-    });
     setIsReady(true);
   }, []);
 
