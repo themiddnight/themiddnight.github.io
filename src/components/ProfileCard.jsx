@@ -27,9 +27,9 @@ export default function ProfileCard() {
             display: "flex",
             alignItems: "center",
             gap: 2,
-            mt: { xs: 2, md: 1},
+            mt: { xs: 2, md: 1 },
             mb: 2,
-            mx: { xs: 2, md: 1},
+            mx: { xs: 2, md: 1 },
             flexDirection: { xs: "column", md: "row" },
             flexWrap: "wrap",
           }}
@@ -48,10 +48,17 @@ export default function ProfileCard() {
               textAlign: { xs: "center", md: "left" },
             }}
           >
-            <h1 hidden>Pathompong Thitithan</h1>
-            <Typography variant="h4" fontWeight={"bold"} gutterBottom>
-              Pathonpong Thitithan
-            </Typography>
+            <h1
+              style={{
+                fontSize: 33,
+                padding: 0,
+                marginBlockStart: 0,
+                marginBlockEnd: 10,
+                lineHeight: 1.3,
+              }}
+            >
+              Pathompong Thitithan
+            </h1>
             <Typography variant="body2" fontWeight="light">
               Who seeks the way to be a developer.
             </Typography>
@@ -69,7 +76,7 @@ export default function ProfileCard() {
               <Email color={"primary"} />
             </ListItemIcon>
             <Link
-              sx={{ paddingBlock: "4px"}}
+              sx={{ paddingBlock: "4px" }}
               href="mailto:the.middnight.k.0173@gmail.com"
             >
               the.midnight.k.0173@gmail.com
