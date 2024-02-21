@@ -30,8 +30,8 @@ export default function Themes({ children }) {
                 ${rand(0, 360)}, 
                 ${rand(40, 80)}%, 
                 ${rand(
-                  prefersDarkMode ? 30 : 50, 
-                  prefersDarkMode ? 50 : 80
+                  prefersDarkMode ? 20 : 70, 
+                  prefersDarkMode ? 40 : 90
                 )}%
               ) 0%, 
               transparent ${rand(50, 90)}%)`;
@@ -66,20 +66,13 @@ export default function Themes({ children }) {
             },
           },
         },
-        MuiListItemIcon: {
-          styleOverrides: {
-            root: {
-              minWidth: 35,
-            },
-          },
-        },
         MuiCard: {
           styleOverrides: {
             root: {
               padding: 10,
               paddingBottom: 3,
               boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 50px 0 rgba(0, 0, 0, 0.05)",
-              backgroundColor: prefersDarkMode ? "#000000cc" : "#f4f4f4dd",
+              backgroundColor: prefersDarkMode ? "#000000dd" : "#f4f4f4ee",
               // boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2)",
               // borderTop: "1px solid #ffffff11",
               // borderInline: "1px solid #00000022",
@@ -93,8 +86,14 @@ export default function Themes({ children }) {
         MuiListItem: {
           styleOverrides: {
             root: {
-              paddingTop: 1,
-              paddingBottom: 1,
+              paddingBlock: 1,
+            },
+          },
+        },
+        MuiListItemIcon: {
+          styleOverrides: {
+            root: {
+              minWidth: 35,
             },
           },
         },
