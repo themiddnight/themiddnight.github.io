@@ -37,7 +37,7 @@ export default function Home() {
     } catch {
       localStorage.setItem("isEnterTime", new Date().getTime());
     }
-    window.addEventListener("beforeunload", () => {
+    window.addEventListener("pagehide", () => {
       localStorage.setItem("isEnterTime", new Date().getTime());
     });
     setIsReady(true);
