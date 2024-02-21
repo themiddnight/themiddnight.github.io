@@ -48,6 +48,7 @@ export default function ProfileCard() {
               textAlign: { xs: "center", md: "left" },
             }}
           >
+            <h1 hidden>Pathompong Thitithan</h1>
             <Typography variant="h4" fontWeight={"bold"} gutterBottom>
               Pathonpong Thitithan
             </Typography>
