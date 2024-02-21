@@ -1,10 +1,5 @@
-import {
-  Box,
-  Container,
-  Button,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
+import { Box, Container, Button, Typography } from "@mui/material";
+import { useState, useEffect } from "react";
 
 import ProfileCard from "./components/ProfileCard";
 import AboutCard from "./components/AboutCard";
@@ -23,11 +18,28 @@ export default function Home() {
   const [isEntered, setIsEntered] = useState(false);
 
   function handleEnter() {
+    localStorage.setItem("isEnterTime", new Date().getTime());
     setIsEnter(true);
     setTimeout(() => {
       setIsEntered(true);
     }, 500);
   }
+
+  // Check if user has entered the site before within 5 sec. If not, show the intro screen.
+  useEffect(() => {
+    const isEnterTime = localStorage.getItem("isEnterTime");
+    try {
+      if (+isEnterTime > new Date().getTime() - 5000) {
+        setIsEnter(true);
+        setIsEntered(true);
+      }
+    } catch {
+      localStorage.setItem("isEnterTime", new Date().getTime());
+    }
+    window.addEventListener("beforeunload", () => {
+      localStorage.setItem("isEnterTime", new Date().getTime());
+    });
+  }, []);
 
   if (!isEntered) {
     return (
