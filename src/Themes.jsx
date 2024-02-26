@@ -51,9 +51,9 @@ export default function Themes({ children }) {
         values: {
           xs: 0,
           sm: 600,
-          md: 960,
+          md: 900,
           lg: 1024,
-          xl: 1440,
+          xl: 1536,
         },
       },
       shape: {
