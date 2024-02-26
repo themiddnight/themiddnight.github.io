@@ -76,10 +76,10 @@ export default function ProfileCard() {
               <Email color={"primary"} />
             </ListItemIcon>
             <Link
-              sx={{ paddingBlock: "4px" }}
+              sx={{ paddingBlock: "4px", wordBreak: "break-word"}}
               href="mailto:the.middnight.k.0173@gmail.com"
             >
-              the.midnight.k.0173@gmail.com
+              the.midnight.k.0173@<wbr/>gmail.com
             </Link>
           </ListItem>
           <ListItem>

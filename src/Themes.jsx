@@ -47,6 +47,15 @@ export default function Themes({ children }) {
           default: prefersDarkMode ? darkBg : lightBg,
         },
       },
+      breakpoints: {
+        values: {
+          xs: 0,
+          sm: 600,
+          md: 960,
+          lg: 1024,
+          xl: 1440,
+        },
+      },
       shape: {
         borderRadius: 20,
       },
