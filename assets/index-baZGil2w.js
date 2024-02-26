@@ -152,7 +152,7 @@ Error generating stack: `+i.message+`
                 ${i(40,80)}%, 
                 ${i(t?20:70,t?40:90)}%
               ) 0%, 
-              transparent ${i(50,90)}%)`;l+=u}return l}return sd({palette:{mode:t?"dark":"light",background:{default:t?r:o}},breakpoints:{values:{xs:0,sm:600,md:900,lg:1024,xl:1536}},shape:{borderRadius:20},components:{MuiCssBaseline:{styleOverrides:{body:{backgroundSize:"100% 100dvh",backgroundRepeat:"no-repeat",backgroundAttachment:"fixed",backgroundImage:`
+              transparent ${i(50,90)}%)`;l+=u}return l}return sd({palette:{mode:t?"dark":"light",background:{default:t?r:o}},breakpoints:{values:{xs:0,sm:600,md:900,lg:1024,xl:1536}},shape:{borderRadius:20},components:{MuiCssBaseline:{styleOverrides:{body:{backgroundSize:"cover",backgroundRepeat:"no-repeat",backgroundAttachment:"fixed",backgroundImage:`
                 linear-gradient(
                   to bottom, transparent 20%, 
                   ${t?r:o} 95%
