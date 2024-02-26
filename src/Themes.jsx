@@ -63,7 +63,7 @@ export default function Themes({ children }) {
         MuiCssBaseline: {
           styleOverrides: {
             body: {
-              backgroundSize: "100% 100dvh",
+              backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundAttachment: "fixed",
               backgroundImage: `
