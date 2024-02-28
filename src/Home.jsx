@@ -16,40 +16,25 @@ import ImageModal from "./components/elements/ImageModal";
 export default function Home() {
   const [isEnter, setIsEnter] = useState(false);
   const [isEntered, setIsEntered] = useState(false);
-  const [isReady, setIsReady] = useState(false);
 
   function handleEnter() {
-    localStorage.setItem("isEnterTime", new Date().getTime());
+    sessionStorage.setItem("isEntered", true);
     setIsEnter(true);
     setTimeout(() => {
       setIsEntered(true);
     }, 500);
-    addPageHideListener();
-  }
-
-  // Add pagehide event listener to store the time when user leaves the site
-  function addPageHideListener() {
-    window.addEventListener("pagehide", () => {
-      localStorage.setItem("isEnterTime", new Date().getTime());
-    });
   }
   
-  // Check if user has entered the site before within 3 sec. If not, show the intro screen.
+  // Check if user has entered the site before. If not, show the intro screen.
   useEffect(() => {
-    const isEnterTime = localStorage.getItem("isEnterTime");
-    try {
-      if (+isEnterTime > new Date().getTime() - 3000) {
-        setIsEnter(true);
-        setIsEntered(true);
-        addPageHideListener();
-      }
-    } catch {
-      localStorage.setItem("isEnterTime", new Date().getTime());
+    const isEnteredSession = sessionStorage.getItem("isEntered");
+    if (isEnteredSession) {
+      setIsEnter(true);
+      setIsEntered(true);
     }
-    setIsReady(true);
   }, []);
 
-  if (isReady && !isEntered) {
+  if (!isEntered) {
     return (
       <Box 
         position={'fixed'}
@@ -75,8 +60,6 @@ export default function Home() {
           </Button>
       </Box>
     )
-  } else if (!isReady) {
-    return null;
   }
 
   return (
