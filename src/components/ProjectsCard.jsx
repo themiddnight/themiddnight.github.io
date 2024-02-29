@@ -15,7 +15,7 @@ export default function ProjectsCard() {
           }}
         >
           <AccountTreeRounded fontSize="large" />
-          Projects
+          Personal Projects
         </CardHeader>
         
         <Box

@@ -25,13 +25,13 @@ export default function ProfileCard() {
         <Box
           sx={{
             display: "flex",
+            flexWrap: "wrap",
             alignItems: "center",
             gap: 2,
             mt: { xs: 2, md: 1 },
             mb: 2,
             mx: { xs: 2, md: 1 },
             flexDirection: { xs: "column", md: "row" },
-            flexWrap: "wrap",
           }}
         >
           <Avatar
