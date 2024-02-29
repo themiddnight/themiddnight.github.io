@@ -16,6 +16,7 @@ import ImageModal from "./components/elements/ImageModal";
 export default function Home() {
   const [isEnter, setIsEnter] = useState(false);
   const [isEntered, setIsEntered] = useState(false);
+  const [isReady, setIsReady] = useState(false); // Check if the session storage is loaded
 
   function handleEnter() {
     sessionStorage.setItem("isEntered", true);
@@ -25,16 +26,19 @@ export default function Home() {
     }, 500);
   }
   
-  // Check if user has entered the site before. If not, show the intro screen.
+  // Check if user has entered the site before within 3 sec. If not, show the intro screen.
   useEffect(() => {
     const isEnteredSession = sessionStorage.getItem("isEntered");
     if (isEnteredSession) {
       setIsEnter(true);
       setIsEntered(true);
     }
+    setIsReady(true);
   }, []);
 
-  if (!isEntered) {
+  if (!isReady) {
+    return null;
+  } else if (isReady && !isEntered) {
     return (
       <Box 
         position={'fixed'}
