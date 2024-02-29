@@ -16,7 +16,8 @@ import ImageModal from "./components/elements/ImageModal";
 export default function Home() {
   const [isEnter, setIsEnter] = useState(false);
   const [isEntered, setIsEntered] = useState(false);
-  const [isReady, setIsReady] = useState(false); // Check if the session storage is loaded
+  const [data, setData] = useState({});
+  const [isReady, setIsReady] = useState(false);
 
   function handleEnter() {
     sessionStorage.setItem("isEntered", true);
@@ -26,19 +27,24 @@ export default function Home() {
     }, 500);
   }
   
-  // Check if user has entered the site before within 3 sec. If not, show the intro screen.
   useEffect(() => {
-    const isEnteredSession = sessionStorage.getItem("isEntered");
-    if (isEnteredSession) {
-      setIsEnter(true);
-      setIsEntered(true);
-    }
-    setIsReady(true);
+    fetch("/data/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        // Check if user has entered the site before. If not, show the intro screen.
+        const isEnteredSession = sessionStorage.getItem("isEntered");
+        if (isEnteredSession) {
+          setIsEnter(true);
+          setIsEntered(true);
+        }
+        setIsReady(true);
+      });
   }, []);
 
   if (!isReady) {
     return null;
-  } else if (isReady && !isEntered) {
+  } else if (!isEntered) {
     return (
       <Box 
         position={'fixed'}
@@ -78,11 +84,11 @@ export default function Home() {
               gap={2}
             >
               <Box className={'card1'}><ProfileCard /></Box>
-              <Box className={'card2'}><AboutCard /></Box>
-              <Box className={'card3'}><EducationCard /></Box>
-              <Box className={'card4'}><ExperienceCard /></Box>
-              <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard /></Box>
-              <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}><OtherProfileCard /></Box>
+              <Box className={'card2'}><AboutCard data={data.about} /></Box>
+              <Box className={'card3'}><EducationCard data={data.education} /></Box>
+              <Box className={'card4'}><ExperienceCard data={data.experiences} /></Box>
+              <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
+              <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}><OtherProfileCard data={data.otherProfiles} /></Box>
             </Box>
 
             <Box
@@ -91,7 +97,7 @@ export default function Home() {
               flexDirection="column"
               gap={2}
             >
-              <Box className={'card2'}><ProjectsCard /></Box>
+              <Box className={'card2'}><ProjectsCard data={data.projects} /></Box>
 
               <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2}>
                 <Box
@@ -100,8 +106,8 @@ export default function Home() {
                   flexDirection="column"
                   gap={2}
                 >
-                  <Box className={'card3'}><SkillsCard /></Box>
-                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard /></Box>
+                  <Box className={'card3'}><SkillsCard data={data.skills} /></Box>
+                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard data={data.languages} /></Box>
                 </Box>
 
                 <Box
@@ -110,10 +116,10 @@ export default function Home() {
                   flexDirection="column"
                   gap={2}
                 >
-                  <Box className={'card4'}><FrameworksCard /></Box>
-                  <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard /></Box>
-                  <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}><CertificatesCard /></Box>
-                  <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}><OtherProfileCard /></Box>
+                  <Box className={'card4'}><FrameworksCard data={data.frameworks} /></Box>
+                  <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
+                  <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}><CertificatesCard data={data.certificates} /></Box>
+                  <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}><OtherProfileCard data={data.otherProfiles} /></Box>
                 </Box>
                 
               </Box>

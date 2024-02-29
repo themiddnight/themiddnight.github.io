@@ -6,10 +6,10 @@ import {
 } from "@mui/material";
 import { MenuBook, DriveFileRenameOutline, RecordVoiceOver, Hearing, Language } from "@mui/icons-material";
 import CircularProgressWithLabel from "./elements/CircularProgressWithLabel";
-import { languagesData } from "../../data/data";
+import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function LanguagesCard() {
+export default function LanguagesCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -19,7 +19,7 @@ export default function LanguagesCard() {
         </CardHeader>
         <Box display={'flex'} flexDirection={'column'} gap={1}>
 
-          {languagesData.map((item, index) => (
+          {data.map((item, index) => (
           <Box key={index}>
             <Box display={'flex'} alignItems={'baseline'} gap={1}>
               <Typography fontWeight={"bold"} fontSize={'large'} gutterBottom>{item.title}:</Typography>
@@ -78,3 +78,7 @@ export default function LanguagesCard() {
     </Card>
   );
 }
+
+LanguagesCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

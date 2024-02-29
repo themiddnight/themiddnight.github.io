@@ -1,9 +1,9 @@
 import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
-import { projectsData } from "../../data/data";
+import PropTypes from "prop-types";
 import { GitHub, OpenInNew, AccountTreeRounded } from "@mui/icons-material";
 import CardHeader from "./elements/CardHeader";
 
-export default function ProjectsCard() {
+export default function ProjectsCard({ data }) {
   return (
     <Card sx={{ p: 0 }}>
       <CardContent sx={{ p: 0 }}>
@@ -27,7 +27,7 @@ export default function ProjectsCard() {
           sx={{ scrollSnapType: "x mandatory" }}
           className={"project-section"}
         >
-          {projectsData.map((project, index) => (
+          {data.map((project, index) => (
             <Box
               key={index}
               flexBasis={{ xs: 300, lg: 500 }}
@@ -101,3 +101,7 @@ export default function ProjectsCard() {
     </Card>
   );
 }
+
+ProjectsCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

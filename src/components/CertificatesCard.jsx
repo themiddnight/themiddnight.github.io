@@ -1,13 +1,13 @@
 import { Card, CardContent, Typography, Box, Link } from "@mui/material";
 import { CardMembershipRounded } from "@mui/icons-material";
-import { certificatesData } from "../../data/data";
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import { ModalContext } from "../App";
 import CardHeader from "./elements/CardHeader";
 
-export default function CertificatesCard() {
+export default function CertificatesCard({ data }) {
   const { setIsImageModalOpen, setImageModalSrc } = useContext(ModalContext);
-  
+
   function handleOpenModal(e) {
     e.preventDefault();
     setImageModalSrc(e.target.src);
@@ -25,14 +25,13 @@ export default function CertificatesCard() {
           <CardMembershipRounded fontSize="large" />
           Certifications
         </CardHeader>
-        
+
         <Box display={"flex"} flexDirection={"column"} gap={{ xs: 3, sm: 2 }}>
-          {certificatesData.map((cert, index) => (
+          {data.map((cert, index) => (
             <Box
               key={index}
               display={"flex"}
-              // flexDirection={{ xs: "column", sm: "row" }}
-              alignItems={{ xs: 'start', sm: 'center'}}
+              alignItems={{ xs: "start", sm: "center" }}
               gap={{ xs: 1, sm: 2 }}
             >
               <Box
@@ -43,7 +42,7 @@ export default function CertificatesCard() {
                 display={"flex"}
                 alignItems={"center"}
                 justifyContent={"center"}
-                borderRadius={'5px'}
+                borderRadius={"5px"}
                 overflow={"hidden"}
               >
                 <img
@@ -66,7 +65,9 @@ export default function CertificatesCard() {
                 <Typography fontSize={"small"}>
                   Issued by: {cert.issuedBy}
                 </Typography>
-                <Typography fontSize={"small"} fontWeight='light'>{cert.issuedDate}</Typography>
+                <Typography fontSize={"small"} fontWeight="light">
+                  {cert.issuedDate}
+                </Typography>
                 <Typography fontSize={"small"}>
                   ID: {cert.credentialId}
                 </Typography>
@@ -78,3 +79,7 @@ export default function CertificatesCard() {
     </Card>
   );
 }
+
+CertificatesCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

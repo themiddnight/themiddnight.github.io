@@ -6,10 +6,10 @@ import {
   Typography,
 } from "@mui/material";
 import { ConstructionRounded } from "@mui/icons-material";
-import { frameworksData_icons } from "../../data/data";
+import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function FrameworksCard() {
+export default function FrameworksCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -22,7 +22,7 @@ export default function FrameworksCard() {
         </Typography>
         
         <Box display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={4} mt={3} px={1}>
-          {frameworksData_icons.map((item, index) => (
+          {data.map((item, index) => (
             <Tooltip 
               key={index}
               placement="top"
@@ -50,3 +50,7 @@ export default function FrameworksCard() {
     </Card>
   );
 }
+
+FrameworksCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

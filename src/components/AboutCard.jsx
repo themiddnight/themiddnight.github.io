@@ -1,9 +1,9 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { PersonRounded } from "@mui/icons-material";
-import { aboutData } from "../../data/data";
+import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function ProfileCard() {
+export default function ProfileCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -12,8 +12,8 @@ export default function ProfileCard() {
           I am...
         </CardHeader>
         
-        {aboutData.map((item, index) => (
-          <Typography key={index} pb={index !== aboutData.length - 1 ? 2 : 0}>
+        {data.map((item, index) => (
+          <Typography key={index} pb={index !== data.length - 1 ? 2 : 0}>
             {item}
           </Typography>
         ))}
@@ -21,3 +21,7 @@ export default function ProfileCard() {
     </Card>
   );
 }
+
+ProfileCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

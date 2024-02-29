@@ -1,9 +1,9 @@
 import { Card, CardContent, Divider, Typography, Box } from "@mui/material";
 import { WorkRounded } from "@mui/icons-material";
-import { experiencesData } from "../../data/data";
+import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function ProfileCard() {
+export default function ProfileCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -12,7 +12,7 @@ export default function ProfileCard() {
           Experiences
         </CardHeader>
         
-        {experiencesData.map((item, index) => (
+        {data.map((item, index) => (
           <Box key={index}>
             <Typography fontWeight={"bold"} fontSize={"large"}>
               {item.title} - {item.company}
@@ -21,10 +21,14 @@ export default function ProfileCard() {
             <Typography>
               {item.description}
             </Typography>
-            {index !== experiencesData.length - 1 && <Divider sx={{ my: 2 }} />}
+            {index !== data.length - 1 && <Divider sx={{ my: 2 }} />}
           </Box>
         ))}
       </CardContent>
     </Card>
   );
 }
+
+ProfileCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

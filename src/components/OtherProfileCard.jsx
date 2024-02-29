@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import { GroupsRounded, OpenInNewRounded } from "@mui/icons-material";
 import CardHeader from "./elements/CardHeader";
-import { otherProfilesData } from "../../data/data";
+import PropTypes from "prop-types";
 
-export default function OtherProfileCard() {
+export default function OtherProfileCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -20,7 +20,7 @@ export default function OtherProfileCard() {
         </CardHeader>
 
         <List disablePadding>
-          {otherProfilesData.map((item, index) => (
+          {data.map((item, index) => (
             <ListItem key={index} sx={{ py: 0.5 }}>
               <Link href={item.url} target="_blank" rel="noopener noreferrer">
                 {item.title}
@@ -35,3 +35,7 @@ export default function OtherProfileCard() {
     </Card>
   );
 }
+
+OtherProfileCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};

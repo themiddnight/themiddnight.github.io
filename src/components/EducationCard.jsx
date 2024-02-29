@@ -1,9 +1,9 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { SchoolRounded } from "@mui/icons-material";
-import { educationData } from "../../data/data";
+import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function ProfileCard() {
+export default function ProfileCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -12,7 +12,7 @@ export default function ProfileCard() {
           Education
         </CardHeader>
         
-        {educationData.map((item, index) => (
+        {data.map((item, index) => (
           <div key={index}>
             <Typography fontWeight={"bold"} fontSize={"large"}>
               {item.title} - {item.degree}
@@ -25,3 +25,7 @@ export default function ProfileCard() {
     </Card>
   );
 }
+
+ProfileCard.propTypes = {
+  data: PropTypes.array.isRequired,
+};
