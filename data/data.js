@@ -1,5 +1,5 @@
 const aboutData = [
-  `An experienced animation layout artist skilled in Python for workflow optimization. Transitioning to web development with an interest in technologies. Passionate at merging creativity with coding to craft visually compelling and functional digital experiences.`,
+  `An experienced animation layout artist skilled in Python for workflow optimization, currently transitioning to become a developer. Passionate about merging creativity with coding to craft visually compelling and functional digital experiences.`,
 ];
 
 const educationData = [
@@ -144,7 +144,7 @@ const skillsData = [
     title: "HTML / CSS",
     value: 70,
     level: "Intermediate",
-    description: "Capable of creating websites from scratch.",
+    description: "Capable of creating websites from scratch. Understand the semantics and responsive design.",
     icon: "html-5-svgrepo-com.svg",
     isMono: false,
   },
@@ -152,16 +152,8 @@ const skillsData = [
     title: "JavaScript",
     value: 70,
     level: "Intermediate",
-    description: "Proficient in managing the DOM, handling events, and basic OOP.",
+    description: "Proficient in managing the DOM, handling events. Familiar with asynchronous programming.",
     icon: "javascript-svgrepo-com.svg",
-    isMono: false,
-  },
-  {
-    title: "TypeScript",
-    value: 60,
-    level: "Beginner",
-    description: "Familiar with type systems and basic OOP principles.",
-    icon: "typescript-svgrepo-com.svg",
     isMono: false,
   },
   {
@@ -170,6 +162,14 @@ const skillsData = [
     level: "Intermediate",
     description: "Experience working within CGI pipelines and projects.",
     icon: "python-svgrepo-com.svg",
+    isMono: false,
+  },
+  {
+    title: "TypeScript",
+    value: 60,
+    level: "Beginner",
+    description: "Familiar with type systems and basic OOP principles.",
+    icon: "typescript-svgrepo-com.svg",
     isMono: false,
   },
   {
