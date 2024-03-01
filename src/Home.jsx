@@ -39,7 +39,7 @@ export default function Home() {
       setIsDataLoaded(true);
     } else {
       setTimeout(() => {  // Simulate a fetch request
-        fetch("/data/data.json")
+        fetch("/data.json")
           .then((res) => res.json())
           .then((data) => {
             setData(data);
