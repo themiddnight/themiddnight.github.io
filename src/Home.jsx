@@ -1,4 +1,4 @@
-import { Box, Container, Button, Typography } from "@mui/material";
+import { Box, Container, Button, Typography, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 
 import ProfileCard from "./components/ProfileCard";
@@ -14,10 +14,10 @@ import OtherProfileCard from "./components/OtherProfileCard";
 import ImageModal from "./components/elements/ImageModal";
 
 export default function Home() {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [data, setData] = useState({});
   const [isEnter, setIsEnter] = useState(false);
   const [isEntered, setIsEntered] = useState(false);
-  const [data, setData] = useState({});
-  const [isReady, setIsReady] = useState(false);
 
   function handleEnter() {
     sessionStorage.setItem("isEntered", true);
@@ -28,23 +28,30 @@ export default function Home() {
   }
   
   useEffect(() => {
-    fetch("/data/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        // Check if user has entered the site before. If not, show the intro screen.
-        const isEnteredSession = sessionStorage.getItem("isEntered");
-        if (isEnteredSession) {
-          setIsEnter(true);
-          setIsEntered(true);
-        }
-        setIsReady(true);
-      });
+    const dataSession = sessionStorage.getItem("data");
+    const isEnteredSession = sessionStorage.getItem("isEntered");
+    if (isEnteredSession) {
+      setIsEnter(true);
+      setIsEntered(true);
+    }
+    if (dataSession) {
+      setData(JSON.parse(dataSession));
+      setIsDataLoaded(true);
+    } else {
+      setTimeout(() => {  // Simulate a fetch request
+        fetch("/data/data.json")
+          .then((res) => res.json())
+          .then((data) => {
+            setData(data);
+            setIsDataLoaded(true);
+            // Save data to session storage, so it won't be fetched again
+            sessionStorage.setItem("data", JSON.stringify(data)); 
+          });
+      }, 1000);
+    }
   }, []);
 
-  if (!isReady) {
-    return null;
-  } else if (!isEntered) {
+  if (!isEntered) {
     return (
       <Box 
         position={'fixed'}
@@ -65,9 +72,12 @@ export default function Home() {
           color="primary" 
           size="large" 
           className={!isEnter ? "intro-in__button" : "intro-out__button"}
-          onClick={handleEnter}>
-            Let&apos;s Get Started
-          </Button>
+          startIcon={isDataLoaded ? null : <CircularProgress size={20} color="grey" />}
+          disabled={!isDataLoaded}
+          onClick={handleEnter}
+        >
+          {isDataLoaded ? "Let's get started" : "Loading..."}
+        </Button>
       </Box>
     )
   }
