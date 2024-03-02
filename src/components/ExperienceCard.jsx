@@ -14,7 +14,7 @@ export default function ProfileCard({ data }) {
         
         {data.map((item, index) => (
           <Box key={index}>
-            <Typography fontWeight={"bold"} fontSize={"large"}>
+            <Typography fontWeight={"bold"} fontSize={20}>
               {item.title} - {item.company}
             </Typography>
             <Typography fontWeight='light' gutterBottom>{item.year}</Typography>

@@ -17,12 +17,13 @@ export default function LanguagesCard({ data }) {
           <Language fontSize="large" />
           Languages
         </CardHeader>
+        
         <Box display={'flex'} flexDirection={'column'} gap={1}>
 
           {data.map((item, index) => (
           <Box key={index}>
             <Box display={'flex'} alignItems={'baseline'} gap={1}>
-              <Typography fontWeight={"bold"} fontSize={'large'} gutterBottom>{item.title}:</Typography>
+              <Typography m={0} fontWeight={"bold"} fontSize={'large'} gutterBottom>{item.title}:</Typography>
               {item.native && <Typography fontWeight={"light"} fontStyle={'italic'}>Native</Typography>}
             </Box>
 

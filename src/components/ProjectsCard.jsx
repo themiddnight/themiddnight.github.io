@@ -51,7 +51,7 @@ export default function ProjectsCard({ data }) {
               sx={{
                 scrollSnapAlign: { xs: "center", sm: "start"},
                 scrollSnapStop: "always",
-                scrollMarginInlineStart: { xs: 0, sm: 25 },
+                scrollMarginInlineStart: { xs: 0, sm: 26 },
               }}
             >
               <Box

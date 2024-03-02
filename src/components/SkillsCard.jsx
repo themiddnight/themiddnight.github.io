@@ -44,7 +44,7 @@ export default function FrameworksCard({ data }) {
                     alignItems={"baseline"}
                     width={"100%"}
                   >
-                    <Typography fontSize={"large"} fontWeight={"bold"}>
+                    <Typography fontSize={20} fontWeight={"bold"}>
                       {item.title}
                     </Typography>
                     <Typography
