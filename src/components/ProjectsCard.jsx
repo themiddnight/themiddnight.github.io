@@ -10,9 +10,8 @@ export default function ProjectsCard({ data }) {
       <CardContent sx={{ p: 0 }}>
         <CardHeader
           sx={{
-            paddingBlockStart: 3,
-            paddingBlockEnd: 1,
-            paddingInlineStart: 3,
+            paddingBlockStart: "26px",
+            paddingInline: "26px",
           }}
         >
           <AccountTreeRounded fontSize="large" />
