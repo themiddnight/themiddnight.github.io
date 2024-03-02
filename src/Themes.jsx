@@ -47,6 +47,10 @@ export default function Themes({ children }) {
           default: prefersDarkMode ? darkBg : lightBg,
         },
       },
+      typography: {
+        fontFamily: "carlito",
+        htmlFontSize: 15,
+      },
       breakpoints: {
         values: {
           xs: 0,
@@ -60,6 +64,13 @@ export default function Themes({ children }) {
         borderRadius: 20,
       },
       components: {
+        MuiLink: {
+          styleOverrides: {
+            root: {
+              lineHeight: 1.3,
+            },
+          },
+        },
         MuiCssBaseline: {
           styleOverrides: {
             body: {
