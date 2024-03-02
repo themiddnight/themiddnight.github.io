@@ -38,16 +38,14 @@ export default function Home() {
       setData(JSON.parse(dataSession));
       setIsDataLoaded(true);
     } else {
-      setTimeout(() => {  // Simulate a fetch request
-        fetch("/data.json")
-          .then((res) => res.json())
-          .then((data) => {
-            setData(data);
-            setIsDataLoaded(true);
-            // Save data to session storage, so it won't be fetched again
-            sessionStorage.setItem("data", JSON.stringify(data)); 
-          });
-      }, 1000);
+      fetch("/data.json")
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+          setIsDataLoaded(true);
+          // Save data to session storage, so it won't be fetched again
+          sessionStorage.setItem("data", JSON.stringify(data)); 
+        });
     }
   }, []);
 
