@@ -82,13 +82,6 @@ export default function Themes({ children }) {
               paddingBottom: 3,
               boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 50px 0 rgba(0, 0, 0, 0.05)",
               backgroundColor: prefersDarkMode ? "#000000dd" : "#f4f4f4ee",
-              // boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2)",
-              // borderTop: "1px solid #ffffff11",
-              // borderInline: "1px solid #00000022",
-              // borderBottom: "1px solid #00000044",
-              // backgroundImage: prefersDarkMode
-              //   ? "linear-gradient(to bottom, #101010, #181818)"
-              //   : "linear-gradient(to bottom, #f4f4f4, #ffffff)",
             },
           },
         },

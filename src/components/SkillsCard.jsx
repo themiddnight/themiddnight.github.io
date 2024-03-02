@@ -1,6 +1,7 @@
 import { Card, CardContent, Box, Typography, Divider } from "@mui/material";
 import { TerminalRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
+import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 
 export default function FrameworksCard({ data }) {
@@ -27,7 +28,7 @@ export default function FrameworksCard({ data }) {
                   height={iconSize}
                   sx={{ marginInlineEnd: 2 }}
                 >
-                  <img
+                  <Image
                     src={`/icons/skills/${item.icon}`}
                     alt={item.title}
                     width={iconSize}

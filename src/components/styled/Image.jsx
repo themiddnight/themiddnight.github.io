@@ -7,3 +7,7 @@ export const Image = styled("img")(({ zoomed }) => ({
     transform: zoomed ? "scale(1.2)" : "none",
   },
 }));
+
+Image.defaultProps = {
+  loading: "lazy",
+};
