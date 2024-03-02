@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Link, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { GitHub, OpenInNew, AccountTreeRounded } from "@mui/icons-material";
+import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 
 export default function ProjectsCard({ data }) {
@@ -24,8 +25,17 @@ export default function ProjectsCard({ data }) {
           gap={2}
           px={3}
           py={0}
-          sx={{ scrollSnapType: "x mandatory" }}
-          className={"project-section"}
+          sx={{ 
+            scrollSnapType: "x mandatory", 
+            maskImage: `
+              linear-gradient(
+                to right, 
+                transparent, 
+                black 20px, 
+                black calc(100% - 20px), 
+                transparent
+              )`
+          }}
         >
           {data.map((project, index) => (
             <Box
@@ -38,7 +48,7 @@ export default function ProjectsCard({ data }) {
               borderRadius={"10px"}
               overflow={"hidden"}
               boxShadow={1}
-              className={"project-card"}
+              bgcolor={"#88888833"}
               sx={{
                 scrollSnapAlign: { xs: "center", sm: "start"},
                 scrollSnapStop: "always",
@@ -50,9 +60,10 @@ export default function ProjectsCard({ data }) {
                 height={{ xs: 150, lg: 175 }}
                 flexShrink={0}
                 position={"relative"}
+                overflow={"hidden"}
               >
-                {project.publiclink && (
-                  <Link href={project.publiclink} target={"_blank"}>
+                <Link href={project.publiclink} target={"_blank"}>
+                  {project.publiclink && (
                     <Box
                       width={36}
                       height={36}
@@ -65,18 +76,20 @@ export default function ProjectsCard({ data }) {
                       right={10}
                       boxShadow={2}
                       className={"basic-bg"}
+                      zIndex={10}
+                      sx={{ color: "primary.main", "&:hover": { color: "info.main" } }}
                     >
                       <OpenInNew />
                     </Box>
-                  </Link>
-                )}
-                <img
-                  src={`images/projects/${project.image}`}
-                  alt={project.title}
-                  width={"100%"}
-                  height={"100%"}
-                  style={{ objectFit: "cover" }}
-                />
+                  )}
+                  <Image
+                    src={`images/projects/${project.image}`}
+                    alt={project.title}
+                    width="100%"
+                    height="100%"
+                    zoomed={project.publiclink ? true : false}
+                  />
+                </Link>
               </Box>
 
               <Box p={2}>

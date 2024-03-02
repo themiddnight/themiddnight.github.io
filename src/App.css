@@ -22,23 +22,6 @@
   filter: invert(var(--svg-invert));
 }
 
-.icon {
-  transform: scale(1);
-  transition: transform 0.2s;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-}
-
-.project-section {
-  mask-image: linear-gradient(to right, black 94%, transparent 99%);
-}
-
-.project-card {
-  background-color: #88888833;
-}
-
 /* intro animations */
 .intro-fade-out__div {
   animation: fade-out 0.5s ease-in forwards;

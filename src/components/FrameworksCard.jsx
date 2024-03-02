@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { ConstructionRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
+import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 
 export default function FrameworksCard({ data }) {
@@ -36,12 +37,13 @@ export default function FrameworksCard({ data }) {
                 </>
               }
             >
-              <img
+              <Image
                 src={`icons/frameworks/${item.icon}`}
                 alt={item.icon}
                 width={40}
                 height={40}
                 className={item.isMono ? "svg-invert icon" : "icon"}
+                zoomed
               />
             </Tooltip>
           ))}

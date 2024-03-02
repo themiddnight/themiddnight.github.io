@@ -2,6 +2,7 @@ import { Card, CardContent, Typography, Box, Link } from "@mui/material";
 import { CardMembershipRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import { useContext } from "react";
+import { Image } from "./styled/Image";
 import { ModalContext } from "../App";
 import CardHeader from "./elements/CardHeader";
 
@@ -44,13 +45,14 @@ export default function CertificatesCard({ data }) {
                 justifyContent={"center"}
                 borderRadius={"5px"}
                 overflow={"hidden"}
+                sx={{ transition: "transform 0.3s", "&:hover": { transform: "scale(1.1)" }}}
               >
-                <img
+                <Image
                   src={`images/certificates/${cert.credentialImage}`}
                   alt={cert.title}
-                  width={"100%"}
-                  height={"100%"}
-                  style={{ cursor: "pointer", objectFit: "cover" }}
+                  width="100%"
+                  height="100%"
+                  style={{ cursor: "pointer" }}
                   onClick={handleOpenModal}
                 />
               </Box>
