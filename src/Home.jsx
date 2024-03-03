@@ -63,7 +63,7 @@ export default function Home() {
       >
         <Box textAlign={'center'} className={!isEnter ? "intro-in__text" : "intro-out__text"}>
           <Typography variant="h2">Hi!</Typography>
-          <Typography variant="h3" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
+          <Typography variant="h4" fontWeight={'light'} mb={5} gutterBottom>Welcome to my resume</Typography>
         </Box>
         <Button 
           variant={isEnter ? "contained" : "outlined"}
@@ -73,6 +73,7 @@ export default function Home() {
           startIcon={isDataLoaded ? null : <CircularProgress size={20} color="grey" />}
           disabled={!isDataLoaded}
           onClick={handleEnter}
+          sx={{ borderRadius: 50 }}
         >
           {isDataLoaded ? "Let's get started" : "Loading..."}
         </Button>

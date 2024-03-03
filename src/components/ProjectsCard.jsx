@@ -56,7 +56,7 @@ export default function ProjectsCard({ data }) {
             >
               <Box
                 width={{ xs: 300, lg: 175 }}
-                height={{ xs: 150, lg: 175 }}
+                height={{ xs: 150, lg: 165 }}
                 flexShrink={0}
                 position={"relative"}
                 overflow={"hidden"}

@@ -71,6 +71,13 @@ export default function Themes({ children }) {
             },
           },
         },
+        MuiTypography: {
+          styleOverrides: {
+            root: {
+              lineHeight: 1.3,
+            },
+          },
+        },
         MuiCssBaseline: {
           styleOverrides: {
             body: {

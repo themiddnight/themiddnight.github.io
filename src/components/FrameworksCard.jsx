@@ -22,7 +22,7 @@ export default function FrameworksCard({ data }) {
           I&apos;ve some experience with:
         </Typography>
         
-        <Box display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={4} mt={3} px={1}>
+        <Box display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={3} mt={3} px={1}>
           {data.map((item, index) => (
             <Tooltip 
               key={index}
@@ -40,8 +40,8 @@ export default function FrameworksCard({ data }) {
               <Image
                 src={`icons/frameworks/${item.icon}`}
                 alt={item.icon}
-                width={40}
-                height={40}
+                width={35}
+                height={35}
                 className={item.isMono ? "svg-invert icon" : "icon"}
                 zoomed
               />

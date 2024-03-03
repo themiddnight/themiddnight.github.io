@@ -50,16 +50,16 @@ export default function ProfileCard() {
           >
             <h1
               style={{
-                fontSize: 33,
+                fontSize: 36,
                 padding: 0,
                 marginBlockStart: 0,
                 marginBlockEnd: 10,
-                lineHeight: 1.3,
+                lineHeight: 1.2,
               }}
             >
               Pathompong Thitithan
             </h1>
-            <Typography variant="body2" fontWeight="light">
+            <Typography fontWeight="light">
               Who seeks the way to be a developer.
             </Typography>
           </Box>

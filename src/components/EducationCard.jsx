@@ -14,10 +14,10 @@ export default function ProfileCard({ data }) {
         
         {data.map((item, index) => (
           <div key={index}>
-            <Typography fontWeight={"bold"} fontSize={20}>
-              {item.title} - {item.degree}
+            <Typography fontWeight={"bold"} fontSize={20} mb={0.5}>
+              {item.degree} - {item.title}
             </Typography>
-            <Typography fontWeight={"bold"}>{item.school}</Typography>
+            <Typography >{item.school}</Typography>
             <Typography fontWeight="light">{item.year}</Typography>
           </div>
         ))}

@@ -61,6 +61,7 @@ export default function CertificatesCard({ data }) {
                   href={cert.credentialUrl}
                   target={"_blank"}
                   fontWeight={"bold"}
+                  mb={0.5}
                 >
                   {cert.title}
                 </Link>
