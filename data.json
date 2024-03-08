@@ -32,7 +32,6 @@
       "title": "Master of Python Bootcamp",
       "issuedBy": "BornToDev",
       "issuedDate": "September 16, 2023",
-      "credentialId": "V2bpjpJEP288",
       "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
       "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
     },
@@ -40,16 +39,22 @@
       "title": "Road to Frontend Developer Bootcamp",
       "issuedBy": "BornToDev",
       "issuedDate": "January 8, 2024",
-      "credentialId": "IctoTQEOez9A",
       "credentialUrl": "https://school.borntodev.com/certificate/IctoTQEOez9A",
       "credentialImage": "borntodev-acdemy_FEBC2_certifiacte.png"
+    },
+    {
+      "title": "Back End Development and APIs",
+      "issuedBy": "FreeCodeCamp",
+      "issuedDate": "March 8, 2024",
+      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
+      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
     }
   ],
 
   "projects": [
     {
       "title": "Web Resume",
-      "tags": "React-JavaScript, Material UI",
+      "tags": ["React.js", "JavaScript", "Material UI"],
       "repoID": 703004313,
       "image": "web-resume.jpg",
       "description": "This website which showcasing my resume. Built with React and Material UI.",
@@ -59,7 +64,7 @@
     },
     {
       "title": "Basic CRUD API",
-      "tags": "Nest.js-Typescript, Sequelize, PostgreSQL",
+      "tags": ["Nest.js", "Typescript", "Sequelize", "PostgreSQL"],
       "repoID": 740290066,
       "image": "basic-crud.jpg",
       "description": "A basic CRUD API built with Nest.js and Sequelize ORM.",
@@ -69,7 +74,7 @@
     },
     {
       "title": "Developer Online Learning",
-      "tags": "Next.js-Typescript, Tailwind, Prisma, MySQL",
+      "tags": ["Next.js", "Typescript", "Tailwind", "Prisma", "MySQL"],
       "repoID": 734964588,
       "image": "developer-online-learning.jpg",
       "description": "A final project for the BorntoDev Front-end Bootcamp. Developed with Next.js.",
@@ -79,7 +84,7 @@
     },
     {
       "title": "Music Online Learning",
-      "tags": "HTML, Bootstrap",
+      "tags": ["HTML", "Bootstrap"],
       "repoID": 749376788,
       "image": "music-online-learning.jpg",
       "description": "A midterm project for the BorntoDev bootcamp. Using HTML and Bootstrap.",
@@ -89,7 +94,7 @@
     },
     {
       "title": "Thai Random Dishes",
-      "tags": "HTML, CSS, JavaScript",
+      "tags": ["HTML", "CSS", "JavaScript"],
       "repoID": 696299092,
       "image": "thai-random-dish.jpg",
       "description": "A website that generates random Thai dishes by combining predefined ingredients.",
@@ -99,7 +104,7 @@
     },
     {
       "title": "Python OOP Study",
-      "tags": "Python",
+      "tags": ["Python"],
       "repoID": 688326981,
       "image": "OOP-study.jpg",
       "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
@@ -109,7 +114,7 @@
     },
     {
       "title": "Finance Log",
-      "tags": "Python, Tkinter, Matplotlib, SQLite",
+      "tags": ["Python", "Tkinter", "Matplotlib", "SQLite"],
       "repoID": 674339310,
       "image": "finance-log.jpg",
       "description": "A GUI application for logging financial  intuitively and visualizing it with Matplotlib.",
@@ -119,7 +124,7 @@
     },
     {
       "title": "Layout Tools",
-      "tags": "Maya Python, PyMel",
+      "tags": ["Maya Python", "PyMel"],
       "repoID": 681789766,
       "image": "layout-tools.png",
       "description": "Tools and scripts for layout/animation production in Autodesk Maya, utilizing Python 2.7.",
@@ -288,12 +293,6 @@
       "description": "Add, commit, push, pull, and merge.",
       "icon": "github-142-svgrepo-com.svg",
       "isMono": true
-    },
-    {
-      "title": "Docker",
-      "description": "Basic build, push, pull and run.",
-      "icon": "docker-svgrepo-com.svg",
-      "isMono": false
     }
   ],
 
@@ -352,10 +351,6 @@
     {
       "title": "LeetCode",
       "url": "https://leetcode.com/themiddnight/"
-    },
-    {
-      "title": "BornToDev DevLab",
-      "url": "https://borntodev.com/devlab/profile?user=57431"
     }
   ]
 }
