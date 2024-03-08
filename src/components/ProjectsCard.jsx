@@ -93,7 +93,7 @@ export default function ProjectsCard({ data }) {
 
               <Box p={2}>
                 <Typography fontSize={"small"} fontStyle={"italic"} fontWeight={'light'}>
-                  {project.tags}
+                  {project.tags.join(", ")}
                 </Typography>
                 <Link href={project.githublink} target={"_blank"}>
                   <Stack direction={"row"} spacing={1} alignItems={"center"}>

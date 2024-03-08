@@ -36,7 +36,7 @@ export default function CertificatesCard({ data }) {
               gap={{ xs: 1, sm: 2 }}
             >
               <Box
-                height={90}
+                height={70}
                 width={90}
                 flexBasis={{ xs: 90, sm: 90 }}
                 flexShrink={0}
@@ -70,9 +70,6 @@ export default function CertificatesCard({ data }) {
                 </Typography>
                 <Typography fontSize={"small"} fontWeight="light">
                   {cert.issuedDate}
-                </Typography>
-                <Typography fontSize={"small"}>
-                  ID: {cert.credentialId}
                 </Typography>
               </Box>
             </Box>

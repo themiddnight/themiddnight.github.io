@@ -28,25 +28,16 @@ export default function Home() {
   }
   
   useEffect(() => {
-    const dataSession = sessionStorage.getItem("data");
-    const isEnteredSession = sessionStorage.getItem("isEntered");
-    if (isEnteredSession) {
-      setIsEnter(true);
-      setIsEntered(true);
-    }
-    if (dataSession) {
-      setData(JSON.parse(dataSession));
-      setIsDataLoaded(true);
-    } else {
-      fetch("/data.json")
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-          setIsDataLoaded(true);
-          // Save data to session storage, so it won't be fetched again
-          sessionStorage.setItem("data", JSON.stringify(data)); 
-        });
-    }
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setIsDataLoaded(true);
+        if (sessionStorage.getItem("isEntered")) {
+          setIsEnter(true);
+          setIsEntered(true);
+        }
+      });
   }, []);
 
   if (!isEntered) {
