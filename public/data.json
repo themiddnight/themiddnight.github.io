@@ -176,11 +176,19 @@
       "isMono": false
     },
     {
+      "title": "Regular Expression",
+      "value": 30,
+      "level": "Beginner",
+      "description": "Familiar with the basic syntax and usage.",
+      "icon": "regex-svgrepo-com.svg",
+      "isMono": true
+    },
+    {
       "title": "Shell Script",
       "value": 20,
       "level": "Beginner",
       "description": "Skilled in managing files and directories, as well as executing basic commands.",
-      "icon": "terminal-svgrepo-com.svg",
+      "icon": "terminal-bash-svgrepo-com.svg",
       "isMono": true
     }
   ],
@@ -351,6 +359,10 @@
     {
       "title": "LeetCode",
       "url": "https://leetcode.com/themiddnight/"
+    },
+    {
+      "title": "BorntoDev DevLab",
+      "url": "https://borntodev.com/devlab/profile?user=57431"
     }
   ]
 }
