@@ -3,13 +3,21 @@ import {
   Card,
   CardContent,
   Typography,
+  Collapse,
 } from "@mui/material";
 import { MenuBook, DriveFileRenameOutline, RecordVoiceOver, Hearing, Language } from "@mui/icons-material";
-import CircularProgressWithLabel from "./elements/CircularProgressWithLabel";
+import { TransitionGroup } from "react-transition-group";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import CircularProgressWithLabel from "./elements/CircularProgressWithLabel";
 import CardHeader from "./elements/CardHeader";
+import MoreButtonSection from "./elements/MoreButton";
 
 export default function LanguagesCard({ data }) {
+  const limit = 2;
+  const [isLimit, setIsLimit] = useState(true);
+  const [limitedData, setLimitedData] = useState(data.slice(0, limit));
+
   return (
     <Card>
       <CardContent>
@@ -18,10 +26,10 @@ export default function LanguagesCard({ data }) {
           Languages
         </CardHeader>
         
-        <Box display={'flex'} flexDirection={'column'} gap={1}>
+        <TransitionGroup component={Box} display={'flex'} flexDirection={'column'} gap={1}>
 
-          {data.map((item, index) => (
-          <Box key={index}>
+          {limitedData.map((item, index) => (
+          <Collapse key={index}>
             <Box display={'flex'} alignItems={'baseline'} gap={1}>
               <Typography m={0} fontWeight={"bold"} fontSize={'large'} gutterBottom>{item.title}:</Typography>
               {item.native && <Typography fontWeight={"light"} fontStyle={'italic'}>Native</Typography>}
@@ -71,10 +79,17 @@ export default function LanguagesCard({ data }) {
               </Box>
             )}
 
-          </Box>
+          </Collapse>
           ))}
 
-        </Box>
+        </TransitionGroup>
+        <MoreButtonSection
+          isLimit={isLimit}
+          setIsLimit={setIsLimit}
+          data={data}
+          limit={limit}
+          setLimitedData={setLimitedData}
+        />
       </CardContent>
     </Card>
   );

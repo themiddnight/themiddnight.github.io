@@ -1,11 +1,18 @@
-import { Card, CardContent, Box, Typography, Divider } from "@mui/material";
+import { Card, CardContent, Box, Typography, Divider, Collapse } from "@mui/material";
+import { TransitionGroup } from 'react-transition-group';
 import { TerminalRounded } from "@mui/icons-material";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
+import MoreButtonSection from "./elements/MoreButton";
 
 export default function FrameworksCard({ data }) {
   const iconSize = 30;
+  const limit = 7;
+  const [isLimit, setIsLimit] = useState(true);
+  const [limitedData, setLimitedData] = useState(data.slice(0, limit));
+
   return (
     <Card>
       <CardContent>
@@ -14,14 +21,16 @@ export default function FrameworksCard({ data }) {
           Skills
         </CardHeader>
 
-        <Box
+        <TransitionGroup
+          component={Box}
           display={"flex"}
           flexDirection={"column"}
           mx={{ xs: 0, sm: 1 }}
           mt={2}
         >
-          {data.map((item, index) => (
-            <Box key={index}>
+          {limitedData.map((item, index) => (
+            <Collapse key={index}>
+              {index != 0 && <Divider sx={{ my: 1 }} />}
               <Box display={"flex"} alignItems={"center"}>
                 <Box
                   width={iconSize}
@@ -56,13 +65,19 @@ export default function FrameworksCard({ data }) {
                       {item.level}
                     </Typography>
                   </Box>
-                  <Typography>{item.description}</Typography>
+                  <Typography mb={0.5}>{item.description}</Typography>
                 </Box>
               </Box>
-              {index !== data.length - 1 && <Divider sx={{ my: 1 }} />}
-            </Box>
+            </Collapse>
           ))}
-        </Box>
+        </TransitionGroup>
+        <MoreButtonSection
+          isLimit={isLimit}
+          setIsLimit={setIsLimit}
+          setLimitedData={setLimitedData}
+          limit={limit}
+          data={data}
+        />
       </CardContent>
     </Card>
   );
