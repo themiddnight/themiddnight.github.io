@@ -14,26 +14,33 @@
 
   "experiences": [
     {
-      "title": "Layout Artist",
-      "company": "Riff Animation Studio",
-      "year": "2014 - 2018",
-      "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
-    },
-    {
       "title": "Lead Layout",
       "company": "Yggdrazil Group",
       "year": "2018 - 2024",
       "description": "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period."
+    },
+    {
+      "title": "Layout Artist",
+      "company": "Riff Animation Studio",
+      "year": "2014 - 2018",
+      "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
     }
   ],
 
   "certificates": [
     {
-      "title": "Master of Python Bootcamp",
-      "issuedBy": "BornToDev",
-      "issuedDate": "September 16, 2023",
-      "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
-      "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
+      "title": "JavaScript Algorithms and Data Structures",
+      "issuedBy": "FreeCodeCamp",
+      "issuedDate": "March 16, 2024",
+      "credentialUrl": "https://freecodecamp.org/certification/middnight/javascript-algorithms-and-data-structures-v8",
+      "credentialImage": "freecodecamp-js-and-dsa.jpg"
+    },
+    {
+      "title": "Back End Development and APIs",
+      "issuedBy": "FreeCodeCamp",
+      "issuedDate": "March 8, 2024",
+      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
+      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
     },
     {
       "title": "Road to Frontend Developer Bootcamp",
@@ -43,11 +50,11 @@
       "credentialImage": "borntodev-acdemy_FEBC2_certifiacte.png"
     },
     {
-      "title": "Back End Development and APIs",
-      "issuedBy": "FreeCodeCamp",
-      "issuedDate": "March 8, 2024",
-      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
-      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
+      "title": "Master of Python Bootcamp",
+      "issuedBy": "BornToDev",
+      "issuedDate": "September 16, 2023",
+      "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
+      "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
     }
   ],
 
