@@ -1,8 +1,16 @@
-import { Card, CardContent, Box, Typography, Divider, Collapse } from "@mui/material";
-import { TransitionGroup } from 'react-transition-group';
+import {
+  Card,
+  CardContent,
+  Box,
+  Typography,
+  Divider,
+  Collapse,
+} from "@mui/material";
+import { TransitionGroup } from "react-transition-group";
 import { TerminalRounded } from "@mui/icons-material";
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";

@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { PersonRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
+
 import CardHeader from "./elements/CardHeader";
 
 export default function AboutCard({ data }) {

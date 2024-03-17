@@ -10,6 +10,7 @@ import { TransitionGroup } from "react-transition-group";
 import { ConstructionRounded } from "@mui/icons-material";
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
@@ -26,34 +27,46 @@ export default function FrameworksCard({ data }) {
           <ConstructionRounded fontSize="large" />
           Tools / Frameworks
         </CardHeader>
-        <Typography fontStyle={'italic'}>
+        <Typography fontStyle={"italic"}>
           I&apos;ve some experience with:
         </Typography>
-        
-        <TransitionGroup component={Box} display={"flex"} flexWrap={"wrap"} justifyContent={'center'} gap={3} mt={3} px={1}>
+
+        <TransitionGroup
+          component={Box}
+          display={"flex"}
+          flexWrap={"wrap"}
+          justifyContent={"center"}
+          gap={3}
+          mt={3}
+          px={1}
+        >
           {limitedData.map((item, index) => (
             <Collapse key={index}>
-            <Tooltip 
-              placement="top"
-              enterTouchDelay={0}
-              leaveTouchDelay={5000}
-              arrow 
-              title={
-                <>
-                  <Typography fontSize={'small'} fontWeight={"bold"}>{item.title}</Typography>
-                  <Typography fontSize={'small'}>{item.description}</Typography>
-                </>
-              }
-            >
-              <Image
-                src={`icons/frameworks/${item.icon}`}
-                alt={item.icon}
-                width={35}
-                height={35}
-                className={item.isMono ? "svg-invert icon" : "icon"}
-                zoomed
-              />
-            </Tooltip>
+              <Tooltip
+                placement="top"
+                enterTouchDelay={0}
+                leaveTouchDelay={5000}
+                arrow
+                title={
+                  <>
+                    <Typography fontSize={"small"} fontWeight={"bold"}>
+                      {item.title}
+                    </Typography>
+                    <Typography fontSize={"small"}>
+                      {item.description}
+                    </Typography>
+                  </>
+                }
+              >
+                <Image
+                  src={`icons/frameworks/${item.icon}`}
+                  alt={item.icon}
+                  width={35}
+                  height={35}
+                  className={item.isMono ? "svg-invert icon" : "icon"}
+                  zoomed
+                />
+              </Tooltip>
             </Collapse>
           ))}
         </TransitionGroup>

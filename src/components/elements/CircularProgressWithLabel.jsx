@@ -39,6 +39,6 @@ export default function CircularProgressWithLabel({ children, value }) {
 }
 
 CircularProgressWithLabel.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   value: PropTypes.number.isRequired,
 };

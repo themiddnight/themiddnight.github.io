@@ -10,6 +10,7 @@ import { TransitionGroup } from "react-transition-group";
 import { GroupsRounded, OpenInNewRounded } from "@mui/icons-material";
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
