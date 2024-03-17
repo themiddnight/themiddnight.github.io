@@ -83,10 +83,10 @@ export default function Home() {
               flexDirection="column"
               gap={2}
             >
-              <Box className={'card1'}><ProfileCard /></Box>
+              <Box className={'card1'}><ProfileCard data={data.profile} /></Box>
               <Box className={'card2'}><AboutCard data={data.about} /></Box>
-              <Box className={'card3'}><EducationCard data={data.education} /></Box>
               <Box className={'card4'}><ExperienceCard data={data.experiences} /></Box>
+              <Box className={'card3'}><EducationCard data={data.education} /></Box>
               <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
               <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}><OtherProfileCard data={data.otherProfiles} /></Box>
             </Box>
