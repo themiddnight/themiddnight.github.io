@@ -28,7 +28,7 @@ export default function Home() {
   }
   
   useEffect(() => {
-    fetch("/data.json")
+    fetch("https://my-resume-web-backend.onrender.com/api/data")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -83,12 +83,40 @@ export default function Home() {
               flexDirection="column"
               gap={2.5}
             >
-              <Box className={'card1'}><ProfileCard data={data.profile} /></Box>
-              <Box className={'card2'}><AboutCard data={data.about} /></Box>
-              <Box className={'card4'}><ExperienceCard data={data.experiences} /></Box>
-              <Box className={'card3'}><EducationCard data={data.education} /></Box>
-              <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
-              <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}><OtherProfileCard data={data.otherProfiles} /></Box>
+              <Box className={'card1'}>
+                <ProfileCard 
+                  data={data.profile} 
+                />
+              </Box>
+              <Box className={'card2'}>
+                <AboutCard 
+                  data={data.about} 
+                />
+              </Box>
+              <Box className={'card4'}>
+                <ExperienceCard 
+                  data={data.experiences} 
+                  limit={data.pageConfig.display_limit.experiences} 
+              />
+            </Box>
+              <Box className={'card3'}>
+                <EducationCard 
+                  data={data.education} 
+                  limit={data.pageConfig.display_limit.education} 
+              />
+            </Box>
+              <Box className={'card5'} display={{ xs:'none', sm: 'block', lg: 'none' }}>
+                <LanguagesCard 
+                  data={data.languages} 
+                  limit={data.pageConfig.display_limit.languages} 
+                />
+              </Box>
+              <Box className={'card6'} display={{ xs: 'none', sm: 'block', lg: 'none' }}>
+                <OtherProfileCard 
+                  data={data.otherProfiles} 
+                  limit={data.pageConfig.display_limit.otherProfiles} 
+                />
+              </Box>
             </Box>
 
             <Box
@@ -97,7 +125,11 @@ export default function Home() {
               flexDirection="column"
               gap={2.5}
             >
-              <Box className={'card2'}><ProjectsCard data={data.projects} /></Box>
+              <Box className={'card2'}>
+                <ProjectsCard 
+                  data={data.personalProjects} 
+                />
+              </Box>
 
               <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2.5}>
                 <Box
@@ -106,8 +138,18 @@ export default function Home() {
                   flexDirection="column"
                   gap={2.5}
                 >
-                  <Box className={'card3'}><SkillsCard data={data.skills} /></Box>
-                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard data={data.languages} /></Box>
+                  <Box className={'card3'}>
+                    <SkillsCard 
+                      data={data.skills} 
+                      limit={data.pageConfig.display_limit.skills} 
+                  />
+                </Box>
+                  <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}>
+                    <LanguagesCard 
+                      data={data.languages} 
+                      limit={data.pageConfig.display_limit.languages} 
+                    />
+                  </Box>
                 </Box>
 
                 <Box
@@ -116,10 +158,29 @@ export default function Home() {
                   flexDirection="column"
                   gap={2.5}
                 >
-                  <Box className={'card4'}><FrameworksCard data={data.frameworks} /></Box>
-                  <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
-                  <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}><CertificatesCard data={data.certificates} /></Box>
-                  <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}><OtherProfileCard data={data.otherProfiles} /></Box>
+                  <Box className={'card4'}>
+                    <FrameworksCard 
+                      data={data.tools} 
+                    />
+                  </Box>
+                  <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}>
+                    <LanguagesCard 
+                      data={data.languages} 
+                      limit={data.pageConfig.display_limit.languages} 
+                    />
+                  </Box>
+                  <Box className={'card6'} display={{ xs: 'block', sm: 'block', lg: 'block' }}>
+                    <CertificatesCard 
+                      data={data.certifications} 
+                      limit={data.pageConfig.display_limit.certifications} 
+                    />
+                  </Box>
+                  <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}>
+                    <OtherProfileCard 
+                      data={data.otherProfiles} 
+                      limit={data.pageConfig.display_limit.otherProfiles} 
+                    />
+                  </Box>
                 </Box>
                 
               </Box>
