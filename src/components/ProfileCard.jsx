@@ -11,14 +11,32 @@ import {
   Link,
 } from "@mui/material";
 import {
-  Email,
-  LocationOn,
+  LocationOnRounded,
+  EmailRounded,
+  PhoneRounded,
   LinkedIn,
   GitHub,
+  Twitter,
+  Facebook,
+  Instagram,
+  YouTube,
+  LanguageRounded,
 } from "@mui/icons-material";
-import profilePic from "/images/profile3.jpeg";
+import PropTypes from "prop-types";
 
-export default function ProfileCard() {
+const LinkIcon = (title) => {
+  switch (title) {
+    case "LinkedIn": return <LinkedIn color={"primary"} />;
+    case "GitHub": return <GitHub color={"primary"} />;
+    case "Twitter": return <Twitter color={"primary"} />;
+    case "Facebook": return <Facebook color={"primary"} />;
+    case "Instagram": return <Instagram color={"primary"} />;
+    case "YouTube": return <YouTube color={"primary"} />;
+    default: return <LanguageRounded color={"primary"} />;
+  }
+}
+
+export default function ProfileCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -35,8 +53,8 @@ export default function ProfileCard() {
           }}
         >
           <Avatar
-            alt="Pathompong Thitithan's profile picture"
-            src={profilePic}
+            alt={`${data.title}'s profile picture`}
+            src={data.image}
             sx={{ width: 140, height: 140, boxShadow: 3 }}
           />
           <Box
@@ -57,57 +75,57 @@ export default function ProfileCard() {
                 lineHeight: 1.2,
               }}
             >
-              Pathompong Thitithan
+              {data.title}
             </h1>
             <Typography fontWeight="light">
-              Who seeks the way to be a developer.
+              {data.subtitle}
             </Typography>
           </Box>
         </Box>
         <List disablePadding>
-          <ListItem>
+
+          {data.contact.location && <ListItem>
             <ListItemIcon>
-              <LocationOn />
+              <LocationOnRounded />
             </ListItemIcon>
-            <ListItemText>Bangkok, Thailand</ListItemText>
-          </ListItem>
-          <ListItem>
+            <ListItemText>{data.contact.location}</ListItemText>
+          </ListItem>}
+
+          {data.contact.phone && <ListItem>
             <ListItemIcon>
-              <Email color={"primary"} />
+              <PhoneRounded color={"primary"} />
             </ListItemIcon>
-            <Link
-              sx={{ paddingBlock: "4px", wordBreak: "break-word"}}
-              href="mailto:the.middnight.k.0173@gmail.com"
-            >
-              the.midnight.k.0173<wbr/>@gmail.com
+            <Link href={`tel:${data.contact.phone}`} sx={{ paddingBlock: "5px" }}>
+              {data.contact.phone}
             </Link>
-          </ListItem>
-          <ListItem>
+          </ListItem>}
+
+          {data.contact.email && <ListItem>
             <ListItemIcon>
-              <LinkedIn color={"primary"} />
+              <EmailRounded color={"primary"} />
             </ListItemIcon>
-            <Link
-              sx={{ paddingBlock: "4px" }}
-              href="https://www.linkedin.com/in/ปฐมพงศ์-ฐิติธัญ-b2a2829b/?locale=en_US"
-              target={"_blank"}
-            >
-              LinkedIn
+            <Link href={`mailto:the.${data.contact.email}`} sx={{ paddingBlock: "5px" }}>
+              {data.contact.email}
             </Link>
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <GitHub color={"primary"} />
-            </ListItemIcon>
-            <Link
-              sx={{ paddingBlock: "4px" }}
-              href="https://github.com/themiddnight"
-              target={"_blank"}
-            >
-              GitHub
-            </Link>
-          </ListItem>
+          </ListItem>}
+
+          {data.links.map((link, index) => (
+            <ListItem key={index}>
+              <ListItemIcon>
+                {LinkIcon(link.title)}
+              </ListItemIcon>
+              <Link href={link.url} target={"_blank"} sx={{ paddingBlock: "5px" }}>
+                {link.title}
+              </Link>
+            </ListItem>
+          ))}
+
         </List>
       </CardContent>
     </Card>
   );
 }
+
+ProfileCard.propTypes = {
+  data: PropTypes.object.isRequired,
+};
