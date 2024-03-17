@@ -1,6 +1,44 @@
 {
+  "profile": {
+    "title": "Pathompong Thitithan",
+    "subtitle": "Who seeks the way to be a developer",
+    "image": "/images/profile3.jpeg",
+    "contact": {
+      "location": "Bangkok, Thailand",
+      "phone": "",
+      "email": "the.midnight.k.0173@gmail.com"
+    },
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/ปฐมพงศ์-ฐิติธัญ-b2a2829b/?locale=en_US"
+      },
+      {
+        "title": "GitHub",
+        "url": "https://www.github.com/themiddnight"
+      }
+    ]
+  },
+
   "about": [
     "An experienced animation layout artist skilled in Python for workflow optimization, currently transitioning to become a developer. Passionate about merging creativity with coding to craft visually compelling and functional digital experiences."
+  ],
+
+  "experiences": [
+    {
+      "title": "Layout Artist",
+      "company": "Riff Animation Studio",
+      "from": "2014-09-1",
+      "to": "2018-08-1",
+      "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
+    },
+    {
+      "title": "Lead Layout",
+      "company": "Yggdrazil Group",
+      "from": "2018-08-1",
+      "to": "Present",
+      "description": "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period."
+    }
   ],
 
   "education": [
@@ -8,116 +46,21 @@
       "title": "Information and Communication Technology",
       "degree": "Bachelor of Science",
       "school": "Silpakorn University",
-      "year": "2009 - 2014"
-    }
-  ],
-
-  "experiences": [
-    {
-      "title": "Lead Layout",
-      "company": "Yggdrazil Group",
-      "year": "2018 - 2024",
-      "description": "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period."
-    },
-    {
-      "title": "Layout Artist",
-      "company": "Riff Animation Studio",
-      "year": "2014 - 2018",
-      "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
-    }
-  ],
-
-  "certificates": [
-    {
-      "title": "JavaScript Algorithms and Data Structures",
-      "issuedBy": "FreeCodeCamp",
-      "issuedDate": "March 16, 2024",
-      "credentialUrl": "https://freecodecamp.org/certification/middnight/javascript-algorithms-and-data-structures-v8",
-      "credentialImage": "freecodecamp-js-and-dsa.jpg"
-    },
-    {
-      "title": "Back End Development and APIs",
-      "issuedBy": "FreeCodeCamp",
-      "issuedDate": "March 8, 2024",
-      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
-      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
-    },
-    {
-      "title": "Road to Frontend Developer Bootcamp",
-      "issuedBy": "BornToDev",
-      "issuedDate": "January 8, 2024",
-      "credentialUrl": "https://school.borntodev.com/certificate/IctoTQEOez9A",
-      "credentialImage": "borntodev-acdemy_FEBC2_certifiacte.png"
-    },
-    {
-      "title": "Master of Python Bootcamp",
-      "issuedBy": "BornToDev",
-      "issuedDate": "September 16, 2023",
-      "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
-      "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
+      "from": "2009",
+      "to": "2014"
     }
   ],
 
   "projects": [
     {
-      "title": "Web Resume",
-      "tags": ["React.js", "JavaScript", "Material UI"],
-      "repoID": 703004313,
-      "image": "web-resume.jpg",
-      "description": "This website which showcasing my resume. Built with React and Material UI.",
-      "githublink": "https://github.com/themiddnight/themiddnight.github.io",
-      "publiclink": "https://themiddnight.github.io/",
-      "createdAt": "January 2024"
-    },
-    {
-      "title": "Basic CRUD API",
-      "tags": ["Nest.js", "Typescript", "Sequelize", "PostgreSQL"],
-      "repoID": 740290066,
-      "image": "basic-crud.jpg",
-      "description": "A basic CRUD API built with Nest.js and Sequelize ORM.",
-      "githublink": "https://github.com/themiddnight/NestJS-Study",
+      "title": "Layout Tools",
+      "tags": ["Maya Python", "PyMel"],
+      "repoID": 681789766,
+      "image": "layout-tools.png",
+      "description": "Tools and scripts for layout/animation production in Autodesk Maya, utilizing Python 2.7.",
+      "githublink": "https://github.com/themiddnight/LayoutTools-for-Maya",
       "publiclink": null,
-      "createdAt": "January 2024"
-    },
-    {
-      "title": "Developer Online Learning",
-      "tags": ["Next.js", "Typescript", "Tailwind", "Prisma", "MySQL"],
-      "repoID": 734964588,
-      "image": "developer-online-learning.jpg",
-      "description": "A final project for the BorntoDev Front-end Bootcamp. Developed with Next.js.",
-      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Final",
-      "publiclink": "https://ake-borntodev-febc-final.vercel.app/",
-      "createdAt": "December 2023"
-    },
-    {
-      "title": "Music Online Learning",
-      "tags": ["HTML", "Bootstrap"],
-      "repoID": 749376788,
-      "image": "music-online-learning.jpg",
-      "description": "A midterm project for the BorntoDev bootcamp. Using HTML and Bootstrap.",
-      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Homeworks/tree/main/DAY-17-Midterm",
-      "publiclink": "https://themiddnight.github.io/BorntoDev-FEBC-Homeworks/DAY-17-Midterm/index.html",
-      "createdAt": "October 2023"
-    },
-    {
-      "title": "Thai Random Dishes",
-      "tags": ["HTML", "CSS", "JavaScript"],
-      "repoID": 696299092,
-      "image": "thai-random-dish.jpg",
-      "description": "A website that generates random Thai dishes by combining predefined ingredients.",
-      "githublink": "https://github.com/themiddnight/Thai-Random-Dishes",
-      "publiclink": "https://themiddnight.github.io/Thai-Random-Dishes/",
-      "createdAt": "September 2023"
-    },
-    {
-      "title": "Python OOP Study",
-      "tags": ["Python"],
-      "repoID": 688326981,
-      "image": "OOP-study.jpg",
-      "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
-      "githublink": "https://github.com/themiddnight/Turnbase-Game-Study",
-      "publiclink": null,
-      "createdAt": "September 2023"
+      "createdAt": "2019-01-01"
     },
     {
       "title": "Finance Log",
@@ -127,24 +70,73 @@
       "description": "A GUI application for logging financial  intuitively and visualizing it with Matplotlib.",
       "githublink": "https://github.com/themiddnight/Finance-Log-GUI",
       "publiclink": null,
-      "createdAt": "August 2023"
+      "createdAt": "2023-08-01"
     },
     {
-      "title": "Layout Tools",
-      "tags": ["Maya Python", "PyMel"],
-      "repoID": 681789766,
-      "image": "layout-tools.png",
-      "description": "Tools and scripts for layout/animation production in Autodesk Maya, utilizing Python 2.7.",
-      "githublink": "https://github.com/themiddnight/LayoutTools-for-Maya",
+      "title": "Python OOP Study",
+      "tags": ["Python"],
+      "repoID": 688326981,
+      "image": "OOP-study.jpg",
+      "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
+      "githublink": "https://github.com/themiddnight/Turnbase-Game-Study",
       "publiclink": null,
-      "createdAt": "2019 - 2023"
+      "createdAt": "2023-09-01"
+    },
+    {
+      "title": "Thai Random Dishes",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "repoID": 696299092,
+      "image": "thai-random-dish.jpg",
+      "description": "A website that generates random Thai dishes by combining predefined ingredients.",
+      "githublink": "https://github.com/themiddnight/Thai-Random-Dishes",
+      "publiclink": "https://themiddnight.github.io/Thai-Random-Dishes/",
+      "createdAt": "2023-09-01"
+    },
+    {
+      "title": "Music Online Learning",
+      "tags": ["HTML", "Bootstrap"],
+      "repoID": 749376788,
+      "image": "music-online-learning.jpg",
+      "description": "A midterm project for the BorntoDev bootcamp. Using HTML and Bootstrap.",
+      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Homeworks/tree/main/DAY-17-Midterm",
+      "publiclink": "https://themiddnight.github.io/BorntoDev-FEBC-Homeworks/DAY-17-Midterm/index.html",
+      "createdAt": "2023-10-01"
+    },
+    {
+      "title": "Developer Online Learning",
+      "tags": ["Next.js", "Typescript", "Tailwind", "Prisma", "PostgreSQL"],
+      "repoID": 734964588,
+      "image": "developer-online-learning.jpg",
+      "description": "A final project for the BorntoDev Front-end Bootcamp. Developed with Next.js.",
+      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Final",
+      "publiclink": "https://ake-borntodev-febc-final.vercel.app/",
+      "createdAt": "2023-12-01"
+    },
+    {
+      "title": "Basic CRUD API",
+      "tags": ["Nest.js", "Typescript", "Sequelize", "PostgreSQL"],
+      "repoID": 740290066,
+      "image": "basic-crud.jpg",
+      "description": "A basic CRUD API built with Nest.js and Sequelize ORM.",
+      "githublink": "https://github.com/themiddnight/NestJS-Study",
+      "publiclink": null,
+      "createdAt": "2024-01-01"
+    },
+    {
+      "title": "Web Resume",
+      "tags": ["React.js", "JavaScript", "Material UI"],
+      "repoID": 703004313,
+      "image": "web-resume.jpg",
+      "description": "This website which showcasing my resume. Built with React and Material UI.",
+      "githublink": "https://github.com/themiddnight/themiddnight.github.io",
+      "publiclink": "https://themiddnight.github.io/",
+      "createdAt": "2024-02-01"
     }
   ],
 
   "skills": [
     {
       "title": "HTML / CSS",
-      "value": 70,
       "level": "Intermediate",
       "description": "Capable of creating websites from scratch. Understand the semantics and responsive design.",
       "icon": "html-5-svgrepo-com.svg",
@@ -152,7 +144,6 @@
     },
     {
       "title": "JavaScript",
-      "value": 70,
       "level": "Intermediate",
       "description": "Proficient in managing the DOM, handling events. Familiar with asynchronous programming.",
       "icon": "javascript-svgrepo-com.svg",
@@ -160,7 +151,6 @@
     },
     {
       "title": "Python",
-      "value": 60,
       "level": "Intermediate",
       "description": "Experience working within CGI pipelines and projects.",
       "icon": "python-svgrepo-com.svg",
@@ -168,7 +158,6 @@
     },
     {
       "title": "TypeScript",
-      "value": 60,
       "level": "Beginner",
       "description": "Familiar with type systems and basic OOP principles.",
       "icon": "typescript-svgrepo-com.svg",
@@ -176,7 +165,6 @@
     },
     {
       "title": "SQL",
-      "value": 40,
       "level": "Beginner",
       "description": "Proficient in basic querying and understanding the concepts of procedures and transactions.",
       "icon": "sql-svgrepo-com.svg",
@@ -184,7 +172,6 @@
     },
     {
       "title": "Regular Expression",
-      "value": 30,
       "level": "Beginner",
       "description": "Familiar with the basic syntax and usage.",
       "icon": "regex-svgrepo-com.svg",
@@ -192,7 +179,6 @@
     },
     {
       "title": "Shell Script",
-      "value": 20,
       "level": "Beginner",
       "description": "Skilled in managing files and directories, as well as executing basic commands.",
       "icon": "terminal-bash-svgrepo-com.svg",
@@ -311,26 +297,41 @@
     }
   ],
 
+  "certificates": [
+    {
+      "title": "Master of Python Bootcamp",
+      "issuedBy": "BornToDev",
+      "issuedDate": "2023-09-16",
+      "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
+      "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
+    },
+    {
+      "title": "Road to Frontend Developer Bootcamp",
+      "issuedBy": "BornToDev",
+      "issuedDate": "2024-01-08",
+      "credentialUrl": "https://school.borntodev.com/certificate/IctoTQEOez9A",
+      "credentialImage": "borntodev-acdemy_FEBC2_certifiacte.png"
+    },
+    {
+      "title": "Back End Development and APIs",
+      "issuedBy": "FreeCodeCamp",
+      "issuedDate": "2024-03-08",
+      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
+      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
+    },
+    {
+      "title": "JavaScript Algorithms and Data Structures",
+      "issuedBy": "FreeCodeCamp",
+      "issuedDate": "2024-03-16",
+      "credentialUrl": "https://freecodecamp.org/certification/middnight/javascript-algorithms-and-data-structures-v8",
+      "credentialImage": "freecodecamp-js-and-dsa.jpg"
+    }
+  ],
+
   "languages": [
     {
       "title": "Thai",
-      "native": true,
-      "read": {
-        "value": 100,
-        "level": "Native"
-      },
-      "write": {
-        "value": 100,
-        "level": "Native"
-      },
-      "listen": {
-        "value": 100,
-        "level": "Native"
-      },
-      "speak": {
-        "value": 100,
-        "level": "Native"
-      }
+      "native": true
     },
     {
       "title": "English",
@@ -370,6 +371,10 @@
     {
       "title": "BorntoDev DevLab",
       "url": "https://borntodev.com/devlab/profile?user=57431"
+    },
+    {
+      "title": "Replit",
+      "url": "https://replit.com/@themiddnight"
     }
   ]
 }
