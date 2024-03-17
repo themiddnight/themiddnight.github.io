@@ -10,16 +10,19 @@ import { TransitionGroup } from "react-transition-group";
 import { CardMembershipRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
-import { Image } from "./styled/Image";
+
+import { convertDate, sortByDate } from "../utils/utils";
 import { ModalContext } from "../App";
+import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
 export default function CertificatesCard({ data }) {
   const { setIsImageModalOpen, setImageModalSrc } = useContext(ModalContext);
   const limit = 3;
+  const sortedData = sortByDate(data, "issuedDate");
   const [isLimit, setIsLimit] = useState(true);
-  const [limitedData, setLimitedData] = useState(data.slice(0, limit));
+  const [limitedData, setLimitedData] = useState(sortedData.slice(0, limit));
 
   function handleOpenModal(e) {
     e.preventDefault();
@@ -89,7 +92,7 @@ export default function CertificatesCard({ data }) {
                     Issued by: {cert.issuedBy}
                   </Typography>
                   <Typography fontSize={"small"} fontWeight="light">
-                    {cert.issuedDate}
+                    {convertDate(cert.issuedDate, true)}
                   </Typography>
                 </Box>
               </Box>
@@ -100,7 +103,7 @@ export default function CertificatesCard({ data }) {
           isLimit={isLimit}
           setIsLimit={setIsLimit}
           setLimitedData={setLimitedData}
-          data={data}
+          data={sortedData}
           limit={limit}
           text={"Older"}
         />

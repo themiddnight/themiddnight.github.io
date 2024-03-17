@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import { GitHub, OpenInNew, AccountTreeRounded } from "@mui/icons-material";
 import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
+import { convertDate, sortByDate } from "../utils/utils";
 
 export default function ProjectsCard({ data }) {
+  const sortedData = sortByDate(data, "createdAt");
+
   return (
     <Card sx={{ p: 0 }}>
       <CardContent sx={{ p: 0 }}>
@@ -36,7 +39,7 @@ export default function ProjectsCard({ data }) {
               )`
           }}
         >
-          {data.map((project, index) => (
+          {sortedData.map((project, index) => (
             <Box
               key={index}
               flexBasis={{ xs: 300, lg: 500 }}
@@ -102,7 +105,7 @@ export default function ProjectsCard({ data }) {
                   </Stack>
                 </Link>
                 <Typography fontSize={"small"} mb={1}>
-                  {project.createdAt}
+                  {convertDate(project.createdAt, false, true)}
                 </Typography>
                 <Typography>{project.description}</Typography>
               </Box>

@@ -1,15 +1,18 @@
 import { Card, CardContent, Divider, Typography, Collapse } from "@mui/material";
+import { WorkRounded } from "@mui/icons-material";
 import { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
-import { WorkRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
+
+import { convertDate, sortByDate } from "../utils/utils";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
 export default function ProfileCard({ data }) {
-  const limit = 2;
+  const limit = 3;
+  const sortedData = sortByDate(data);
   const [isLimit, setIsLimit] = useState(true);
-  const [limitedData, setLimitedData] = useState(data.slice(0, limit));
+  const [limitedData, setLimitedData] = useState(sortedData.slice(0, limit));
 
   return (
     <Card>
@@ -18,9 +21,10 @@ export default function ProfileCard({ data }) {
           <WorkRounded fontSize="large" />
           Experiences
         </CardHeader>
-        <Typography fontStyle={'italic'} mb={2}>
+        
+        {limitedData.length > 1 && <Typography fontStyle={'italic'} mb={2}>
           in most recent order
-        </Typography>
+        </Typography>}
         
         <TransitionGroup>
           {limitedData.map((item, index) => (
@@ -29,7 +33,9 @@ export default function ProfileCard({ data }) {
               <Typography fontWeight={"bold"} fontSize={20}>
                 {item.title} - {item.company}
               </Typography>
-              <Typography fontWeight='light' gutterBottom>{item.year}</Typography>
+              <Typography fontWeight='light' gutterBottom>
+                {convertDate(item.from)} - {convertDate(item.to)}
+              </Typography>
               <Typography>
                 {item.description}
               </Typography>
@@ -39,7 +45,7 @@ export default function ProfileCard({ data }) {
         <MoreButtonSection
           isLimit={isLimit}
           setIsLimit={setIsLimit}
-          data={data}
+          data={sortedData}
           limit={limit}
           setLimitedData={setLimitedData}
           text={"Older"}
