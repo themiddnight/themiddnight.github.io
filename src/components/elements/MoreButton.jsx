@@ -25,7 +25,7 @@ export default function MoreButtonSection({
         }}
       >
         {isLimit
-          ? `Show ${moreCount} More ${text}${moreCount > 1 ? "s" : ""}`
+          ? `Show ${moreCount} More ${text}${text && moreCount > 1 ? "s" : ""}`
           : "Show Less"}
       </Button>
     </Box>
