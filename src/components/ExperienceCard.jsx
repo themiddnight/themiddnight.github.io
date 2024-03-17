@@ -1,4 +1,4 @@
-import { Card, CardContent, Divider, Typography, Collapse } from "@mui/material";
+import { Card, CardContent, Divider, Typography, Collapse, Box } from "@mui/material";
 import { WorkRounded } from "@mui/icons-material";
 import { useState } from "react";
 import { TransitionGroup } from "react-transition-group";
@@ -8,8 +8,7 @@ import { convertDate, sortByDate } from "../utils/utils";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function ProfileCard({ data }) {
-  const limit = 3;
+export default function ProfileCard({ data, limit = 3 }) {
   const sortedData = sortByDate(data);
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(sortedData.slice(0, limit));
@@ -30,12 +29,21 @@ export default function ProfileCard({ data }) {
           {limitedData.map((item, index) => (
             <Collapse key={index}>
               {index != 0 && <Divider sx={{ my: 2 }} />}
-              <Typography fontWeight={"bold"} fontSize={20}>
-                {item.title} - {item.company}
-              </Typography>
-              <Typography fontWeight='light' gutterBottom>
-                {convertDate(item.from)} - {convertDate(item.to)}
-              </Typography>
+              <Box 
+                display={'flex'} 
+                flexDirection={{ xs: "column", xl: "row" }} 
+                justifyContent={'space-between'} 
+                alignItems={'baseline'} 
+                mb={1.5} 
+                gap={{ xs: 0.5, xl: 2 }}
+              >
+                <Typography fontWeight={"bold"} fontSize={20}>
+                  {item.title} - {item.company}
+                </Typography>
+                <Typography fontWeight='light' fontSize={'small'} flexShrink={0}>
+                  {convertDate(item.from)} - {convertDate(item.to)}
+                </Typography>
+              </Box>
               <Typography>
                 {item.description}
               </Typography>
@@ -57,4 +65,5 @@ export default function ProfileCard({ data }) {
 
 ProfileCard.propTypes = {
   data: PropTypes.array.isRequired,
+  limit: PropTypes.number,
 };

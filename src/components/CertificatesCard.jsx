@@ -17,9 +17,8 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function CertificatesCard({ data }) {
+export default function CertificatesCard({ data, limit = 3 }) {
   const { setIsImageModalOpen, setImageModalSrc } = useContext(ModalContext);
-  const limit = 3;
   const sortedData = sortByDate(data, "issuedDate");
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(sortedData.slice(0, limit));
@@ -114,4 +113,5 @@ export default function CertificatesCard({ data }) {
 
 CertificatesCard.propTypes = {
   data: PropTypes.array.isRequired,
+  limit: PropTypes.number,
 };

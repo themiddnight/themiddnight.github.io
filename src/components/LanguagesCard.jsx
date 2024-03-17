@@ -32,8 +32,7 @@ function LanguageItem({ label, icon, data }) {
   )
 }
 
-export default function LanguagesCard({ data }) {
-  const limit = 2;
+export default function LanguagesCard({ data, limit = 2 }) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -84,6 +83,7 @@ export default function LanguagesCard({ data }) {
 
 LanguagesCard.propTypes = {
   data: PropTypes.array.isRequired,
+  limit: PropTypes.number,
 };
 
 LanguageItem.propTypes = {

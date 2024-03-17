@@ -14,8 +14,7 @@ import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function OtherProfileCard({ data }) {
-  const limit = 3;
+export default function OtherProfileCard({ data, limit = 3 }) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -56,4 +55,5 @@ export default function OtherProfileCard({ data }) {
 
 OtherProfileCard.propTypes = {
   data: PropTypes.array.isRequired,
+  limit: PropTypes.number,
 };

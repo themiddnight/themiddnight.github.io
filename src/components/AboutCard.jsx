@@ -15,7 +15,7 @@ export default function AboutCard({ data }) {
         
         {data.map((item, index) => (
           <Typography key={index} pb={index !== data.length - 1 ? 2 : 0}>
-            {item}
+            {item.value}
           </Typography>
         ))}
       </CardContent>

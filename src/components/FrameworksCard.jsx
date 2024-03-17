@@ -15,8 +15,7 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function FrameworksCard({ data }) {
-  const limit = 21;
+export default function FrameworksCard({ data, limit = 21}) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -84,4 +83,5 @@ export default function FrameworksCard({ data }) {
 
 FrameworksCard.propTypes = {
   data: PropTypes.array.isRequired,
+  limit: PropTypes.number,
 };
