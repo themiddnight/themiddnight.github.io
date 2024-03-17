@@ -3,13 +3,13 @@ import { PersonRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 
-export default function ProfileCard({ data }) {
+export default function AboutCard({ data }) {
   return (
     <Card>
       <CardContent>
         <CardHeader>
           <PersonRounded fontSize="large" />
-          I am...
+          About
         </CardHeader>
         
         {data.map((item, index) => (
@@ -22,6 +22,6 @@ export default function ProfileCard({ data }) {
   );
 }
 
-ProfileCard.propTypes = {
+AboutCard.propTypes = {
   data: PropTypes.array.isRequired,
 };
