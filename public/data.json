@@ -1,4 +1,24 @@
 {
+  "profile": {
+    "title": "Pathompong Thitithan",
+    "subtitle": "Who seeks the way to be a developer",
+    "image": "/images/profile3.jpeg",
+    "contact": {
+      "location": "Bangkok, Thailand",
+      "phone": "",
+      "email": "the.midnight.k.0173@gmail.com"
+    },
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/ปฐมพงศ์-ฐิติธัญ-b2a2829b/?locale=en_US"
+      },
+      {
+        "title": "GitHub",
+        "url": "https://www.github.com/themiddnight"
+      }
+    ]
+  },
   "about": [
     "An experienced animation layout artist skilled in Python for workflow optimization, currently transitioning to become a developer. Passionate about merging creativity with coding to craft visually compelling and functional digital experiences."
   ],
