@@ -76,12 +76,12 @@ export default function Home() {
     <>
       <Box>
         <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 8} }}>
-          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+          <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2.5}>
             <Box
               gridColumn={{ xs: "span 12", sm: "span 6", lg: "span 4" }}
               display="flex"
               flexDirection="column"
-              gap={2}
+              gap={2.5}
             >
               <Box className={'card1'}><ProfileCard data={data.profile} /></Box>
               <Box className={'card2'}><AboutCard data={data.about} /></Box>
@@ -95,16 +95,16 @@ export default function Home() {
               gridColumn={{ xs: "span 12", sm: "span 6", lg: "span 8" }}
               display="flex"
               flexDirection="column"
-              gap={2}
+              gap={2.5}
             >
               <Box className={'card2'}><ProjectsCard data={data.projects} /></Box>
 
-              <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2}>
+              <Box display="grid" gridTemplateColumns={{ sm: '1fr', md: '1fr 1fr'}} gap={2.5}>
                 <Box
                   gridColumn={{ xs: "span 2", lg: "span 1" }}
                   display="flex"
                   flexDirection="column"
-                  gap={2}
+                  gap={2.5}
                 >
                   <Box className={'card3'}><SkillsCard data={data.skills} /></Box>
                   <Box className={'card4'} display={{ xs: 'none', sm: 'none', lg: 'block' }}><LanguagesCard data={data.languages} /></Box>
@@ -114,7 +114,7 @@ export default function Home() {
                   gridColumn={{ xs: "span 2", lg: "span 1" }}
                   display="flex"
                   flexDirection="column"
-                  gap={2}
+                  gap={2.5}
                 >
                   <Box className={'card4'}><FrameworksCard data={data.frameworks} /></Box>
                   <Box className={'card5'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>
