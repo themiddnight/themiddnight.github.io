@@ -80,7 +80,7 @@
       "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
       "githublink": "https://github.com/themiddnight/Turnbase-Game-Study",
       "publiclink": null,
-      "createdAt": "2023-09-01"
+      "createdAt": "2023-09-07"
     },
     {
       "title": "Thai Random Dishes",
@@ -90,7 +90,7 @@
       "description": "A website that generates random Thai dishes by combining predefined ingredients.",
       "githublink": "https://github.com/themiddnight/Thai-Random-Dishes",
       "publiclink": "https://themiddnight.github.io/Thai-Random-Dishes/",
-      "createdAt": "2023-09-01"
+      "createdAt": "2023-09-25"
     },
     {
       "title": "Music Online Learning",
@@ -119,7 +119,7 @@
       "image": "basic-crud.jpg",
       "description": "A basic CRUD API built with Nest.js and Sequelize ORM.",
       "githublink": "https://github.com/themiddnight/NestJS-Study",
-      "publiclink": null,
+      "publiclink": "https://nestjs-study.onrender.com/api",
       "createdAt": "2024-01-01"
     },
     {
