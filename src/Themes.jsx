@@ -75,6 +75,7 @@ export default function Themes({ children }) {
           styleOverrides: {
             root: {
               lineHeight: 1.3,
+              wordBreak: "break-word",
             },
           },
         },
