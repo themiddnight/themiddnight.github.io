@@ -67,7 +67,7 @@ export default function Themes({ children }) {
         MuiLink: {
           styleOverrides: {
             root: {
-              lineHeight: 1.3,
+              lineHeight: 1.2,
             },
           },
         },
