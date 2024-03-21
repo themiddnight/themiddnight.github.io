@@ -1,5 +1,7 @@
 :root {
   --basic-bg-color: #000000;
+  --modal-bg-color: #33333388;
+  --modal-headfoot-bg-color: #333333;
   --svg-invert: 1;
 
   --card-slide-time: 1s;
@@ -9,6 +11,8 @@
 @media (prefers-color-scheme: light) {
   :root {
     --basic-bg-color: #ffffff;
+    --modal-bg-color: #ffffffee;
+    --modal-headfoot-bg-color: #ffffff;
     --svg-invert: 0;
   }
 }
@@ -16,6 +20,14 @@
 /* styles */
 .basic-bg {
   background-color: var(--basic-bg-color);
+}
+
+.modal-bg {
+  background-color: var(--modal-bg-color);
+}
+
+.modal-headfoot-bg {
+  background-color: var(--modal-headfoot-bg-color);
 }
 
 .svg-invert {
@@ -38,8 +50,12 @@
 
 .intro-in__button {
   opacity: 0;
-  animation: fade-in 1s ease-out forwards,  pulse 2s ease-in-out infinite;
+  animation: fade-in 1s ease-out forwards;
   animation-delay: 100ms;
+}
+
+.pulse {
+  animation: fade-in 1s ease-out forwards, pulse 2s ease-in-out infinite;
 }
 
 .intro-out__button {
