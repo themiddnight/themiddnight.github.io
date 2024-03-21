@@ -2,7 +2,7 @@
   "profile": {
     "title": "Pathompong Thitithan",
     "subtitle": "Who seeks the way to be a developer",
-    "image": "/images/profile3.jpeg",
+    "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprofile.jpeg?alt=media&token=bc3324c0-dfe2-41ee-992c-928c7034df06",
     "contact": {
       "location": "Bangkok, Thailand",
       "phone": "",
@@ -20,361 +20,402 @@
     ]
   },
 
-  "about": [
-    "An experienced animation layout artist skilled in Python for workflow optimization, currently transitioning to become a developer. Passionate about merging creativity with coding to craft visually compelling and functional digital experiences."
-  ],
-
-  "experiences": [
-    {
-      "title": "Layout Artist",
-      "company": "Riff Animation Studio",
-      "from": "2014-09-1",
-      "to": "2018-08-1",
-      "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
-    },
-    {
-      "title": "Lead Layout",
-      "company": "Yggdrazil Group",
-      "from": "2018-08-1",
-      "to": "Present",
-      "description": "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period."
-    }
-  ],
-
-  "education": [
-    {
-      "title": "Information and Communication Technology",
-      "degree": "Bachelor of Science",
-      "school": "Silpakorn University",
-      "from": "2009",
-      "to": "2014"
-    }
-  ],
-
-  "projects": [
-    {
-      "title": "Layout Tools",
-      "tags": ["Maya Python", "PyMel"],
-      "repoID": 681789766,
-      "image": "layout-tools.png",
-      "description": "Tools and scripts for layout/animation production in Autodesk Maya, utilizing Python 2.7.",
-      "githublink": "https://github.com/themiddnight/LayoutTools-for-Maya",
-      "publiclink": null,
-      "createdAt": "2019-01-01"
-    },
-    {
-      "title": "Finance Log",
-      "tags": ["Python", "Tkinter", "Matplotlib", "SQLite"],
-      "repoID": 674339310,
-      "image": "finance-log.jpg",
-      "description": "A GUI application for logging financial  intuitively and visualizing it with Matplotlib.",
-      "githublink": "https://github.com/themiddnight/Finance-Log-GUI",
-      "publiclink": null,
-      "createdAt": "2023-08-01"
-    },
-    {
-      "title": "Python OOP Study",
-      "tags": ["Python"],
-      "repoID": 688326981,
-      "image": "OOP-study.jpg",
-      "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
-      "githublink": "https://github.com/themiddnight/Turnbase-Game-Study",
-      "publiclink": null,
-      "createdAt": "2023-09-07"
-    },
-    {
-      "title": "Thai Random Dishes",
-      "tags": ["HTML", "CSS", "JavaScript"],
-      "repoID": 696299092,
-      "image": "thai-random-dish.jpg",
-      "description": "A website that generates random Thai dishes by combining predefined ingredients.",
-      "githublink": "https://github.com/themiddnight/Thai-Random-Dishes",
-      "publiclink": "https://themiddnight.github.io/Thai-Random-Dishes/",
-      "createdAt": "2023-09-25"
-    },
-    {
-      "title": "Music Online Learning",
-      "tags": ["HTML", "Bootstrap"],
-      "repoID": 749376788,
-      "image": "music-online-learning.jpg",
-      "description": "A midterm project for the BorntoDev bootcamp. Using HTML and Bootstrap.",
-      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Homeworks/tree/main/DAY-17-Midterm",
-      "publiclink": "https://themiddnight.github.io/BorntoDev-FEBC-Homeworks/DAY-17-Midterm/index.html",
-      "createdAt": "2023-10-01"
-    },
-    {
-      "title": "Developer Online Learning",
-      "tags": ["Next.js", "Typescript", "Tailwind", "Prisma", "PostgreSQL"],
-      "repoID": 734964588,
-      "image": "developer-online-learning.jpg",
-      "description": "A final project for the BorntoDev Front-end Bootcamp. Developed with Next.js.",
-      "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Final",
-      "publiclink": "https://ake-borntodev-febc-final.vercel.app/",
-      "createdAt": "2023-12-01"
-    },
-    {
-      "title": "Basic CRUD API",
-      "tags": ["Nest.js", "Typescript", "Sequelize", "PostgreSQL"],
-      "repoID": 740290066,
-      "image": "basic-crud.jpg",
-      "description": "A basic CRUD API built with Nest.js and Sequelize ORM.",
-      "githublink": "https://github.com/themiddnight/NestJS-Study",
-      "publiclink": "https://nestjs-study.onrender.com/api",
-      "createdAt": "2024-01-01"
-    },
-    {
-      "title": "Web Resume",
-      "tags": ["React.js", "JavaScript", "Material UI"],
-      "repoID": 703004313,
-      "image": "web-resume.jpg",
-      "description": "This website which showcasing my resume. Built with React and Material UI.",
-      "githublink": "https://github.com/themiddnight/themiddnight.github.io",
-      "publiclink": "https://themiddnight.github.io/",
-      "createdAt": "2024-02-01"
-    }
-  ],
-
-  "skills": [
-    {
-      "title": "HTML / CSS",
-      "level": "Intermediate",
-      "description": "Capable of creating websites from scratch. Understand the semantics and responsive design.",
-      "icon": "html-5-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "JavaScript",
-      "level": "Intermediate",
-      "description": "Proficient in managing the DOM, handling events. Familiar with asynchronous programming.",
-      "icon": "javascript-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Python",
-      "level": "Intermediate",
-      "description": "Experience working within CGI pipelines and projects.",
-      "icon": "python-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "TypeScript",
-      "level": "Beginner",
-      "description": "Familiar with type systems and basic OOP principles.",
-      "icon": "typescript-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "SQL",
-      "level": "Beginner",
-      "description": "Proficient in basic querying and understanding the concepts of procedures and transactions.",
-      "icon": "sql-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Regular Expression",
-      "level": "Beginner",
-      "description": "Familiar with the basic syntax and usage.",
-      "icon": "regex-svgrepo-com.svg",
-      "isMono": true
-    },
-    {
-      "title": "Shell Script",
-      "level": "Beginner",
-      "description": "Skilled in managing files and directories, as well as executing basic commands.",
-      "icon": "terminal-bash-svgrepo-com.svg",
-      "isMono": true
-    }
-  ],
-
-  "frameworks": [
-    {
-      "title": "React",
-      "description": "Know the basic hooks.",
-      "icon": "react-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Next.js",
-      "description": "Know the concept of SSR and the basic of route handling.",
-      "icon": "next-js-svgrepo-com.svg",
-      "isMono": true
-    },
-
-    {
-      "title": "Tailwind CSS",
-      "description": "Can manage layouts with some complex components.",
-      "icon": "tailwind-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Bootstrap",
-      "description": "Can manage layouts with some complex components.",
-      "icon": "bootstrap-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Material UI",
-      "description": "Used in some projects. This website is built with MUI.",
-      "icon": "material-ui-svgrepo-com.svg",
-      "isMono": false
-    },
-
-    {
-      "title": "Express",
-      "description": "Known of routing and middleware, using hash and JWT for authentication/authorization.",
-      "icon": "express-svgrepo-com.svg",
-      "isMono": true
-    },
-    {
-      "title": "Nest.js",
-      "description": "Known the basics of modules, controllers, and services. I'm currently learning this framework.",
-      "icon": "nest-middleware-ts-svgrepo-com.svg",
-      "isMono": false
-    },
-
-    {
-      "title": "Prisma",
-      "description": "",
-      "icon": "prisma-svgrepo-com.svg",
-      "isMono": true
-    },
-    {
-      "title": "Sequelize",
-      "description": "",
-      "icon": "sequelize-svgrepo-com.svg",
-      "isMono": false
-    },
-
-    {
-      "title": "Swagger",
-      "description": "",
-      "icon": "swagger-svgrepo-com.svg",
-      "isMono": false
-    },
-
-    {
-      "title": "MySQL",
-      "description": "",
-      "icon": "mysql-logo-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "PostgreSQL",
-      "description": "",
-      "icon": "postgresql-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "MongoDB",
-      "description": "",
-      "icon": "mongo-svgrepo-com.svg",
-      "isMono": false
-    },
-
-    {
-      "title": "VS Code",
-      "description": "",
-      "icon": "vscode-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Postman",
-      "description": "",
-      "icon": "postman-icon-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "Figma",
-      "description": "",
-      "icon": "figma-svgrepo-com.svg",
-      "isMono": false
-    },
-    {
-      "title": "GitHub",
-      "description": "Add, commit, push, pull, and merge.",
-      "icon": "github-142-svgrepo-com.svg",
-      "isMono": true
-    }
-  ],
-
-  "certificates": [
-    {
-      "title": "Master of Python Bootcamp",
-      "issuedBy": "BornToDev",
-      "issuedDate": "2023-09-16",
-      "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
-      "credentialImage": "borntodev-acdemy_Master of Python Bootcamp_certifiacte.png"
-    },
-    {
-      "title": "Road to Frontend Developer Bootcamp",
-      "issuedBy": "BornToDev",
-      "issuedDate": "2024-01-08",
-      "credentialUrl": "https://school.borntodev.com/certificate/IctoTQEOez9A",
-      "credentialImage": "borntodev-acdemy_FEBC2_certifiacte.png"
-    },
-    {
-      "title": "Back End Development and APIs",
-      "issuedBy": "FreeCodeCamp",
-      "issuedDate": "2024-03-08",
-      "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
-      "credentialImage": "freecodecamp-backend-api-certificate.jpg"
-    },
-    {
-      "title": "JavaScript Algorithms and Data Structures",
-      "issuedBy": "FreeCodeCamp",
-      "issuedDate": "2024-03-16",
-      "credentialUrl": "https://freecodecamp.org/certification/middnight/javascript-algorithms-and-data-structures-v8",
-      "credentialImage": "freecodecamp-js-and-dsa.jpg"
-    }
-  ],
-
-  "languages": [
-    {
-      "title": "Thai",
-      "native": true
-    },
-    {
-      "title": "English",
-      "native": false,
-      "read": {
-        "value": 70,
-        "level": "Advanced"
-      },
-      "write": {
-        "value": 40,
-        "level": "Intermediate"
-      },
-      "listen": {
-        "value": 30,
-        "level": "Novice"
-      },
-      "speak": {
-        "value": 20,
-        "level": "Novice"
+  "about": {
+    "title": "I am...",
+    "data": [
+      {
+        "content": "An experienced animation layout artist skilled in Python for workflow optimization, currently transitioning to become a developer. Passionate about merging creativity with coding to craft visually compelling and functional digital experiences."
       }
-    }
-  ],
+    ]
+  },
 
-  "otherProfiles": [
-    {
-      "title": "HackerRank",
-      "url": "https://www.hackerrank.com/themiddnight"
-    },
-    {
-      "title": "FreeCodeCamp",
-      "url": "https://www.freecodecamp.org/middnight"
-    },
-    {
-      "title": "LeetCode",
-      "url": "https://leetcode.com/themiddnight/"
-    },
-    {
-      "title": "BorntoDev DevLab",
-      "url": "https://borntodev.com/devlab/profile?user=57431"
-    },
-    {
-      "title": "Replit",
-      "url": "https://replit.com/@themiddnight"
-    }
-  ]
+  "experiences": {
+    "title": "Experiences",
+    "display_limit": 3,
+    "data": [
+      {
+        "title": "Layout Artist",
+        "company": "Riff Animation Studio",
+        "from": "2014-09-1",
+        "to": "2018-08-1",
+        "description": "Basically, I work with photo composition in animation projects. I've also started learning Python coding to create some tools for intuitive production work."
+      },
+      {
+        "title": "Lead Layout",
+        "company": "Yggdrazil Group",
+        "from": "2018-08-1",
+        "to": "Present",
+        "description": "I led the team and developed tools for the production pipeline. Additionally, I began learning web development during this period."
+      }
+    ]
+  },
+
+  "education": {
+    "title": "Education",
+    "display_limit": 2,
+    "data": [
+      {
+        "title": "Information and Communication Technology",
+        "degree": "Bachelor of Science",
+        "school": "Silpakorn University",
+        "from": "2009",
+        "to": "2014"
+      }
+    ]
+  },
+
+  "personal_projects": {
+    "title": "Personal Projects",
+    "data": [
+      {
+        "title": "Layout Tools",
+        "tags": ["Maya Python", "PyMel"],
+        "repoID": 681789766,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Flayout-tools.png?alt=media&token=aece521b-c885-4747-872d-de2d1c412643",
+        "description": "Tools and scripts for layout/animation production in Autodesk Maya, utilizing Python 2.7.",
+        "githublink": "https://github.com/themiddnight/LayoutTools-for-Maya",
+        "publiclink": null,
+        "createdAt": "2019-01-01"
+      },
+      {
+        "title": "Finance Log",
+        "tags": ["Python", "Tkinter", "Matplotlib", "SQLite"],
+        "repoID": 674339310,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Ffinance-log.jpg?alt=media&token=6b1afd81-addd-45b8-aff7-a1593d8d59a5",
+        "description": "A GUI application for logging financial  intuitively and visualizing it with Matplotlib.",
+        "githublink": "https://github.com/themiddnight/Finance-Log-GUI",
+        "publiclink": null,
+        "createdAt": "2023-08-01"
+      },
+      {
+        "title": "Python OOP Study",
+        "tags": ["Python"],
+        "repoID": 688326981,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2FOOP-study.jpg?alt=media&token=1d7f85b2-67b0-4bb1-8c67-455e385af731",
+        "description": "A CLI turn-based game project for learning the concepts of OOP in Python.",
+        "githublink": "https://github.com/themiddnight/Turnbase-Game-Study",
+        "publiclink": null,
+        "createdAt": "2023-09-07"
+      },
+      {
+        "title": "Thai Random Dishes",
+        "tags": ["HTML", "CSS", "JavaScript"],
+        "repoID": 696299092,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Fthai-random-dish.jpg?alt=media&token=887fef94-3b32-440d-b819-47b6ad85b771",
+        "description": "A website that generates random Thai dishes by combining predefined ingredients.",
+        "githublink": "https://github.com/themiddnight/Thai-Random-Dishes",
+        "publiclink": "https://themiddnight.github.io/Thai-Random-Dishes/",
+        "createdAt": "2023-09-25"
+      },
+      {
+        "title": "Music Online Learning",
+        "tags": ["HTML", "Bootstrap"],
+        "repoID": 749376788,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Fmusic-online-learning.jpg?alt=media&token=950fcbce-81c0-405d-a72c-9828c22ad64c",
+        "description": "A midterm project for the BorntoDev bootcamp. Using HTML and Bootstrap.",
+        "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Homeworks/tree/main/DAY-17-Midterm",
+        "publiclink": "https://themiddnight.github.io/BorntoDev-FEBC-Homeworks/DAY-17-Midterm/index.html",
+        "createdAt": "2023-10-01"
+      },
+      {
+        "title": "Developer Online Learning",
+        "tags": ["Next.js", "Typescript", "Tailwind", "Prisma", "PostgreSQL"],
+        "repoID": 734964588,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Fdeveloper-online-learning.jpg?alt=media&token=e112fdc6-23ec-4d71-9a19-82bb7373f75b",
+        "description": "A final project for the BorntoDev Front-end Bootcamp. Developed with Next.js.",
+        "githublink": "https://github.com/themiddnight/BorntoDev-FEBC-Final",
+        "publiclink": "https://ake-borntodev-febc-final.vercel.app/",
+        "createdAt": "2023-12-01"
+      },
+      {
+        "title": "Basic CRUD API",
+        "tags": ["Nest.js", "Typescript", "Sequelize", "PostgreSQL"],
+        "repoID": 740290066,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Fbasic-crud.jpg?alt=media&token=6339dbbb-5e7a-41bd-ac28-ec73d10baebe",
+        "description": "A basic CRUD API built with Nest.js and Sequelize ORM. Hosted on Render.com (It may take up to minutes due to the free instance.)",
+        "githublink": "https://github.com/themiddnight/NestJS-Study",
+        "publiclink": "https://nestjs-study.onrender.com/api",
+        "createdAt": "2024-01-01"
+      },
+      {
+        "title": "Web Resume",
+        "tags": ["React.js", "JavaScript", "Material UI"],
+        "repoID": 703004313,
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fprojects%2Fweb-resume.jpg?alt=media&token=a4f79105-85ad-4fd3-9e09-8f7f64c837a0",
+        "description": "This website which showcasing my resume. Built with React and Material UI.",
+        "githublink": "https://github.com/themiddnight/themiddnight.github.io",
+        "publiclink": "https://themiddnight.github.io/",
+        "createdAt": "2024-02-01"
+      }
+    ]
+  },
+
+  "skills": {
+    "title": "Skills",
+    "display_limit": 7,
+    "data": [
+      {
+        "title": "HTML / CSS",
+        "level": "Intermediate",
+        "description": "Capable of creating websites from scratch. Understand the semantics and responsive design.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fhtml-5-svgrepo-com.svg?alt=media&token=bcecd980-ee2a-4a2b-b2a8-cdb285e14fb8",
+        "isMono": false
+      },
+      {
+        "title": "JavaScript",
+        "level": "Intermediate",
+        "description": "Proficient in managing the DOM, handling events. Familiar with asynchronous programming.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fjavascript-svgrepo-com.svg?alt=media&token=49958ea1-c2a1-45f3-b62d-f14227841665",
+        "isMono": false
+      },
+      {
+        "title": "Python",
+        "level": "Intermediate",
+        "description": "Experience working within CGI pipelines and projects.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fpython-svgrepo-com.svg?alt=media&token=e60416a6-19dc-4427-85ce-8b77c5577a89",
+        "isMono": false
+      },
+      {
+        "title": "TypeScript",
+        "level": "Beginner",
+        "description": "Familiar with type systems and basic OOP principles.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Ftypescript-svgrepo-com.svg?alt=media&token=71b6386c-16a3-4d35-9097-6348e8046d56",
+        "isMono": false
+      },
+      {
+        "title": "SQL",
+        "level": "Beginner",
+        "description": "Proficient in basic querying and understanding the concepts of procedures and transactions.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fsql-svgrepo-com.svg?alt=media&token=a3db47e8-0a8e-4b6d-905f-4fe028af716c",
+        "isMono": false
+      },
+      {
+        "title": "Regular Expression",
+        "level": "Beginner",
+        "description": "Familiar with the basic syntax and usage.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fregex-svgrepo-com.svg?alt=media&token=dabf613e-2e98-4201-84d5-14226d6164f8",
+        "isMono": true
+      },
+      {
+        "title": "Shell Script",
+        "level": "Beginner",
+        "description": "Skilled in managing files and directories, as well as executing basic commands.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fskills%2Fterminal-bash-svgrepo-com.svg?alt=media&token=53a938e8-d230-43d2-bc8c-b2146f681e7a",
+        "isMono": true
+      }
+    ]
+  },
+
+  "tools": {
+    "title": "Tools / Frameworks",
+    "display_limit": 21,
+    "data": [
+      {
+        "title": "React",
+        "description": "Know the basic hooks.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Freact-svgrepo-com.svg?alt=media&token=f60756e8-e20e-4783-a297-152fa55847ed",
+        "isMono": false
+      },
+      {
+        "title": "Next.js",
+        "description": "Know the concept of SSR and the basic of route handling.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fnext-js-svgrepo-com.svg?alt=media&token=db15935b-4cb1-4536-b2f4-e58ab89a5d6f",
+        "isMono": true
+      },
+
+      {
+        "title": "Tailwind CSS",
+        "description": "Can manage layouts with some complex components.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Ftailwind-svgrepo-com.svg?alt=media&token=87b1d67d-bcfd-4f0b-9bc8-ac63fb6e1776",
+        "isMono": false
+      },
+      {
+        "title": "Bootstrap",
+        "description": "Can manage layouts with some complex components.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fbootstrap-svgrepo-com.svg?alt=media&token=be5bfbba-fb04-46b7-9ae7-bb58024bf14f",
+        "isMono": false
+      },
+      {
+        "title": "Material UI",
+        "description": "Used in some projects. This website is built with MUI.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fmaterial-ui-svgrepo-com.svg?alt=media&token=f5765748-1160-48a6-bb0e-1f9d10cb7ee9",
+        "isMono": false
+      },
+
+      {
+        "title": "Express",
+        "description": "Known of routing and middleware, using hash and JWT for authentication/authorization.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fexpress-svgrepo-com.svg?alt=media&token=b3b5f38b-064f-47bb-bff1-72226562d321",
+        "isMono": true
+      },
+      {
+        "title": "Nest.js",
+        "description": "Known the basics of modules, controllers, and services. I'm currently learning this framework.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fnest-middleware-ts-svgrepo-com.svg?alt=media&token=a6e80891-cef4-4c5e-a188-e22a8472aef0",
+        "isMono": false
+      },
+
+      {
+        "title": "Prisma",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fprisma-svgrepo-com.svg?alt=media&token=b55121aa-c526-44f5-974e-e088b4a23ba3",
+        "isMono": true
+      },
+      {
+        "title": "Sequelize",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fsequelize-svgrepo-com.svg?alt=media&token=184e4e0d-bfb7-46aa-a521-328681e2e36e",
+        "isMono": false
+      },
+
+      {
+        "title": "Swagger",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fswagger-svgrepo-com.svg?alt=media&token=a00d439e-e9aa-4559-a105-3ebb97a8dfb6",
+        "isMono": false
+      },
+
+      {
+        "title": "MySQL",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fmysql-logo-svgrepo-com.svg?alt=media&token=a265566f-819e-4296-ae04-55de784161ba",
+        "isMono": false
+      },
+      {
+        "title": "PostgreSQL",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fpostgresql-svgrepo-com.svg?alt=media&token=4b69446f-6a63-4200-84e6-2a5a6a32b9c0",
+        "isMono": false
+      },
+      {
+        "title": "MongoDB",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fmongo-svgrepo-com.svg?alt=media&token=dc50b02b-b2c7-4744-b81e-d19c881dfdd6",
+        "isMono": false
+      },
+
+      {
+        "title": "VS Code",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fvscode-svgrepo-com.svg?alt=media&token=34d93d12-a069-4df7-beb5-da3fd01bf6b5",
+        "isMono": false
+      },
+      {
+        "title": "Postman",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fpostman-icon-svgrepo-com.svg?alt=media&token=fbb5655a-c2d3-486a-9e11-29d901ed05a2",
+        "isMono": false
+      },
+      {
+        "title": "Figma",
+        "description": "",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Ffigma-svgrepo-com.svg?alt=media&token=e95169a3-98a6-4489-808b-adf46a82262d",
+        "isMono": false
+      },
+      {
+        "title": "GitHub",
+        "description": "Add, commit, push, pull, and merge.",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/icons%2Fframeworks%2Fgithub-142-svgrepo-com.svg?alt=media&token=64519226-349b-4567-aeeb-d523eb9339d9",
+        "isMono": true
+      }
+    ]
+  },
+
+  "certifications": {
+    "title": "Certifications",
+    "display_limit": 3,
+    "data": [
+      {
+        "title": "Master of Python Bootcamp",
+        "issuedBy": "BornToDev",
+        "issuedDate": "2023-09-16",
+        "credentialUrl": "https://school.borntodev.com/certificate/V2bpjpJEP288",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fcertificates%2Fborntodev-acdemy_Master%20of%20Python%20Bootcamp_certifiacte.png?alt=media&token=058fc28d-c80d-4b3f-a8be-e6a219f35d4c"
+      },
+      {
+        "title": "Road to Frontend Developer Bootcamp",
+        "issuedBy": "BornToDev",
+        "issuedDate": "2024-01-08",
+        "credentialUrl": "https://school.borntodev.com/certificate/IctoTQEOez9A",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fcertificates%2Fborntodev-acdemy_FEBC2_certifiacte.png?alt=media&token=8cc18e10-fb2d-417c-882f-11f90ba0e751"
+      },
+      {
+        "title": "Back End Development and APIs",
+        "issuedBy": "FreeCodeCamp",
+        "issuedDate": "2024-03-08",
+        "credentialUrl": "https://www.freecodecamp.org/certification/middnight/back-end-development-and-apis",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fcertificates%2Ffreecodecamp-backend-api-certificate.jpg?alt=media&token=3c7de0e9-4b5c-4ae6-9269-8adc8cf56116"
+      },
+      {
+        "title": "JavaScript Algorithms and Data Structures",
+        "issuedBy": "FreeCodeCamp",
+        "issuedDate": "2024-03-16",
+        "credentialUrl": "https://freecodecamp.org/certification/middnight/javascript-algorithms-and-data-structures-v8",
+        "image_url": "https://firebasestorage.googleapis.com/v0/b/my-resume-website-ddda8.appspot.com/o/images%2Fcertificates%2Ffreecodecamp-js-and-dsa.jpg?alt=media&token=e730e1f2-ba66-452d-8c42-53d9051bf5e0"
+      }
+    ]
+  },
+
+  "languages": {
+    "title": "Languages",
+    "display_limit": 2,
+    "data": [
+      {
+        "title": "Thai",
+        "native": true
+      },
+      {
+        "title": "English",
+        "native": false,
+        "read": {
+          "value": 70,
+          "level": "Advanced"
+        },
+        "write": {
+          "value": 40,
+          "level": "Intermediate"
+        },
+        "listen": {
+          "value": 30,
+          "level": "Novice"
+        },
+        "speak": {
+          "value": 20,
+          "level": "Novice"
+        }
+      }
+    ]
+  },
+
+  "other_profiles": {
+    "title": "Other Profiles",
+    "display_limit": 3,
+    "data": [
+      {
+        "title": "HackerRank",
+        "url": "https://www.hackerrank.com/themiddnight"
+      },
+      {
+        "title": "FreeCodeCamp",
+        "url": "https://www.freecodecamp.org/middnight"
+      },
+      {
+        "title": "LeetCode",
+        "url": "https://leetcode.com/themiddnight/"
+      },
+      {
+        "title": "BorntoDev DevLab",
+        "url": "https://borntodev.com/devlab/profile?user=57431"
+      },
+      {
+        "title": "Replit",
+        "url": "https://replit.com/@themiddnight"
+      }
+    ]
+  },
+
+  "public_notes": {
+    "title": "Public Notes",
+    "display_limit": 4
+  }
 }
