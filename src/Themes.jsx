@@ -129,6 +129,15 @@ export default function Themes({ children }) {
             },
           },
         },
+        MuiTextField: {
+          styleOverrides: {
+            root: {
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 10,
+              },
+            },
+          },
+        },
       },
     });
   }, [prefersDarkMode]);
