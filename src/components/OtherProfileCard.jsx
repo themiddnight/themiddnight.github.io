@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function OtherProfileCard({ data, limit = 3 }) {
+export default function OtherProfileCard({ title, data, limit = 3 }) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -23,7 +23,7 @@ export default function OtherProfileCard({ data, limit = 3 }) {
       <CardContent>
         <CardHeader>
           <GroupsRounded fontSize="large" />
-          Other Profiles
+          {title}
         </CardHeader>
 
         <TransitionGroup>
@@ -54,6 +54,7 @@ export default function OtherProfileCard({ data, limit = 3 }) {
 }
 
 OtherProfileCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

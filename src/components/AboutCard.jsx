@@ -4,18 +4,18 @@ import PropTypes from "prop-types";
 
 import CardHeader from "./elements/CardHeader";
 
-export default function AboutCard({ data }) {
+export default function AboutCard({ title, data }) {
   return (
     <Card>
       <CardContent>
         <CardHeader>
           <PersonRounded fontSize="large" />
-          About
+          {title}
         </CardHeader>
         
         {data.map((item, index) => (
           <Typography key={index} pb={index !== data.length - 1 ? 2 : 0}>
-            {item.value}
+            {item.content}
           </Typography>
         ))}
       </CardContent>
@@ -24,5 +24,6 @@ export default function AboutCard({ data }) {
 }
 
 AboutCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
 };

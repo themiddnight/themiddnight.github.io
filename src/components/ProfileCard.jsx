@@ -54,7 +54,7 @@ export default function ProfileCard({ data }) {
         >
           <Avatar
             alt={`${data.title}'s profile picture`}
-            src={data.image}
+            src={data.image_url}
             sx={{ width: 140, height: 140, boxShadow: 3 }}
           />
           <Box
