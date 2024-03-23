@@ -32,7 +32,7 @@ function LanguageItem({ label, icon, data }) {
   )
 }
 
-export default function LanguagesCard({ data, limit = 2 }) {
+export default function LanguagesCard({ title, data, limit = 2 }) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -41,7 +41,7 @@ export default function LanguagesCard({ data, limit = 2 }) {
       <CardContent>
         <CardHeader>
           <Language fontSize="large" />
-          Languages
+          {title}
         </CardHeader>
         
         <TransitionGroup component={Box} display={'flex'} flexDirection={'column'} gap={1}>
@@ -82,6 +82,7 @@ export default function LanguagesCard({ data, limit = 2 }) {
 }
 
 LanguagesCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

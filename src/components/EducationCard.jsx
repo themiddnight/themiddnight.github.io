@@ -8,7 +8,7 @@ import { sortByDate } from "../utils/utils";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function ProfileCard({ data, limit = 2 }) {
+export default function ProfileCard({ title, data, limit = 2 }) {
   // const limit = 2;
   const sortedData = sortByDate(data);
   const [isLimit, setIsLimit] = useState(true);
@@ -19,7 +19,7 @@ export default function ProfileCard({ data, limit = 2 }) {
       <CardContent>
         <CardHeader>
           <SchoolRounded fontSize="large" />
-          Education
+          {title}
         </CardHeader>
 
         {limitedData.length > 1 && <Typography fontStyle={'italic'} mb={2}>
@@ -61,6 +61,7 @@ export default function ProfileCard({ data, limit = 2 }) {
 }
 
 ProfileCard.propTypes = {
+  title: PropTypes.string.isRequired, 
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

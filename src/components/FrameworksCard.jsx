@@ -15,7 +15,7 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function FrameworksCard({ data, limit = 21}) {
+export default function FrameworksCard({ title, data, limit = 21}) {
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
 
@@ -24,7 +24,7 @@ export default function FrameworksCard({ data, limit = 21}) {
       <CardContent>
         <CardHeader>
           <ConstructionRounded fontSize="large" />
-          Tools / Frameworks
+          {title}
         </CardHeader>
         <Typography fontStyle={"italic"}>
           I&apos;ve some experience with:
@@ -58,7 +58,7 @@ export default function FrameworksCard({ data, limit = 21}) {
                 }
               >
                 <Image
-                  src={`icons/frameworks/${item.icon}`}
+                  src={`${item.image_url}`}
                   alt={item.icon}
                   width={35}
                   height={35}
@@ -82,6 +82,7 @@ export default function FrameworksCard({ data, limit = 21}) {
 }
 
 FrameworksCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

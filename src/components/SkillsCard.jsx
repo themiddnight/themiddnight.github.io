@@ -15,7 +15,7 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function FrameworksCard({ data, limit = 7 }) {
+export default function FrameworksCard({ title, data, limit = 7 }) {
   const iconSize = 30;
   const [isLimit, setIsLimit] = useState(true);
   const [limitedData, setLimitedData] = useState(data.slice(0, limit));
@@ -25,7 +25,7 @@ export default function FrameworksCard({ data, limit = 7 }) {
       <CardContent>
         <CardHeader>
           <TerminalRounded fontSize="large" />
-          Skills
+          {title}
         </CardHeader>
 
         <TransitionGroup
@@ -45,7 +45,7 @@ export default function FrameworksCard({ data, limit = 7 }) {
                   sx={{ marginInlineEnd: 2 }}
                 >
                   <Image
-                    src={`/icons/skills/${item.icon}`}
+                    src={`${item.image_url}`}
                     alt={item.title}
                     width={iconSize}
                     height={iconSize}
@@ -91,6 +91,7 @@ export default function FrameworksCard({ data, limit = 7 }) {
 }
 
 FrameworksCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

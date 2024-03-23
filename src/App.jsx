@@ -7,6 +7,7 @@ export const ModalContext = createContext();
 
 export default function App() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [isPublicNotesModalOpen, setIsPublicNotesModalOpen] = useState(false);
   const [imageModalSrc, setImageModalSrc] = useState("");
 
   return (
@@ -15,6 +16,8 @@ export default function App() {
         value={{
           isImageModalOpen,
           setIsImageModalOpen,
+          isPublicNotesModalOpen,
+          setIsPublicNotesModalOpen,
           imageModalSrc,
           setImageModalSrc,
         }}

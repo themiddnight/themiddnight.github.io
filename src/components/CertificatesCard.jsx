@@ -17,7 +17,7 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import MoreButtonSection from "./elements/MoreButton";
 
-export default function CertificatesCard({ data, limit = 3 }) {
+export default function CertificatesCard({ title, data, limit = 3 }) {
   const { setIsImageModalOpen, setImageModalSrc } = useContext(ModalContext);
   const sortedData = sortByDate(data, "issuedDate");
   const [isLimit, setIsLimit] = useState(true);
@@ -38,7 +38,7 @@ export default function CertificatesCard({ data, limit = 3 }) {
           }}
         >
           <CardMembershipRounded fontSize="large" />
-          Certifications
+          {title}
         </CardHeader>
 
         <TransitionGroup
@@ -70,7 +70,7 @@ export default function CertificatesCard({ data, limit = 3 }) {
                   }}
                 >
                   <Image
-                    src={`images/certificates/${cert.credentialImage}`}
+                    src={`${cert.image_url}`}
                     alt={cert.title}
                     width="100%"
                     height="100%"
@@ -112,6 +112,7 @@ export default function CertificatesCard({ data, limit = 3 }) {
 }
 
 CertificatesCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   limit: PropTypes.number,
 };

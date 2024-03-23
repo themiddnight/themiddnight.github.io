@@ -5,7 +5,7 @@ import { Image } from "./styled/Image";
 import CardHeader from "./elements/CardHeader";
 import { convertDate, sortByDate } from "../utils/utils";
 
-export default function ProjectsCard({ data }) {
+export default function ProjectsCard({ title, data }) {
   const sortedData = sortByDate(data, "createdAt");
 
   return (
@@ -18,7 +18,7 @@ export default function ProjectsCard({ data }) {
           }}
         >
           <AccountTreeRounded fontSize="large" />
-          Personal Projects
+          {title}
         </CardHeader>
         
         <Box
@@ -42,7 +42,7 @@ export default function ProjectsCard({ data }) {
           {sortedData.map((project, index) => (
             <Box
               key={index}
-              flexBasis={{ xs: 300, lg: 500 }}
+              flexBasis={{ xs: "97%", lg: 500 }}
               flexShrink={0}
               display={"flex"}
               flexDirection={{ xs: "column", lg: "row" }}
@@ -52,14 +52,14 @@ export default function ProjectsCard({ data }) {
               boxShadow={1}
               bgcolor={"#88888833"}
               sx={{
-                scrollSnapAlign: { xs: "center", sm: "start"},
+                scrollSnapAlign: { xs: "center", md: "start"},
                 scrollSnapStop: "always",
-                scrollMarginInlineStart: { xs: 0, sm: 26 },
+                scrollMarginInlineStart: { xs: 0, md: 26 },
               }}
             >
               <Box
-                width={{ xs: 300, lg: 175 }}
-                height={{ xs: 150, lg: 165 }}
+                width={{ xs: "100%", lg: 150 }}
+                height={{ xs: 150, lg: 185 }}
                 flexShrink={0}
                 position={"relative"}
                 overflow={"hidden"}
@@ -85,10 +85,10 @@ export default function ProjectsCard({ data }) {
                     </Box>
                   )}
                   <Image
-                    src={`images/projects/${project.image}`}
+                    src={`${project.image_url}`}
+                    width={"100%"}
+                    height={"100%"}
                     alt={project.title}
-                    width="100%"
-                    height="100%"
                     zoomed={project.publiclink ? true : false}
                   />
                 </Link>
@@ -118,5 +118,6 @@ export default function ProjectsCard({ data }) {
 }
 
 ProjectsCard.propTypes = {
+  title: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
 };
