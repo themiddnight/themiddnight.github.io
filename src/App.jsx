@@ -9,7 +9,6 @@ export default function App() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isPublicNotesModalOpen, setIsPublicNotesModalOpen] = useState(false);
   const [imageModalSrc, setImageModalSrc] = useState("");
-  const [publicNotesData, setPublicNotesData] = useState([]);
 
   return (
     <Themes>
@@ -21,8 +20,6 @@ export default function App() {
           setIsPublicNotesModalOpen,
           imageModalSrc,
           setImageModalSrc,
-          publicNotesData,
-          setPublicNotesData,
         }}
       >
         <Home />

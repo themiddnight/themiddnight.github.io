@@ -1,8 +1,9 @@
-const apiKey = "123456789";
+const apiKey = import.meta.env.VITE_API_KEY;
+const userId = import.meta.env.VITE_USER_ID;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 async function fetchData() {
-  return fetch("http://localhost:5002/api/_test/data")
-  // return fetch("https://app-3whecoq62a-uc.a.run.app/api/MmPYSap2pjkA5pOGwiMX/data")
+  return fetch(`${apiUrl}/${userId}/data`)
     .then((res) => res.json())
     .then((data) => {
       return data;
@@ -13,8 +14,7 @@ async function fetchData() {
 }
 
 async function fetchNewNotes(limit = 50, offset = 0) {
-  return fetch(`http://localhost:5002/api/_test/public_notes?limit=${limit}&offset=${offset}`)
-  // return fetch(`https://app-3whecoq62a-uc.a.run.app/api/MmPYSap2pjkA5pOGwiMX/public_notes?limit=${limit}&offset=${offset}`)
+  return fetch(`${apiUrl}/${userId}/public_notes?limit=${limit}&offset=${offset}`)
     .then((res) => res.json())
     .then((data) => {
       return data;
@@ -25,8 +25,7 @@ async function fetchNewNotes(limit = 50, offset = 0) {
 }
 
 async function postNewNote(text) {
-  return fetch("http://localhost:5002/api/_test/public_notes", {
-  // return fetch("https://app-3whecoq62a-uc.a.run.app/api/MmPYSap2pjkA5pOGwiMX/public_notes", {
+  return fetch(`${apiUrl}/${userId}/public_notes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,13 +42,16 @@ async function postNewNote(text) {
 }
 
 async function deleteNote(id) {
-  return fetch(`http://localhost:5002/api/_test/public_notes/${id}`, {
-  // return fetch(`https://app-3whecoq62a-uc.a.run.app/api/MmPYSap2pjkA5pOGwiMX/public_notes/${id}`, {
+  return fetch(`${apiUrl}/${userId}/public_notes/${id}`, {
     method: "DELETE",
     headers: {
       "authorization": `Bearer ${apiKey}`,
     },
-  })
+  }).then((res) => {
+    return res;
+  }).catch((err) => {
+    console.error(err);
+  });
 }
 
 export { fetchData, fetchNewNotes, postNewNote, deleteNote };
