@@ -42,7 +42,7 @@ export default function ProjectsCard({ title, data }) {
           {sortedData.map((project, index) => (
             <Box
               key={index}
-              flexBasis={{ xs: 300, lg: 500 }}
+              flexBasis={{ xs: "97%", lg: 500 }}
               flexShrink={0}
               display={"flex"}
               flexDirection={{ xs: "column", lg: "row" }}
@@ -52,13 +52,13 @@ export default function ProjectsCard({ title, data }) {
               boxShadow={1}
               bgcolor={"#88888833"}
               sx={{
-                scrollSnapAlign: { xs: "center", sm: "start"},
+                scrollSnapAlign: { xs: "center", md: "start"},
                 scrollSnapStop: "always",
-                scrollMarginInlineStart: { xs: 0, sm: 26 },
+                scrollMarginInlineStart: { xs: 0, md: 26 },
               }}
             >
               <Box
-                width={{ xs: 300, lg: 150 }}
+                width={{ xs: "100%", lg: 150 }}
                 height={{ xs: 150, lg: 185 }}
                 flexShrink={0}
                 position={"relative"}
