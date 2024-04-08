@@ -20,7 +20,6 @@ export default function CircularProgressWithLabel({ children, value }) {
           value={100}
           size={60}
           thickness={5}
-          color={"success"}
           sx={{ opacity: 0.2 }}
         />
       </Box>
@@ -32,7 +31,6 @@ export default function CircularProgressWithLabel({ children, value }) {
         value={value}
         size={60}
         thickness={5}
-        color={"success"}
       />
     </Box>
   );
