@@ -8,12 +8,24 @@ import { useMemo } from "react";
 import { PropTypes } from "prop-types";
 import "./App.css";
 
-export default function Themes({ children }) {
+export default function Themes({ children, bgMode = 0 }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const memoTheme = useMemo(() => {
     const darkBg = "#1d1d1d";
-    const lightBg = "#dddddd";
+    const lightBg = "#eeeeee";
+    let bgImage;
+
+    if (bgMode === 1) {
+      bgImage = `
+      linear-gradient(
+        to bottom, transparent 20%, 
+        ${prefersDarkMode ? darkBg : lightBg} 95%
+      ) 
+      ${generateMeshStyle()}`;
+    } else {
+      bgImage = prefersDarkMode ? darkBg : lightBg;
+    }
 
     // Generate random number between min and max
     function rand(min, max) {
@@ -60,14 +72,21 @@ export default function Themes({ children }) {
           xl: 1536,
         },
       },
-      shape: {
-        borderRadius: 20,
-      },
       components: {
         MuiLink: {
           styleOverrides: {
             root: {
               lineHeight: 1.2,
+            },
+          },
+        },
+        MuiCssBaseline: {
+          styleOverrides: {
+            body: {
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundAttachment: "fixed",
+              backgroundImage: bgImage,
             },
           },
         },
@@ -79,28 +98,15 @@ export default function Themes({ children }) {
             },
           },
         },
-        MuiCssBaseline: {
-          styleOverrides: {
-            body: {
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundAttachment: "fixed",
-              backgroundImage: `
-                linear-gradient(
-                  to bottom, transparent 20%, 
-                  ${prefersDarkMode ? darkBg : lightBg} 95%
-                ) 
-                ${generateMeshStyle()}`,
-            },
-          },
-        },
         MuiCard: {
           styleOverrides: {
             root: {
               padding: 10,
               paddingBottom: 3,
+              borderRadius: 20,
               boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 50px 0 rgba(0, 0, 0, 0.05)",
-              backgroundColor: prefersDarkMode ? "#000000dd" : "#f4f4f4ee",
+              backgroundColor: prefersDarkMode ? "#000000bb" : "#ffffffee",
+              backgroundImage: "none",
             },
           },
         },
@@ -115,6 +121,16 @@ export default function Themes({ children }) {
           styleOverrides: {
             root: {
               minWidth: 35,
+            },
+          },
+        },
+        MuiListItemButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+              marginBlock: 3,
+              paddingBlock: 2,
+              paddingInline: 10,
             },
           },
         },
@@ -138,9 +154,25 @@ export default function Themes({ children }) {
             },
           },
         },
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+            },
+          },
+        },
+        MuiSlider: {
+          styleOverrides: {
+            root: {
+              "& .MuiSlider-thumb.Mui-disabled": {
+                display: "none",
+              },
+            },
+          },
+        },
       },
     });
-  }, [prefersDarkMode]);
+  }, [bgMode, prefersDarkMode]);
 
   return (
     <ThemeProvider theme={memoTheme}>
@@ -152,4 +184,5 @@ export default function Themes({ children }) {
 
 Themes.propTypes = {
   children: PropTypes.node.isRequired,
+  bgMode: PropTypes.number,
 };
