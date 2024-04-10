@@ -128,7 +128,7 @@ export default function EditPage() {
           {/* alear box */}
           <Box position={"fixed"} top={0} left={0} right={0} zIndex={998}>
             {isSaveSuccess === true && <SuccessAlert message="Saved successfully" />}
-            {isSaveSuccess === false && <ErrorAlert message="Failed to save" />}
+            {isSaveSuccess === false && <ErrorAlert message="Failed to save. Please try again" />}
           </Box>
 
           {/* edit pages */}

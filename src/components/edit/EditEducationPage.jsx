@@ -16,7 +16,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -46,7 +46,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
     setIsSaving(true);
     setActiveData({ education: data.active });
     try {
-      await postResumeSectionData(resumeId, "education", data);
+      await updateResumeSectionData(resumeId, "education", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);

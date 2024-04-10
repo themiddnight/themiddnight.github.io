@@ -14,7 +14,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import {
@@ -44,7 +44,7 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
     setIsSaving(true);
     setActiveData({ other_links: data.active });
     try {
-      await postResumeSectionData(resumeId, "other_links", data);
+      await updateResumeSectionData(resumeId, "other_links", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);

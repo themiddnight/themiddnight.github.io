@@ -18,7 +18,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { EditPageTemplateFooter } from "../elements/EditPageTemplate";
@@ -61,7 +61,7 @@ export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
     setIsSaving(true);
     setClearFile(false)
     try {
-      await postResumeSectionData(resumeId, "profile", data);
+      await updateResumeSectionData(resumeId, "profile", data);
       setImageFile(null);
       setIsSaveSuccess(null);
       setTimeout(() => {

@@ -19,7 +19,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -58,7 +58,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
     });
     await Promise.all(promises);
     try {
-      await postResumeSectionData(resumeId, "languages", data);
+      await updateResumeSectionData(resumeId, "languages", data);
       setIsSaveSuccess(null);
       fetchData(resumeId);
       setIsSaving(false);

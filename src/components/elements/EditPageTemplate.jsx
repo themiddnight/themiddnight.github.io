@@ -19,17 +19,14 @@ export function EditPageTemplateHeader({
   dataSubtitle,
   dataActive,
   dataDisplayLimit,
+  displayMode = false,
   dataDisplayMode,
+  dataDisplayModeOptions,
   onChange = () => {},
   disableDisplayLimit = false,
   disableSubtitle = false,
-  displayMode = false,
   ...props
 }) {
-  const displayModeOptions = [
-    { label: "List", value: 0 },
-    { label: "Grid", value: 1 },
-  ];
 
   return (
     <Box display={"flex"} flexDirection={"column"} rowGap={2} px={2} pt={4} {...props}>
@@ -91,10 +88,9 @@ export function EditPageTemplateHeader({
               fullWidth
               value={dataDisplayMode}
               SelectProps={{ native: true }}
-              sx={{ borderRadius: 2.5 }}
-              onChange={(e) => onChange("display_mode", e.target.value)}
+              onChange={(e) => onChange("display_mode", +e.target.value)}
             >
-              {displayModeOptions.map((option) => (
+              {dataDisplayModeOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -198,6 +194,7 @@ EditPageTemplateHeader.propTypes = {
   dataActive: PropTypes.bool,
   dataDisplayLimit: PropTypes.number,
   dataDisplayMode: PropTypes.number,
+  dataDisplayModeOptions: PropTypes.array,
   onChange: PropTypes.func,
   disableDisplayLimit: PropTypes.bool,
   disableSubtitle: PropTypes.bool,

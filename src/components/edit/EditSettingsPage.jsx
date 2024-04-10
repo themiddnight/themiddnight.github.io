@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { EditPageTemplateFooter } from "../elements/EditPageTemplate";
@@ -44,7 +44,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
   const handleSubmit = async () => {
     setIsSaving(true);
     try {
-      await postResumeSectionData(resumeId, "settings", data);
+      await updateResumeSectionData(resumeId, "settings", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -92,11 +92,12 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
           </Typography>
           <Box display={"flex"} gap={2} px={{ xs: 0, sm: 3 }} py={2}>
             <TextField
+              label="Layout"
+              helperText="It takes effect on the large screen"
               select
               fullWidth
               SelectProps={{ native: true }}
               size="small"
-              label="Layout"
               value={data.layout}
               onChange={(e) => setData({ ...data, layout: +e.target.value })}
             >
@@ -107,11 +108,11 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
               ))}
             </TextField>
             <TextField
+              label="Background Mode"
               select
               fullWidth
               SelectProps={{ native: true }}
               size="small"
-              label="Background Mode"
               value={data.background_mode}
               onChange={(e) =>
                 setData({ ...data, background_mode: +e.target.value })

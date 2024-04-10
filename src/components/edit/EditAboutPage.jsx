@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -40,7 +40,7 @@ export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveDat
     setIsSaving(true);
     setActiveData({ about: data.active });
     try {
-      await postResumeSectionData(resumeId, "about", data);
+      await updateResumeSectionData(resumeId, "about", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);

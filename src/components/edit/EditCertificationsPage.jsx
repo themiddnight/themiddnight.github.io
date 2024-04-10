@@ -16,7 +16,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -75,7 +75,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
     }
     // post data
     try {
-      await postResumeSectionData(resumeId, "certifications", data);
+      await updateResumeSectionData(resumeId, "certifications", data);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);

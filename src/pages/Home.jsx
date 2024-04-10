@@ -141,8 +141,8 @@ export default function HomePage() {
                 {data.about.active && <Box className={'card2'}><AboutCard data={data.about} /></Box>}
                 {data.experiences.active && <Box className={'card3'}><ExperienceCard data={data.experiences} /></Box>}
                 {data.education.active && <Box className={'card4'}><EducationCard data={data.education} /></Box>}
-                {data.languages.active && <Box className={'card5'}><LanguagesCard data={data.languages} /></Box>}
-                {data.public_notes.active && <Box className={'card7'}><PublicNotesCard resumeId={resumeId} data={data.public_notes} /></Box>}
+                {data.languages.active && <Box className={'card5'} display={{ xs:'none', sm: 'block'}}><LanguagesCard data={data.languages} /></Box>}
+                {data.public_notes.active && <Box className={'card7'} display={{ xs:'none', sm: 'block'}}><PublicNotesCard resumeId={resumeId} data={data.public_notes} /></Box>}
               </Box>
               <Box
                 gridColumn={{ xs: "span 10", sm: "span 5", lg: "span 6" }}
@@ -153,8 +153,10 @@ export default function HomePage() {
                 {data.projects.active && <Box className={'card2'}><ProjectsCard data={data.projects} /></Box>}
                 {data.skills.active && <Box className={'card3'}><SkillsCard data={data.skills} /></Box>}
                 {data.tools.active && <Box className={'card4'}><ToolsCard data={data.tools} /></Box>}
+                {data.languages.active && <Box className={'card5'} display={{ xs:'blodk', sm: 'none'}}><LanguagesCard data={data.languages} /></Box>}
                 {data.certifications.active && <Box className={'card6'}><CertificationsCard data={data.certifications} /></Box>}
                 {data.other_links.active && <Box className={'card7'}><OtherProfileCard data={data.other_links} /></Box>}
+                {data.public_notes.active && <Box className={'card7'} display={{ xs:'blodk', sm: 'none'}}><PublicNotesCard resumeId={resumeId} data={data.public_notes} /></Box>}
               </Box>
             </Box>
           </Container>

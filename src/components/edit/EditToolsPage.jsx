@@ -19,7 +19,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -78,7 +78,7 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
     }
     // post data
     try {
-      await postResumeSectionData(resumeId, "tools", data);
+      await updateResumeSectionData(resumeId, "tools", data);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -116,8 +116,12 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
         dataSubtitle={data.subtitle}
         dataActive={data.active}
         dataDisplayLimit={data.display_limit}
-        dataDisplayMode={data.display_mode}
         displayMode
+        dataDisplayMode={data.display_mode}
+        dataDisplayModeOptions={[
+          { label: "List", value: 0 },
+          { label: "Grid", value: 1 },
+        ]}
         onChange={(key, value) => setData({ ...data, [key]: value })}
       />
 

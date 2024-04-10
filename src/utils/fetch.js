@@ -3,7 +3,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function fetchResume(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/data`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}/data`, {
       headers: {
         "Authorization": `Bearer ${apiKey}`,
       },
@@ -22,7 +22,7 @@ export async function fetchResume(resumeId) {
 
 export async function fetchSummaryData(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/summary`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}/summary`, {
       headers: {
         "Authorization": `Bearer ${apiKey}`,
       },
@@ -41,7 +41,7 @@ export async function fetchSummaryData(resumeId) {
 
 export async function fetchResumeSectionData(resumeId, section) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/edit/${section}`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}/edit/${section}`, {
       headers: {
         "Authorization": `Bearer ${apiKey}`,
       },
@@ -58,10 +58,10 @@ export async function fetchResumeSectionData(resumeId, section) {
   }
 }
 
-export async function postResumeSectionData(resumeId, section, data) {
+export async function updateResumeSectionData(resumeId, section, data) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/edit/${section}`, {
-      method: "POST",
+    const response = await fetch(`${apiUrl}/resume/${resumeId}/edit/${section}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${apiKey}`,
@@ -82,7 +82,7 @@ export async function postResumeSectionData(resumeId, section, data) {
 
 export async function fetchNewNotes(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/public_notes`, {
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes`, {
       headers: {
         "Authorization": `Bearer ${apiKey}`,
       },
@@ -101,7 +101,7 @@ export async function fetchNewNotes(resumeId) {
 
 export async function postNewNote(resumeId, text) {
   try {
-    const response = await fetch(`${apiUrl}/${resumeId}/public_notes`, {
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -122,9 +122,9 @@ export async function postNewNote(resumeId, text) {
   }
 }
 
-export async function deleteNote(userId, id) {
+export async function deleteNote(resumeId, id) {
   try {
-    const response = await fetch(`${apiUrl}/${userId}/public_notes/${id}`, {
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

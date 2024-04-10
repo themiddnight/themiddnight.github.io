@@ -19,7 +19,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -80,7 +80,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
     }
     // post data
     try {
-      await postResumeSectionData(resumeId, "projects", data);
+      await updateResumeSectionData(resumeId, "projects", data);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -118,7 +118,12 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
         dataSubtitle={data.subtitle}
         dataActive={data.active}
         dataDisplayLimit={data.display_limit}
+        displayMode
         dataDisplayMode={data.display_mode}
+        dataDisplayModeOptions={[
+          { label: "List", value: 0 },
+          { label: "H-Scroll", value: 1 },
+        ]}
         onChange={(key, value) => setData({ ...data, [key]: value })}
       />
 

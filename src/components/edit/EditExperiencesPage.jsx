@@ -17,7 +17,7 @@ import {
 } from "../../utils/utils";
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -47,7 +47,7 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
     setIsSaving(true);
     setActiveData({ experiences: data.active });
     try {
-      await postResumeSectionData(resumeId, "experiences", data);
+      await updateResumeSectionData(resumeId, "experiences", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);

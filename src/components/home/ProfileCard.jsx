@@ -77,7 +77,7 @@ export default function ProfileCard({ data = {} }) {
             >
               {data.title}
             </h1>
-            <Typography fontWeight="light">
+            <Typography fontStyle={'italic'}>
               {data.subtitle}
             </Typography>
           </Box>

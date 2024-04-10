@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import {
   fetchResumeSectionData,
-  postResumeSectionData,
+  updateResumeSectionData,
 } from "../../utils/fetch";
 
 import { 
@@ -35,7 +35,7 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
     setIsSaving(true);
     setActiveData({ public_notes: data.active });
     try {
-      await postResumeSectionData(resumeId, "public_notes", data);
+      await updateResumeSectionData(resumeId, "public_notes", data);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -66,7 +66,7 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
   return (
     <>
       <EditPageTemplateHeader
-        title="Edit About"
+        title="Edit Public Notes"
         dataTitle={data.title}
         dataSubtitle={data.subtitle}
         dataActive={data.active}

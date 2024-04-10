@@ -36,6 +36,7 @@ export default function EditSidebar({
   const SidebarBox = ({ children }) => {
     return (
       <Box
+        // className="sidebar"
         sx={{
           display: { xs: isSidebarHidden ? "none" : "flex", md: "flex" },
           flexDirection: "column",

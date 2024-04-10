@@ -1,22 +1,31 @@
-import { Box, Card, CardContent, Link, Typography, Chip } from "@mui/material";
+import { Box, Card, CardContent, Link, Typography, Chip, Divider, Collapse } from "@mui/material";
 import { OpenInNew, AccountTreeRounded } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
+import { TransitionGroup } from "react-transition-group";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
 import { Image } from "../styled/Image";
 import CardHeader from "../elements/CardHeader";
 import { convertDate } from "../../utils/utils";
+import MoreButtonSection from "../elements/MoreButton";
 
 export default function ProjectsCard({ data }) {
   const theme = useTheme();
+  const [isLimit, setIsLimit] = useState(true);
+  const [activeData, setActiveData] = useState(data.data.filter(item => item.active));
+  const [limitedData, setLimitedData] = useState(activeData.slice(0, data.display_limit));
+
+  useEffect(() => {
+    setActiveData(data.data.filter(item => item.active));
+  }, [data.data]);
+
+  useEffect(() => {
+    setLimitedData(activeData.slice(0, isLimit ? data.display_limit : activeData.length));
+  }, [isLimit, activeData, data.display_limit]);
 
   return (
-    <Card
-      sx={{
-        bgcolor: { xs: "transparent", md: theme.components.MuiCard.styleOverrides.root.backgroundColor },
-        boxShadow: { xs: 0, md: 3 },
-        m: { xs: -2, md: 0 },
-      }}
-    >
+    <Card>
       <CardContent>
         <CardHeader>
           <AccountTreeRounded fontSize="large" />
@@ -27,9 +36,46 @@ export default function ProjectsCard({ data }) {
           {data.subtitle}
         </Typography>
 
+        {/* List mode */}
+        {data.display_mode === 0 && 
+        <TransitionGroup
+          component={Box}
+          display={"flex"}
+          flexDirection={"column"}
+          gap={{ xs: 2, lg: 0 }}
+          mx={{ xs: -1, md: 0 }}
+        >
+          {limitedData.map((project, index) => (
+            <Collapse key={index}>
+              {index != 0 && <Divider sx={{ borderColor: { xs: "transparent", lg: "divider" } }}/>}
+              <Box
+                // flexShrink={0}
+                display={"flex"}
+                alignItems={"center"}
+                flexDirection={{ xs: "column", lg: "row" }}
+                borderRadius={"10px"}
+                overflow={"hidden"}
+                boxShadow={1}
+                bgcolor={ theme.palette.mode === "dark" ? { xs: "#44444466", lg: 'transparent' } : { xs: "#eee", lg: "transparent" } }
+              >
+                <ProjectContent data={project} display_mode={data.display_mode} />
+              </Box>
+            </Collapse>
+          ))}
+          <MoreButtonSection
+            isLimit={isLimit}
+            setIsLimit={setIsLimit}
+            data={activeData}
+            limit={data.display_limit}
+            setLimitedData={setLimitedData}
+          />
+        </TransitionGroup>
+        }
+
+        {/* Scroll mode */}
+        {data.display_mode === 1 && 
         <Box
           display={"flex"}
-          // overflow={"scroll"}
           gap={2}
           px={3}
           py={0}
@@ -38,17 +84,17 @@ export default function ProjectsCard({ data }) {
             overflowX: "scroll",
             overflowY: "visible",
             scrollSnapType: "x mandatory",
-            // maskImage: { 
-            //   xs: "none",
-            //   sm: `
-            //     linear-gradient(
-            //       to right, 
-            //       transparent, 
-            //       black 10px, 
-            //       black calc(100% - 10px), 
-            //       transparent
-            //     )`,
-            // },
+            maskImage: { 
+              xs: "none",
+              sm: `
+                linear-gradient(
+                  to right, 
+                  transparent, 
+                  black 20px, 
+                  black calc(100% - 20px), 
+                  transparent
+                )`,
+            },
           }}
         >
           {data.data.map((project, index) => (
@@ -62,8 +108,7 @@ export default function ProjectsCard({ data }) {
               borderRadius={"10px"}
               overflow={"hidden"}
               boxShadow={1}
-              // bgcolor={"#88888833"}
-              bgcolor={ theme.palette.mode === "dark" ? { xs: "#111", md: "#44444488" } : { xs: "#fff", md: "#eee" } }
+              bgcolor={ theme.palette.mode === "dark" ? "#44444488" : "#eee" }
               sx={{
                 display: project.active ? "flex" : "none",
                 scrollSnapAlign: { xs: "center", md: "start" },
@@ -71,113 +116,123 @@ export default function ProjectsCard({ data }) {
                 scrollMarginInlineStart: { xs: 0, md: 26 },
               }}
             >
-              {project.image_url && (
-                <Box
-                  width={{ xs: "100%", lg: 180 }}
-                  height={{ xs: 150, lg: "auto" }}
-                  maxHeight={200}
-                  flexShrink={0}
-                  position={"relative"}
-                  overflow={"hidden"}
-                >
-                  <Link
-                    href={
-                      project.public_link === "" ? null : project.public_link
-                    }
-                    target="_blank"
-                  >
-                    {project.public_link && (
-                      <Box
-                        width={40}
-                        height={40}
-                        display={"flex"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        borderRadius={10}
-                        position={"absolute"}
-                        bottom={10}
-                        right={10}
-                        boxShadow={2}
-                        className={"basic-bg"}
-                        zIndex={10}
-                        sx={{
-                          color: "primary.main",
-                          "&:hover": { color: "info.main" },
-                        }}
-                      >
-                        <OpenInNew />
-                      </Box>
-                    )}
-                    <Image
-                      src={`${project.image_url}`}
-                      width={"100%"}
-                      height={"100%"}
-                      alt={project.title}
-                      zoomed={project.public_link ? true : false}
-                    />
-                  </Link>
-                </Box>
-              )}
-
-              <Box p={2} width={"100%"}>
-                <Typography
-                  fontSize={"small"}
-                  fontStyle={"italic"}
-                  fontWeight={"light"}
-                >
-                  {project.tags.join(", ")}
-                </Typography>
-                <Box
-                  display={"flex"}
-                  justifyContent={"space-between"}
-                  alignItems={"baseline"}
-                  gap={2}
-                >
-                  <Typography
-                    component={
-                      project.image_url
-                        ? ""
-                        : project.public_link
-                        ? Link
-                        : "span"
-                    }
-                    href={project.public_link}
-                    fontSize={20}
-                    fontWeight={"bold"}
-                    // paddingBlock={1}
-                  >
-                    {project.title}
-                  </Typography>
-                  <Typography fontSize={"small"} align="right" mb={1}>
-                    {convertDate(project.createdAt, false, false)}
-                  </Typography>
-                </Box>
-                <Box display={"flex"} flexWrap={"wrap"} gap={1} mb={1}>
-                  {project.links.map((link, index) => (
-                    <Chip
-                      key={index}
-                      component={"a"}
-                      clickable
-                      label={link.title}
-                      href={link.url}
-                      target={"_blank"}
-                      size="small"
-                      // color="primary"
-                      icon={<OpenInNew fontSize="small" />}
-                      sx={{ px: 0.5 }}
-                    />
-                  ))}
-                </Box>
-                <Typography>{project.description}</Typography>
-              </Box>
+              <ProjectContent data={project} display_mode={data.display_mode} />
             </Box>
           ))}
-        </Box>
+        </Box>}
+
       </CardContent>
     </Card>
   );
 }
 
+const ProjectContent = ({ data, display_mode }) => {
+  return (
+    <>
+      {data.image_url && (
+        <Box
+          width={{ xs: "100%", lg: display_mode === 0 ? 150 : 180 }}
+          height={{ xs: 130, lg: display_mode === 0 ? 100 : "auto" }}
+          maxHeight={210}
+          flexShrink={0}
+          position={"relative"}
+          overflow={"hidden"}
+        >
+          <Link
+            href={
+              data.public_link === "" ? null : data.public_link
+            }
+            target="_blank"
+          >
+            {/* {data.public_link && (
+              <Box
+                width={40}
+                height={40}
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                borderRadius={10}
+                position={"absolute"}
+                bottom={10}
+                right={10}
+                boxShadow={2}
+                className={"basic-bg"}
+                zIndex={10}
+                sx={{
+                  color: "primary.main",
+                  "&:hover": { color: "info.main" },
+                }}
+              >
+                <OpenInNew />
+              </Box>
+            )} */}
+            <Image
+              src={`${data.image_url}`}
+              width={"100%"}
+              height={"100%"}
+              alt={data.title}
+              zoomed={data.public_link ? true : false}
+            />
+          </Link>
+        </Box>
+      )}
+
+      <Box p={2} width={"100%"}>
+        <Typography
+          fontSize={"small"}
+          fontStyle={"italic"}
+          fontWeight={"light"}
+        >
+          {data.tags.join(", ")}
+        </Typography>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"baseline"}
+          gap={2}
+        >
+          <Typography 
+            component={data.public_link ? Link : "span"}
+            href={data.public_link}
+            fontSize={20}
+            fontWeight={"bold"}
+            noWrap
+            // paddingBlock={1}
+          >
+            {data.title}
+          </Typography>
+          <Typography fontSize={"small"} align="right" flexShrink={0}>
+            {convertDate(data.createdAt, false, false)}
+          </Typography>
+        </Box>
+        <Box display={"flex"} flexWrap={"wrap"} gap={1} my={1}>
+          {data.links.map((link, index) => (
+            <Chip
+              key={index}
+              component={"a"}
+              clickable
+              label={link.title}
+              href={link.url}
+              target={"_blank"}
+              size="small"
+              // color="primary"
+              icon={<OpenInNew fontSize="small" />}
+              sx={{ px: 0.5 }}
+            />
+          ))}
+        </Box>
+        <Typography>{data.description}</Typography>
+      </Box>
+    </>
+  )
+}
+
+
 ProjectsCard.propTypes = {
   data: PropTypes.object,
+};
+
+ProjectContent.propTypes = {
+  data: PropTypes.object,
+  display_mode: PropTypes.number.isRequired,
 };
