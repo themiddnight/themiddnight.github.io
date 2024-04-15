@@ -3,7 +3,6 @@ import {
   Box,
   Divider,
   Typography,
-  CircularProgress,
   List,
   ListItemText,
   ListItemButton,
@@ -16,20 +15,15 @@ import {
   OpenInNew,
 } from "@mui/icons-material";
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
-
-import { fetchResumeSummary } from "../../utils/fetch";
 
 export default function EditSidebar({
   resumeId,
+  data,
   isSidebarHidden,
-  updateActiveData,
   pageList,
   currentPage,
   onClick,
 }) {
-  const [data, setData] = useState({});
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const listIconMinWidth = 25;
 
@@ -71,35 +65,6 @@ export default function EditSidebar({
     isActive: PropTypes.bool,
     color: PropTypes.string,
   };
-
-  useEffect(() => {
-    setIsLoaded(false);
-    fetchResumeSummary(resumeId).then((data) => {
-      setData(data);
-      setIsLoaded(true);
-    });
-  }, [resumeId]);
-
-  useEffect(() => {
-    const newDataActive = { ...data.data_active, ...updateActiveData };
-    setData(prev => ({ ...prev, data_active: newDataActive }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateActiveData]);
-
-  if (!isLoaded) {
-    return (
-      <SidebarBox>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          height={"100vh"}
-        >
-          <CircularProgress />
-        </Box>
-      </SidebarBox>
-    );
-  }
 
   return (
     <SidebarBox>
@@ -153,9 +118,8 @@ export default function EditSidebar({
 
 EditSidebar.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  data: PropTypes.object,
   isSidebarHidden: PropTypes.bool,
-  setIsSidebarHidden: PropTypes.func,
-  updateActiveData: PropTypes.object,
   onClick: PropTypes.func,
   pageList: PropTypes.array,
   currentPage: PropTypes.object,
