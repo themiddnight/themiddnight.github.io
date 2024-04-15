@@ -1,8 +1,10 @@
-import { Box, Container, IconButton, Snackbar, Alert } from "@mui/material";
+import { Box, Container, IconButton, Snackbar, Alert, CircularProgress } from "@mui/material";
 import { List } from "@mui/icons-material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
+import { fetchResumeSummary, fetchResumeSectionData } from "../utils/fetch";
 
 import Themes from "../Themes";
 import EditSidebar from "../components/elements/EditSidebar";
@@ -37,6 +39,11 @@ const pageList = [
 
 export default function EditPage() {
   const { resumeId } = useParams();
+
+  const [sidebarData, setSidebarData] = useState({});
+  const [editPageData, setEditPageData] = useState({});
+  const [isLoaded, setIsLoaded] = useState([false, true]);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSidebarHidden, setIsSidebarHidden] = useState(true);
   const [currentPage, setCurrentPage] = useState(pageList[0]);
@@ -70,6 +77,35 @@ export default function EditPage() {
       document.body.style.overflow = "scroll"
     }
   }, [isSidebarHidden]);
+
+  useEffect(() => {
+    const newActiveData = { ...sidebarData.data_active, ...activeData };
+    setSidebarData({ ...sidebarData, data_active: newActiveData });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeData]);
+
+  useEffect(() => {
+    fetchResumeSummary(resumeId).then((data) => {
+      setSidebarData(data);
+      setIsLoaded([true, isLoaded[1]]);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resumeId]);
+
+  if (!isLoaded.every((loaded) => loaded)) {
+    return (
+      <Themes>
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          height={"100dvh"}
+        >
+          <CircularProgress />
+        </Box>
+      </Themes>
+    );
+  }
 
   return (
     <Themes>
@@ -112,8 +148,8 @@ export default function EditPage() {
       <Box display={"flex"}>
         <EditSidebar 
           resumeId={resumeId} 
+          data={sidebarData}
           isSidebarHidden={isSidebarHidden} 
-          updateActiveData={activeData}
           currentPage={currentPage}
           pageList={pageList}
           onClick={(index) => handleChangePage(pageList[index])}
@@ -123,7 +159,7 @@ export default function EditPage() {
 
           {/* alear box */}
           <Snackbar open={isSaveSuccess === true} autoHideDuration={5000} onClose={() => setIsSaveSuccess(null)}>
-            <Alert severity="success" onClose={() => setIsSaveSuccess(null)}>{message}</Alert>
+            <Alert severity="success" onClose={() => setIsSaveSuccess(null)}>{`${message}`}</Alert>
           </Snackbar>
           <Snackbar open={isSaveSuccess === false} onClose={() => setIsSaveSuccess(null)}>
             <Alert severity="error" onClose={() => setIsSaveSuccess(null)}>{`Something wrong: ${message}`}</Alert>
