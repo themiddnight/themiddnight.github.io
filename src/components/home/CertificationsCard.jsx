@@ -91,8 +91,8 @@ export default function CertificationsCard({ data }) {
                 </Box>}
                 <Box display={"flex"} flexDirection={"column"}>
                   <Typography
-                    component={cert.credentialUrl ? Link : "span"}
-                    href={cert.credentialUrl}
+                    component={cert.credential_url ? Link : "span"}
+                    href={cert.credential_url}
                     target={"_blank"}
                     fontWeight={"bold"}
                     mb={0.5}
@@ -100,10 +100,10 @@ export default function CertificationsCard({ data }) {
                     {cert.title}
                   </Typography>
                   <Typography fontSize={"small"}>
-                    {cert.issuedBy ? "Issued by: " : ""} {cert.issuedBy}
+                    {cert.issued_by ? "Issued by: " : ""} {cert.issued_by}
                   </Typography>
                   <Typography fontSize={"small"} fontWeight="light">
-                    {convertDate(cert.issuedDate, true)}
+                    {convertDate(cert.issued_date, true)}
                   </Typography>
                 </Box>
               </Box>

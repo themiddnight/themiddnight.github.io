@@ -1,12 +1,11 @@
-import { Box, Container, IconButton } from "@mui/material";
-import { MenuRounded, KeyboardArrowUp, KeyboardArrowDown } from "@mui/icons-material";
+import { Box, Container, IconButton, Snackbar, Alert } from "@mui/material";
+import { List } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 import Themes from "../Themes";
 import EditSidebar from "../components/elements/EditSidebar";
-import { SuccessAlert, ErrorAlert } from "../components/elements/Alert";
 
 import EditProfilePage from "../components/edit/EditProfilePage";
 import EditAboutPage from "../components/edit/EditAboutPage";
@@ -42,15 +41,19 @@ export default function EditPage() {
   const [isSidebarHidden, setIsSidebarHidden] = useState(true);
   const [currentPage, setCurrentPage] = useState(pageList[0]);
   const [isSaveSuccess, setIsSaveSuccess] = useState(null);
+  const [message, setMessage] = useState("");
   const [activeData, setActiveData] = useState({});
 
   function handleChangePage(page){
-    setCurrentPage({});
     setSearchParams({ page: page.name });
-    setTimeout(() => {
-      setCurrentPage(page);
-      setIsSidebarHidden(true);
-    }, 50);
+    setIsSidebarHidden(true);
+    if (searchParams.get("page") === page.name) {
+      // refresh page
+      setCurrentPage({});
+      setTimeout(() => {
+        setCurrentPage(page);
+      }, 50);
+    }
   }
 
   useEffect(() => {
@@ -76,24 +79,17 @@ export default function EditPage() {
 
       {/*  */}
       <IconButton
-        sx={{ display: { xs: "block", md: "none" }, position: "fixed", top: 0, right: 0, zIndex: 999, m: 2 }}
+        sx={{ 
+          display: { xs: "block", md: "none" }, 
+          position: "fixed", top: 0, right: 0, zIndex: 999, m: 2, 
+          borderRadius: 2, p: 0.6, pb: 0,
+          border: 1, borderColor: "divider",
+          boxShadow: 1,
+          backdropFilter: "blur(10px)",
+        }}
         onClick={() => setIsSidebarHidden(!isSidebarHidden)}
       >
-        <MenuRounded />
-      </IconButton>
-
-      <IconButton
-        sx={{ position: "fixed", top: 50, right: 0, zIndex: 999, m: 2 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      >
-        <KeyboardArrowUp />
-      </IconButton>
-
-      <IconButton
-        sx={{ position: "fixed", top: 100, right: 0, zIndex: 999, m: 2 }}
-        onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
-      >
-        <KeyboardArrowDown />
+        <List />
       </IconButton>
       
       {/* backdrop */}
@@ -126,22 +122,26 @@ export default function EditPage() {
         <Container sx={{ px: { xs: 0, md: 1 } }}>
 
           {/* alear box */}
-          <Box position={"fixed"} top={0} left={0} right={0} zIndex={998}>
-            {isSaveSuccess === true && <SuccessAlert message="Saved successfully" />}
-            {isSaveSuccess === false && <ErrorAlert message="Failed to save. Please try again" />}
-          </Box>
+          <Snackbar open={isSaveSuccess === true} autoHideDuration={5000} onClose={() => setIsSaveSuccess(null)}>
+            <Alert severity="success" onClose={() => setIsSaveSuccess(null)}>{message}</Alert>
+          </Snackbar>
+          <Snackbar open={isSaveSuccess === false} onClose={() => setIsSaveSuccess(null)}>
+            <Alert severity="error" onClose={() => setIsSaveSuccess(null)}>{`Something wrong: ${message}`}</Alert>
+          </Snackbar>
 
           {/* edit pages */}
           {currentPage.name === "settings" && (
             <EditSettingsPage
               resumeId={resumeId}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "profile" && (
             <EditProfilePage
               resumeId={resumeId}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "about" && (
@@ -149,6 +149,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "experiences" && (
@@ -156,6 +157,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "education" && (
@@ -163,6 +165,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "projects" && (
@@ -170,6 +173,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "skills" && (
@@ -177,6 +181,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "tools" && (
@@ -184,6 +189,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "languages" && (
@@ -191,6 +197,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "certifications" && (
@@ -198,6 +205,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "other_links" && (
@@ -205,6 +213,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
           {currentPage.name === "public_notes" && (
@@ -212,6 +221,7 @@ export default function EditPage() {
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}
+              setMessage={setMessage}
             />
           )}
         </Container>

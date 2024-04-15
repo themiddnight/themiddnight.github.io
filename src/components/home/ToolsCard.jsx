@@ -72,7 +72,7 @@ export default function ToolsCard({ data }) {
                   alt={item.icon}
                   width={35}
                   height={35}
-                  className={item.isMono ? "svg-invert icon" : "icon"}
+                  className={item.is_mono ? "svg-invert icon" : "icon"}
                   zoomed
                 />
                 : item.title}

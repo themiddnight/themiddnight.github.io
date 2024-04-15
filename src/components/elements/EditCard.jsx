@@ -7,12 +7,15 @@ import {
   Switch,
   Typography,
   Tooltip,
+  Button,
+  Collapse,
 } from "@mui/material";
 import {
   KeyboardArrowDown,
   KeyboardArrowUp,
   DeleteForever,
 } from "@mui/icons-material";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function EditCard({
@@ -21,13 +24,20 @@ export default function EditCard({
   itemActive = true,
   itemTitle = "",
   children = null,
+  expanded = true,
   onActive = () => {},
   onDelete = () => {},
   onMove = () => {},
 }) {
+  const [open, setOpen] = useState(expanded);
+
+  useEffect(() => {
+    if (!expanded) setOpen(false);
+    else setOpen(true);
+  }, [expanded]);
+
   return (
     <Card
-      component={Card}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -40,13 +50,26 @@ export default function EditCard({
         display={"flex"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        mr={-1} mt={-1} gap={2}
+        m={-1}
+        gap={2}
       >
-        <Box display={"flex"} alignItems={"center"} gap={1} overflow={'hidden'}>
+        <Button
+          variant={"text"}
+          fullWidth
+          color="inherit"
+          sx={{
+            pl: 0,
+            textUnderlineOffset: 2,
+            textTransform: "none",
+            justifyContent: "flex-start",
+          }}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           <Typography noWrap fontWeight={"bold"}>
             {index + 1}: {itemTitle}
           </Typography>
-        </Box>
+        </Button>
         <Box display={"flex"} alignItems={"center"}>
           <FormGroup>
             <Tooltip title="Public" placement="top">
@@ -81,8 +104,11 @@ export default function EditCard({
         </Box>
       </Box>
 
-      {children}
-      
+      <Collapse in={open} unmountOnExit>
+        <Box display="flex" flexDirection="column" rowGap={2} mt={1}>
+          {children}
+        </Box>
+      </Collapse>
     </Card>
   );
 }
@@ -92,6 +118,7 @@ EditCard.propTypes = {
   dataActive: PropTypes.bool,
   itemActive: PropTypes.bool,
   itemTitle: PropTypes.string,
+  expanded: PropTypes.bool,
   children: PropTypes.node,
   onActive: PropTypes.func,
   onDelete: PropTypes.func,

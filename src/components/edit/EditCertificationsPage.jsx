@@ -28,12 +28,14 @@ import CertificationsCard from "../home/CertificationsCard";
 import EditCard from "../elements/EditCard";
 import ImageUrlPreview from "../elements/ImageUrlPreview";
 import ImageFileInput from "../elements/ImageFileInput";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [clearFile, setClearFile] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -66,6 +68,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
       await Promise.all(promises);
       setData({ ...data, data: newData });
     } catch (error) {
+      setMessage("Error resizing image");
       console.error(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
@@ -75,7 +78,8 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
     }
     // post data
     try {
-      await updateResumeSectionData(resumeId, "certifications", data);
+      const result = await updateResumeSectionData(resumeId, "certifications", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -85,6 +89,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
         setIsSaveSuccess(true);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
       setTimeout(() => {
@@ -122,9 +127,9 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
           handleAddData(data, setData, "data", {
             active: true,
             title: "",
-            issuedBy: "",
-            issuedDate: "",
-            credentialUrl: "",
+            issued_by: "",
+            issued_date: "",
+            credential_url: "",
             image_url: "",
             image_path: "",
           }, pos)
@@ -138,6 +143,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
@@ -188,11 +194,11 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
                 label="Issued By"
                 variant="outlined"
                 size="small"
-                error={!item.issuedBy}
-                value={item.issuedBy}
+                error={!item.issued_by}
+                value={item.issued_by}
                 sx={{ flexGrow: 3 }}
                 onChange={(e) =>
-                  handleDataChange(data, setData, "data", index, "issuedBy", e.target.value)
+                  handleDataChange(data, setData, "data", index, "issued_by", e.target.value)
                 }
               />
               <TextField
@@ -200,11 +206,11 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
                 variant="outlined"
                 type="date"
                 size="small"
-                value={item.issuedDate}
+                value={item.issued_date}
                 InputLabelProps={{ shrink: true }}
                 sx={{ flexGrow: { xs: 1, sm: 0 } }}
                 onChange={(e) =>
-                  handleDataChange(data, setData, "data", index, "issuedDate", e.target.value)
+                  handleDataChange(data, setData, "data", index, "issued_date", e.target.value)
                 }
               />
             </Box>
@@ -214,9 +220,9 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
               variant="outlined"
               size="small"
               fullWidth
-              value={item.credentialUrl}
+              value={item.credential_url}
               onChange={(e) =>
-                handleDataChange(data, setData, "data", index, "credentialUrl", e.target.value)
+                handleDataChange(data, setData, "data", index, "credential_url", e.target.value)
               }
             />
           </EditCard>
@@ -225,9 +231,15 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        onSave={handleSubmit}
+        previewelement={<CertificationsCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        previewelement={<CertificationsCard data={data} />}
       />
     </>
   );
@@ -237,4 +249,5 @@ EditCertificationsPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

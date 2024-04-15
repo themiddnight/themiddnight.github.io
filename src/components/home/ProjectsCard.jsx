@@ -202,7 +202,7 @@ const ProjectContent = ({ data, display_mode }) => {
             {data.title}
           </Typography>
           <Typography fontSize={"small"} align="right" flexShrink={0}>
-            {convertDate(data.createdAt, false, false)}
+            {convertDate(data.created_at, false, false)}
           </Typography>
         </Box>
         <Box display={"flex"} flexWrap={"wrap"} gap={1} my={1}>

@@ -18,8 +18,9 @@ import {
   EditPageTemplateFooter,
 } from "../elements/EditPageTemplate";
 import AboutCard from "../home/AboutCard";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [texts, setTexts] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,7 +41,8 @@ export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveDat
     setIsSaving(true);
     setActiveData({ about: data.active });
     try {
-      await updateResumeSectionData(resumeId, "about", data);
+      const result = await updateResumeSectionData(resumeId, "about", data);
+      setMessage(result)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -48,6 +50,7 @@ export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveDat
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -113,10 +116,14 @@ export default function EditAboutPage({ resumeId, setIsSaveSuccess, setActiveDat
       </Box>
       
       <EditPageTemplateFooter
+        onSave={handleSubmit}
         isSaving={isSaving}
-        dataActive={data.active}
-        onSubmit={handleSubmit}
         previewelement={<AboutCard data={data} />}
+      />
+
+      <EditButtons 
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
       />
     </>
   );
@@ -126,4 +133,5 @@ EditAboutPage.propTypes = {
   resumeId: PropTypes.string,
   setIsSaveSuccess: PropTypes.func,
   setActiveData: PropTypes.func,
+  setMessage: PropTypes.func.isRequired,
 };

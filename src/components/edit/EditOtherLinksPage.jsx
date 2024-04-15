@@ -24,8 +24,9 @@ import {
 } from "../elements/EditPageTemplate";
 import OtherProfileCard from "../home/OtherProfileCard";
 import EditLink from "../elements/editLink";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -44,7 +45,8 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
     setIsSaving(true);
     setActiveData({ other_links: data.active });
     try {
-      await updateResumeSectionData(resumeId, "other_links", data);
+      const result = await updateResumeSectionData(resumeId, "other_links", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -52,6 +54,7 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -119,10 +122,14 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
       </EditPageTemplateBody>
 
       <EditPageTemplateFooter
+        dataActive={data.active}
+        onSave={handleSubmit}
+        previewelement={<OtherProfileCard data={data} />}
+      />
+
+      <EditButtons 
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        dataActive={data.active}
-        previewelement={<OtherProfileCard data={data} />}
       />
     </>
   );
@@ -132,4 +139,5 @@ EditOtherLinksPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

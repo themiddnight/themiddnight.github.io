@@ -32,12 +32,14 @@ import ProjectsCard from "../home/ProjectsCard";
 import EditCard from "../elements/EditCard";
 import ImageUrlPreview from "../elements/ImageUrlPreview";
 import EditLink from "../elements/editLink";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [clearFile, setClearFile] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const urlRegex = /^(https?:\/\/)/;
 
   const fetchData = useCallback(async (resumeId) => {
@@ -71,6 +73,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
       await Promise.all(promises);
       setData({ ...data, data: newData });
     } catch (error) {
+      setMessage("Error resizing image")
       console.error(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
@@ -80,7 +83,8 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
     }
     // post data
     try {
-      await updateResumeSectionData(resumeId, "projects", data);
+      const result = await updateResumeSectionData(resumeId, "projects", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -90,6 +94,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
         setIsSaveSuccess(true);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
       setTimeout(() => {
@@ -133,7 +138,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
           handleAddData(data, setData, "data", {
             active: true,
             title: "",
-            createdAt: "",
+            created_at: "",
             tags: [],
             image_file: null,
             image_path: "",
@@ -153,6 +158,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
@@ -185,9 +191,9 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
                 size="small"
                 type="date"
                 sx={{ flexShrink: 0 }}
-                value={item.createdAt}
+                value={item.created_at}
                 InputLabelProps={{ shrink: true }}
-                onChange={(e) => handleDataChange(data, setData, "data", index, "createdAt", e.target.value)}
+                onChange={(e) => handleDataChange(data, setData, "data", index, "created_at", e.target.value)}
               />
 
 
@@ -295,9 +301,15 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        onSave={handleSubmit}
+        previewelement={<ProjectsCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        previewelement={<ProjectsCard data={data} />}
       />
     </>
   );
@@ -307,4 +319,5 @@ EditProjectsPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

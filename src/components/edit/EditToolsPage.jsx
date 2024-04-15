@@ -31,12 +31,14 @@ import ToolssCard from "../home/ToolsCard";
 import EditCard from "../elements/EditCard";
 import ImageUrlPreview from "../elements/ImageUrlPreview";
 import ImageFileInput from "../elements/ImageFileInput";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [clearFile, setClearFile] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -69,6 +71,7 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
       await Promise.all(promises);
       setData({ ...data, data: newData });
     } catch (error) {
+      setMessage("Error resizing image")
       console.error(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
@@ -78,7 +81,8 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
     }
     // post data
     try {
-      await updateResumeSectionData(resumeId, "tools", data);
+      const result = await updateResumeSectionData(resumeId, "tools", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -88,6 +92,7 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
         setIsSaveSuccess(true);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
       setTimeout(() => {
@@ -134,7 +139,7 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
             description: "",
             image_path: "",
             image_url: "",
-            isMono: false,
+            is_mono: false,
           }, pos)
         }
       >
@@ -146,6 +151,7 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
@@ -196,9 +202,9 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={item.isMono}
+                        checked={item.is_mono}
                         onChange={(e) =>
-                          handleDataChange(data, setData, "data", index, "isMono", e.target.checked)
+                          handleDataChange(data, setData, "data", index, "is_mono", e.target.checked)
                         }
                       />
                     }
@@ -226,9 +232,15 @@ export default function EditToolsPage({ resumeId, setIsSaveSuccess, setActiveDat
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        onSave={handleSubmit}
+        previewelement={<ToolssCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        previewelement={<ToolssCard data={data} />}
       />
     </>
   );
@@ -238,4 +250,5 @@ EditToolsPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

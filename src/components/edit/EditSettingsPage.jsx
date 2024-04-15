@@ -15,6 +15,7 @@ import {
 
 import { EditPageTemplateFooter } from "../elements/EditPageTemplate";
 import IntroScreen from "../home/IntroScreen";
+import EditButtons from "../elements/EditButtons";
 
 const layoutOptions = [
   { label: "Two Columns", value: 0 },
@@ -26,7 +27,7 @@ const backgroundOptions = [
   { label: "Colored", value: 1 },
 ];
 
-export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
+export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -44,7 +45,8 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
   const handleSubmit = async () => {
     setIsSaving(true);
     try {
-      await updateResumeSectionData(resumeId, "settings", data);
+      const result = await updateResumeSectionData(resumeId, "settings", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -52,6 +54,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -145,6 +148,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
               size="small"
               fullWidth
               value={data.intro.title}
+              sx={{ mb: 1 }}
               onChange={(e) =>
                 setData({
                   ...data,
@@ -158,6 +162,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
               size="small"
               fullWidth
               value={data.intro.subtitle}
+              sx={{ mb: 1 }}
               onChange={(e) =>
                 setData({
                   ...data,
@@ -171,6 +176,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
               size="small"
               fullWidth
               value={data.intro.enter_button}
+              sx={{ mb: 1 }}
               onChange={(e) =>
                 setData({
                   ...data,
@@ -184,8 +190,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
       </Box>
 
       <EditPageTemplateFooter
-        isSaving={isSaving}
-        onSubmit={handleSubmit}
+        onSave={handleSubmit}
         previewelement={
           <Box
             display={"flex"}
@@ -200,6 +205,11 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
           </Box>
         }
       />
+
+      <EditButtons 
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
+      />
     </>
   );
 }
@@ -207,4 +217,5 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess }) {
 EditSettingsPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

@@ -27,11 +27,13 @@ import {
 } from "../elements/EditPageTemplate";
 import ExperienceCard from "../home/ExperienceCard";
 import EditCard from "../elements/EditCard";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -47,7 +49,8 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
     setIsSaving(true);
     setActiveData({ experiences: data.active });
     try {
-      await updateResumeSectionData(resumeId, "experiences", data);
+      const result = await updateResumeSectionData(resumeId, "experiences", data);
+      setMessage(result)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -55,6 +58,7 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -107,12 +111,13 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, 'active', value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
           >
 
-            <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+            <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={2}>
               <TextField
                 label="Title"
                 variant="outlined"
@@ -184,9 +189,15 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
 
       <EditPageTemplateFooter
         isSaving={isSaving}
-        dataActive={data.active}
-        onSubmit={handleSubmit}
+        onSave={handleSubmit}
         previewelement={<ExperienceCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
       />
     </>
   );
@@ -196,4 +207,5 @@ EditExperiencesPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

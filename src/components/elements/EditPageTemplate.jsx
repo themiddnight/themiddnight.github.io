@@ -8,9 +8,7 @@ import {
   TextField,
   Typography,
   CircularProgress,
-  Fab,
 } from "@mui/material";
-import { SaveRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 
 export function EditPageTemplateHeader({
@@ -126,7 +124,7 @@ export function EditPageTemplateBody({
       <Box
         display={"flex"}
         flexDirection={"column"}
-        rowGap={3}
+        rowGap={2}
         px={{ xs: 2, sm: 5 }}
         py={2}
         {...props}
@@ -147,12 +145,11 @@ export function EditPageTemplateBody({
 
 export function EditPageTemplateFooter({
   dataActive = true,
-  isSaving,
-  onSubmit,
   previewelement,
+  isSaving = false,
+  onSave = () => {},
   ...props
 }) {
-  const btnPosition = { xs: 24, sm: 36, md: 48 };
 
   return (
     <Box display={"flex"} flexDirection={"column"} rowGap={2} px={2} pb={12} {...props}>
@@ -165,23 +162,19 @@ export function EditPageTemplateFooter({
       >
         {previewelement}
       </Box>
+      <Divider sx={{ my: 2 }} />
 
-      <Fab
+      <Button
         disabled={isSaving}
-        onClick={onSubmit}
+        variant="contained"
         color="primary"
-        sx={{ 
-          position: "fixed", 
-          bottom: btnPosition, 
-          right: btnPosition,
-          boxShadow: 4,
-        }}
+        size="large"
+        onClick={onSave}
+        startIcon={isSaving && <CircularProgress size={16} />}
       >
-        {isSaving 
-          ? <CircularProgress thickness={6} size={32} sx={{ color: "white" }} /> 
-          : <SaveRounded sx={{ width: 36, height: 32, color: theme => theme.palette.mode === "dark" ? "black" : "white" }} />
-        }
-      </Fab>
+        {isSaving ? "Saving..." : "Save"}
+      </Button>
+
     </Box>
   )
 }
@@ -209,7 +202,7 @@ EditPageTemplateBody.propTypes = {
 
 EditPageTemplateFooter.propTypes = {
   dataActive: PropTypes.bool,
+  onSave: PropTypes.func,
   isSaving: PropTypes.bool,
-  onSubmit: PropTypes.func,
   previewelement: PropTypes.node,
 };

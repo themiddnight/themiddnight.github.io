@@ -15,8 +15,9 @@ import {
   EditPageTemplateFooter,
 } from "../elements/EditPageTemplate";
 import PublicNotesCard from "../home/PublicNotesCard";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -35,7 +36,8 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
     setIsSaving(true);
     setActiveData({ public_notes: data.active });
     try {
-      await updateResumeSectionData(resumeId, "public_notes", data);
+      const result = await updateResumeSectionData(resumeId, "public_notes", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -43,6 +45,7 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -75,11 +78,15 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
       />
       
       <EditPageTemplateFooter
-        isSaving={isSaving}
+        onSave={handleSubmit}
         dataActive={data.active}
-        onSubmit={handleSubmit}
         previewelement={<PublicNotesCard resumeId={resumeId} data={data} />}
         mt={2}
+      />
+
+      <EditButtons 
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
       />
     </>
   );
@@ -89,4 +96,5 @@ EditPublicNotesPage.propTypes = {
   resumeId: PropTypes.string,
   setIsSaveSuccess: PropTypes.func,
   setActiveData: PropTypes.func,
+  setMessage: PropTypes.func.isRequired,
 };

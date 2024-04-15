@@ -25,6 +25,7 @@ import { EditPageTemplateFooter } from "../elements/EditPageTemplate";
 import ProfileCard from "../home/ProfileCard";
 import ImageFileInput from "../elements/ImageFileInput";
 import EditLink from "../elements/editLink";
+import EditButtons from "../elements/EditButtons";
 
 const linksOptions = [
   { label: "LinkedIn" },
@@ -35,7 +36,7 @@ const linksOptions = [
   { label: "YouTube" },
 ];
 
-export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
+export default function EditProfilePage({ resumeId, setIsSaveSuccess, setMessage }) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?\d[\d|\-|\s]{5,15}\d$/;
 
@@ -61,8 +62,9 @@ export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
     setIsSaving(true);
     setClearFile(false)
     try {
-      await updateResumeSectionData(resumeId, "profile", data);
+      const result = await updateResumeSectionData(resumeId, "profile", data);
       setImageFile(null);
+      setMessage(result)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -71,6 +73,7 @@ export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
         setClearFile(true)
       }, 100);
     } catch (error) {
+      setMessage(error)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -288,9 +291,14 @@ export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
       </Box>
 
       <EditPageTemplateFooter
+        onSave={handleSubmit}
+        isSaving={isSaving}
+        previewelement={<ProfileCard data={data} />}
+      />
+
+      <EditButtons 
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        previewelement={<ProfileCard data={data} />}
       />
     </>
   );
@@ -299,4 +307,5 @@ export default function EditProfilePage({ resumeId, setIsSaveSuccess }) {
 EditProfilePage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

@@ -29,11 +29,13 @@ import {
 } from "../elements/EditPageTemplate";
 import LanguagesCard from "../home/LanguagesCard";
 import EditCard from "../elements/EditCard";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -58,7 +60,8 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
     });
     await Promise.all(promises);
     try {
-      await updateResumeSectionData(resumeId, "languages", data);
+      const result = await updateResumeSectionData(resumeId, "languages", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       fetchData(resumeId);
       setIsSaving(false);
@@ -66,6 +69,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
         setIsSaveSuccess(true);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
       setTimeout(() => {
@@ -121,6 +125,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
@@ -175,9 +180,15 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
 
       <EditPageTemplateFooter
         isSaving={isSaving}
-        dataActive={data.active}
-        onSubmit={handleSubmit}
+        onSave={handleSubmit}
         previewelement={<LanguagesCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
       />
     </>
   );
@@ -237,6 +248,7 @@ EditLanguagesPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };
 
 InputSlider.propTypes = {

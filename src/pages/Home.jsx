@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
 import Themes from "../Themes";
-import { fetchResume } from "../utils/fetch";
+import { fetchResumeData } from "../utils/fetch";
 
 import IntroScreen from "../components/home/IntroScreen";
 import ProfileCard from "../components/home/ProfileCard";
@@ -38,7 +38,7 @@ export default function HomePage() {
 
   const fetchData = useCallback(async (resumeId) => {
     try {
-      const data = await fetchResume(resumeId);
+      const data = await fetchResumeData(resumeId, "data");
       setData(data);
       setIsDataLoaded(true);
       if (sessionStorage.getItem("isEntered")) {
@@ -46,8 +46,8 @@ export default function HomePage() {
         setIsEntered(true);
       }
     } catch (error) {
-      console.error(error);
-      setData({ status_code: 404, message: "Resume not found" });
+      // console.error(error);
+      setData({ status_code: 404, message: "Resume not found"});
       setIsDataLoaded(true);
     }
   }, []);
@@ -101,7 +101,7 @@ export default function HomePage() {
       <Themes>
         <BoxCenter>
           <CircularProgress size={50} color="inherit" sx={{ opacity: 0.5 }} />
-          <Typography mt={3} sx={{ opacity: 0.5 }}>Wait a sec...</Typography>
+          <Typography mt={3} sx={{ opacity: 0.5 }}>Loading...</Typography>
         </BoxCenter>
       </Themes>
     )

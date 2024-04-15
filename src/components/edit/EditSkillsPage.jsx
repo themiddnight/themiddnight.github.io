@@ -32,6 +32,7 @@ import SkillsCard from "../home/SkillsCard";
 import EditCard from "../elements/EditCard";
 import ImageUrlPreview from "../elements/ImageUrlPreview";
 import ImageFileInput from "../elements/ImageFileInput";
+import EditButtons from "../elements/EditButtons";
 
 const levelOptions = [
   { label: "Beginner" },
@@ -41,11 +42,12 @@ const levelOptions = [
   { label: "Master" },
 ];
 
-export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [clearFile, setClearFile] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -78,6 +80,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
       await Promise.all(promises);
       setData({ ...data, data: newData });
     } catch (error) {
+      setMessage("Error resizing image")
       console.error(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
@@ -87,7 +90,8 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
     }
     // post data
     try {
-      await updateResumeSectionData(resumeId, "skills", data);
+      const result = await updateResumeSectionData(resumeId, "skills", data);
+      setMessage(result);
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
@@ -97,6 +101,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
         setIsSaveSuccess(true);
       }, 100);
     } catch (error) {
+      setMessage(error);
       setIsSaveSuccess(null);
       setIsSaving(false);
       setTimeout(() => {
@@ -139,7 +144,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
             description: "",
             image_path: "",
             image_url: "",
-            isMono: false,
+            is_mono: false,
           }, pos)
         }
       >
@@ -151,6 +156,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
@@ -218,9 +224,9 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={item.isMono}
+                      checked={item.is_mono}
                       onChange={(e) =>
-                        handleDataChange(data, setData, "data", index, "isMono", e.target.checked)
+                        handleDataChange(data, setData, "data", index, "is_mono", e.target.checked)
                       }
                     />
                   }
@@ -247,9 +253,15 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        onSave={handleSubmit}
+        previewelement={<SkillsCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
         isSaving={isSaving}
         onSubmit={handleSubmit}
-        previewelement={<SkillsCard data={data} />}
       />
     </>
   );
@@ -259,4 +271,5 @@ EditSkillsPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

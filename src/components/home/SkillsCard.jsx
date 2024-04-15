@@ -61,7 +61,7 @@ export default function SkillsCard({ data }) {
                     alt={item.title}
                     width={iconSize}
                     height={iconSize}
-                    className={item.isMono ? "svg-invert" : ""}
+                    className={item.is_mono ? "svg-invert" : ""}
                   />
                 </Box>}
                 <Box width={"100%"}>

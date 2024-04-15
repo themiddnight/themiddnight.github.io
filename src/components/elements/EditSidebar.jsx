@@ -18,7 +18,7 @@ import {
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
-import { fetchSummaryData } from "../../utils/fetch";
+import { fetchResumeSummary } from "../../utils/fetch";
 
 export default function EditSidebar({
   resumeId,
@@ -74,7 +74,7 @@ export default function EditSidebar({
 
   useEffect(() => {
     setIsLoaded(false);
-    fetchSummaryData(resumeId).then((data) => {
+    fetchResumeSummary(resumeId).then((data) => {
       setData(data);
       setIsLoaded(true);
     });
@@ -112,7 +112,7 @@ export default function EditSidebar({
         <Typography fontSize={"small"}>ID: {resumeId}</Typography>
       </Box>
       <Divider />
-      <Link href="/#/edit" display={"flex"} alignItems={"center"}>
+      <Link href="/#/create" display={"flex"} alignItems={"center"}>
         <ArrowBackIos fontSize="small" />
         Back to main
       </Link>

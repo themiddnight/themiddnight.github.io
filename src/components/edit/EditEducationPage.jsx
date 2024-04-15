@@ -26,11 +26,13 @@ import {
 } from "../elements/EditPageTemplate";
 import EducationCard from "../home/EducationCard";
 import EditCard from "../elements/EditCard";
+import EditButtons from "../elements/EditButtons";
 
-export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiveData }) {
+export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiveData, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
@@ -46,7 +48,8 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
     setIsSaving(true);
     setActiveData({ education: data.active });
     try {
-      await updateResumeSectionData(resumeId, "education", data);
+      const result = await updateResumeSectionData(resumeId, "education", data);
+      setMessage(result)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -54,6 +57,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
         setIsSaving(false);
       }, 100);
     } catch (error) {
+      setMessage(error)
       setIsSaveSuccess(null);
       setTimeout(() => {
         setIsSaveSuccess(false);
@@ -107,12 +111,13 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
             dataActive={data.active}
             itemActive={item.active}
             itemTitle={item.title}
+            expanded={expanded}
             onActive={(value) => handleDataChange(data, setData, "data", index, "active", value)}
             onDelete={() => handleDeleteData(setData, "data", index)}
             onMove={(direction) => handleMoveField(data, setData, "data", index, direction)}
           >
 
-            <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={1}>
+            <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={2}>
               <TextField
                 label="Title"
                 variant="outlined"
@@ -134,7 +139,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
             </Box>
 
             <Box display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
-              <Box display={'flex'} gap={1}>
+              <Box display={'flex'} gap={2}>
                 <TextField
                   label="Year from"
                   variant="outlined"
@@ -157,9 +162,13 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
                   onChange={(e) => handleDataChange(data, setData, "data", index, 'to', e.target.value)}
                 />
               </Box>
-              <FormControlLabel sx={{ ml: 0.5 }}
-                control={<Checkbox checked={item.current} 
-                onChange={(e) => handleDataChange(data, setData, "data", index, 'current', e.target.checked)} />}
+              <FormControlLabel sx={{ ml: 0 }}
+                control={
+                  <Checkbox 
+                    checked={item.current} 
+                    onChange={(e) => handleDataChange(data, setData, "data", index, 'current', e.target.checked)} 
+                  />
+                }
                 label="Current"
               />
             </Box>
@@ -180,9 +189,15 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
 
       <EditPageTemplateFooter
         isSaving={isSaving}
-        dataActive={data.active}
-        onSubmit={handleSubmit}
+        onSave={handleSubmit}
         previewelement={<EducationCard data={data} />}
+      />
+
+      <EditButtons 
+        expanded={expanded}
+        setExpanded={setExpanded}
+        isSaving={isSaving}
+        onSubmit={handleSubmit}
       />
     </>
   );
@@ -192,4 +207,5 @@ EditEducationPage.propTypes = {
   resumeId: PropTypes.string.isRequired,
   setIsSaveSuccess: PropTypes.func.isRequired,
   setActiveData: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
 };

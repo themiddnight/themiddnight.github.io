@@ -170,6 +170,20 @@ export default function Themes({ children, bgMode = 0 }) {
             },
           },
         },
+        MuiFormGroup: {
+          styleOverrides: {
+            root: {
+              display: 'block',
+            },
+          },
+        },
+        MuiFormControlLabel: {
+          styleOverrides: {
+            root: {
+              alignSelf: 'flex-start',
+            },
+          },
+        },
       },
     });
   }, [bgMode, prefersDarkMode]);
