@@ -4,18 +4,17 @@ const apiUrl = import.meta.env.VITE_API_URL;
 // User API
 export async function fetchUser() {
   try {
-    const response = await fetch(`${apiUrl}/user`, {
+    const response = await fetch(`${apiUrl}/user?key=${frontendApiKey}`, {
       headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
     });
+    const responseJson = await response.json();
     if (response.ok) {
-      const data = await response.json();
+      const data = responseJson;
       return data;
     } else {
-      window.location.href = "/#/login";
-      throw new Error("Failed to fetch user");
+      throw responseJson.message;
     }
   } catch (error) {
     console.error(error);
@@ -25,11 +24,11 @@ export async function fetchUser() {
 
 export async function updateUser(field, value, email) { // field: name or email
   try {
-    const response = await fetch(`${apiUrl}/user/${field}`, {
+    const response = await fetch(`${apiUrl}/user/${field}?key=${frontendApiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify({ [field]: value, original_email: email }),
     });
@@ -48,7 +47,7 @@ export async function updateUser(field, value, email) { // field: name or email
 
 export async function sendResetPassword(email) {
   try {
-    const response = await fetch(`${apiUrl}/auth/send-reset-password`, {
+    const response = await fetch(`${apiUrl}/auth/send-reset-password?key=${frontendApiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,11 +69,11 @@ export async function sendResetPassword(email) {
 
 export async function sendVerificationEmail(email) {
   try {
-    const response = await fetch(`${apiUrl}/auth/send-verification-email`, {
+    const response = await fetch(`${apiUrl}/auth/send-verification-email?key=${frontendApiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify({ email }),
     });
@@ -91,14 +90,34 @@ export async function sendVerificationEmail(email) {
   }
 }
 
+export async function deleteUser(password) {
+  try {
+    const response = await fetch(`${apiUrl}/user?key=${frontendApiKey}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ password }),
+    });
+    const responseJson = await response.json();
+    if (response.ok) {
+      console.log(responseJson.message);
+      return responseJson.message;
+    } else {
+      console.error(responseJson.message);
+      throw responseJson.message;
+    }
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
+
 // Resume API
 export async function fetchResumeData(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/resume/${resumeId}`, {
-      headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-      },
-    });
+    const response = await fetch(`${apiUrl}/resume/${resumeId}?key=${frontendApiKey}`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -115,18 +134,16 @@ export async function fetchResumeData(resumeId) {
 // Resume data API
 export async function fetchResumeSummary(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/resume/${resumeId}/summary`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}/summary?key=${frontendApiKey}`, {
       headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
     });
+    const responseJson = await response.json();
     if (response.ok) {
-      const data = await response.json();
-      return data;
+      return responseJson;
     } else {
-      const responseJson = await response.json();
-      throw new Error(responseJson.message);
+      throw responseJson.message;
     }
   } catch (error) {
     console.error(error);
@@ -134,17 +151,17 @@ export async function fetchResumeSummary(resumeId) {
   }
 }
 
-export async function createResume(resumeName = "[New Resume]") {
+export async function createResume(resumeName = "[New Resume]", resumeId = null) {
   try {
-    const response = await fetch(`${apiUrl}/resume`, {
+    const response = await fetch(`${apiUrl}/resume?key=${frontendApiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify({ 
         resume_name: resumeName,
+        resume_id: resumeId,
       }),
     });
     const responseJson = await response.json();
@@ -156,7 +173,7 @@ export async function createResume(resumeName = "[New Resume]") {
       console.log("Resume created successfully")
       return responseJson.message;
     } else {
-      throw new Error("Failed to create resume");
+      throw responseJson.message;
     }
   } catch (error) {
     console.error(error);
@@ -166,12 +183,11 @@ export async function createResume(resumeName = "[New Resume]") {
 
 export async function updateResume(resumeId, data) {
   try {
-    const response = await fetch(`${apiUrl}/resume/${resumeId}`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}?key=${frontendApiKey}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify(data),
     });
@@ -194,11 +210,10 @@ export async function updateResume(resumeId, data) {
 
 export async function deleteResume(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/resume/${resumeId}`, {
+    const response = await fetch(`${apiUrl}/resume/${resumeId}?key=${frontendApiKey}`, {
       method: "DELETE",
       headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
     });
     const responseJson = await response.json();
@@ -221,10 +236,9 @@ export async function deleteResume(resumeId) {
 
 export async function fetchResumeSectionData(resumeId, section) { // profile, about, education etc.
   try {
-    const response = await fetch(`${apiUrl}/edit/${resumeId}/${section}`, {
+    const response = await fetch(`${apiUrl}/edit/${resumeId}/${section}?key=${frontendApiKey}`, {
       headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
     });
     if (response.status === 401) {
@@ -245,12 +259,11 @@ export async function fetchResumeSectionData(resumeId, section) { // profile, ab
 
 export async function updateResumeSectionData(resumeId, section, data) {
   try {
-    const response = await fetch(`${apiUrl}/edit/${resumeId}/${section}`, {
+    const response = await fetch(`${apiUrl}/edit/${resumeId}/${section}?key=${frontendApiKey}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${frontendApiKey}`,
-        "token": localStorage.getItem("token"),
+        "Authorization": localStorage.getItem("token"),
       },
       body: JSON.stringify(data),
     });
@@ -276,11 +289,7 @@ export async function updateResumeSectionData(resumeId, section, data) {
 // Public Notes API
 export async function fetchNewNotes(resumeId) {
   try {
-    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes`, {
-      headers: {
-        "Authorization": `Bearer ${frontendApiKey}`,
-      },
-    });
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes?key=${frontendApiKey}`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -295,11 +304,10 @@ export async function fetchNewNotes(resumeId) {
 
 export async function postNewNote(resumeId, text) {
   try {
-    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes`, {
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes?key=${frontendApiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${frontendApiKey}`,
       },
       body: JSON.stringify({ content: text }),
     });
@@ -318,11 +326,10 @@ export async function postNewNote(resumeId, text) {
 
 export async function deleteNote(resumeId, id) {
   try {
-    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes/${id}`, {
+    const response = await fetch(`${apiUrl}/public_notes/${resumeId}/public_notes/${id}?key=${frontendApiKey}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${frontendApiKey}`,
       },
     });
     if (response.ok) {
