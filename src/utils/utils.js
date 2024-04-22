@@ -220,7 +220,7 @@ export function handleMultilineChange(data, setData, dataName, index, key, value
  * @param {number} index 
  * @param {File} file
  */
-export function handleImageChange(data, setData, dataName, index, file) {
+export function handleDataImageChange(data, setData, dataName, index, file) {
   const newData = [...data[dataName]];
   if (file) {
     newData[index].image_file = file;
