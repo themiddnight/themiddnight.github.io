@@ -8,24 +8,30 @@ import { useMemo } from "react";
 import { PropTypes } from "prop-types";
 import "./App.css";
 
-export default function Themes({ children, bgMode = 0 }) {
+export default function Themes({ children, bg = {} }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const memoTheme = useMemo(() => {
-    const darkBg = "#1d1d1d";
-    const lightBg = "#eeeeee";
+    const originalDarkBg = "#1d1d1d";
+    const originalLightBg = "#eeeeee";
     let bgImage;
+    // prepare for custon bg color in the future
+    let darkBg = originalDarkBg;
+    let lightBg = originalLightBg;
 
-    if (bgMode === 1) {
+    if (bg.mode === 1) {
       bgImage = `
       linear-gradient(
         to bottom, transparent 20%, 
         ${prefersDarkMode ? darkBg : lightBg} 95%
       ) 
       ${generateMeshStyle()}`;
+    } else if (bg.mode === 2) {
+      bgImage = `url(${bg.image_url})`;
     } else {
       bgImage = prefersDarkMode ? darkBg : lightBg;
     }
+
 
     // Generate random number between min and max
     function rand(min, max) {
@@ -87,6 +93,7 @@ export default function Themes({ children, bgMode = 0 }) {
               backgroundRepeat: "no-repeat",
               backgroundAttachment: "fixed",
               backgroundImage: bgImage,
+              backgroundPosition: "center",
             },
           },
         },
@@ -105,8 +112,9 @@ export default function Themes({ children, bgMode = 0 }) {
               paddingBottom: 3,
               borderRadius: 20,
               boxShadow: "0 3px 8px 0 rgba(0, 0, 0, 0.2), inset 0 0 50px 0 rgba(0, 0, 0, 0.05)",
-              backgroundColor: prefersDarkMode ? "#000000bb" : "#ffffffee",
+              backgroundColor: prefersDarkMode ? "#000000dd" : "#ffffffdd",
               backgroundImage: "none",
+              backdropFilter: "blur(10px)",
             },
           },
         },
@@ -186,7 +194,7 @@ export default function Themes({ children, bgMode = 0 }) {
         },
       },
     });
-  }, [bgMode, prefersDarkMode]);
+  }, [bg, prefersDarkMode]);
 
   return (
     <ThemeProvider theme={memoTheme}>
@@ -198,5 +206,5 @@ export default function Themes({ children, bgMode = 0 }) {
 
 Themes.propTypes = {
   children: PropTypes.node.isRequired,
-  bgMode: PropTypes.number,
+  bg: PropTypes.object,
 };

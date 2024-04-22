@@ -15,7 +15,7 @@ import {
   handleDeleteData,
   handleMoveField,
   handleDataChange,
-  handleImageChange,
+  handleDataImageChange,
   resizeImage,
 } from "../../utils/utils";
 import {
@@ -66,7 +66,6 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
   const handleSubmit = async () => {
     setIsSaving(true);
     setClearFile(false);
-    setActiveData({ skills: data.active });
     // convert image_file to base64 and attatch to data
     const newData = [...data.data];
     try {
@@ -95,6 +94,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
+      setActiveData({ skills: data.active });
       setIsSaving(false);
       setClearFile(true);
       setTimeout(() => {
@@ -116,7 +116,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -216,7 +216,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
             >
               <ImageFileInput
                 label="Icon:"
-                onChange={(file) => handleImageChange(data, setData, "data", index, file)}
+                onChange={(file) => handleDataImageChange(data, setData, "data", index, file)}
                 isClear={clearFile}
                 sx={{ flexGrow: 1 }}
               />
@@ -253,6 +253,7 @@ export default function EditSkillsPage({ resumeId, setIsSaveSuccess, setActiveDa
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<SkillsCard data={data} />}
       />

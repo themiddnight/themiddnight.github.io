@@ -9,6 +9,7 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
+import { SaveRounded } from "@mui/icons-material";
 import PropTypes from "prop-types";
 
 export function EditPageTemplateHeader({
@@ -130,13 +131,13 @@ export function EditPageTemplateBody({
         {...props}
       >
         <Button variant="outlined" color="success" onClick={() => onClickAddData("top")}>
-          Add Data {dataLength > 0 && "Before"}
+          Insert Data {dataLength > 0 && "Before"}
         </Button>
 
         {children}
 
         {dataLength > 0 && <Button variant="outlined" color="success" onClick={() => onClickAddData("bottom")}>
-          Add Data After
+          Insert Data After
         </Button>}
         <Divider />
       </Box>
@@ -147,13 +148,17 @@ export function EditPageTemplateFooter({
   dataActive = true,
   previewelement,
   isSaving = false,
+  // onRefresh = () => {},
   onSave = () => {},
   ...props
 }) {
 
   return (
     <Box display={"flex"} flexDirection={"column"} rowGap={2} px={2} pb={12} {...props}>
-      {previewelement && <Typography variant="h5">Preview</Typography>}
+      {previewelement && <Box display={'flex'} alignItems={'baseline'} gap={1}>
+        <Typography variant="h5">Preview</Typography>
+        {/* <Button variant="text" onClick={onRefresh}>Refresh</Button> */}
+      </Box>}
       
       <Box
         display="grid"
@@ -170,7 +175,7 @@ export function EditPageTemplateFooter({
         color="primary"
         size="large"
         onClick={onSave}
-        startIcon={isSaving && <CircularProgress size={16} />}
+        startIcon={isSaving ? <CircularProgress size={16} color="grey" /> : <SaveRounded />}
       >
         {isSaving ? "Saving..." : "Save"}
       </Button>
@@ -203,6 +208,7 @@ EditPageTemplateBody.propTypes = {
 EditPageTemplateFooter.propTypes = {
   dataActive: PropTypes.bool,
   onSave: PropTypes.func,
+  // onRefresh: PropTypes.func,
   isSaving: PropTypes.bool,
   previewelement: PropTypes.node,
 };

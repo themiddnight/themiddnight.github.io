@@ -13,7 +13,7 @@ import AboutCard from "../components/home/AboutCard";
 import EducationCard from "../components/home/EducationCard";
 import ExperienceCard from "../components/home/ExperienceCard";
 import ProjectsCard from "../components/home/ProjectsCard";
-import ToolsCard from "../components/home/ToolsCard";
+import CollectionsCard from "../components/home/CollectionsCard";
 import SkillsCard from "../components/home/SkillsCard";
 import CertificationsCard from "../components/home/CertificationsCard";
 import LanguagesCard from "../components/home/LanguagesCard";
@@ -126,7 +126,7 @@ export default function HomePage() {
     )
   } else if (data.settings.layout === 0) {
     return (
-      <Themes bgMode={data.settings.background_mode}>
+      <Themes bg={data.settings.background}>
         <Header />
         <Box>
           <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 8} }}>
@@ -152,7 +152,7 @@ export default function HomePage() {
                 >
                 {data.projects.active && <Box className={'card2'}><ProjectsCard data={data.projects} /></Box>}
                 {data.skills.active && <Box className={'card3'}><SkillsCard data={data.skills} /></Box>}
-                {data.tools.active && <Box className={'card4'}><ToolsCard data={data.tools} /></Box>}
+                {data.collections.active && <Box className={'card4'}><CollectionsCard data={data.collections} /></Box>}
                 {data.languages.active && <Box className={'card5'} display={{ xs:'blodk', sm: 'none'}}><LanguagesCard data={data.languages} /></Box>}
                 {data.certifications.active && <Box className={'card6'}><CertificationsCard data={data.certifications} /></Box>}
                 {data.other_links.active && <Box className={'card7'}><OtherProfileCard data={data.other_links} /></Box>}
@@ -167,7 +167,7 @@ export default function HomePage() {
   } 
 
   return (
-    <Themes bgMode={data.settings.background_mode}>
+    <Themes bg={data.settings.background}>
       <Header />
       <Box>
         <Container maxWidth="xl" sx={{ py: {xs: 2, sm: 3, xl: 8} }}>
@@ -212,7 +212,7 @@ export default function HomePage() {
                   flexDirection="column"
                   gap={2.5}
                 >
-                  {data.tools.active && <Box className={'card4'}><ToolsCard data={data.tools} /></Box>}
+                  {data.collections.active && <Box className={'card4'}><CollectionsCard data={data.collections} /></Box>}
                   {data.languages.active && <Box className={'card4'} display={{ xs: 'block', sm: 'none', lg: 'none' }}><LanguagesCard data={data.languages} /></Box>}
                   {data.certifications.active && <Box className={'card6'}><CertificationsCard data={data.certifications} /></Box>}
                   {data.other_links.active && <Box className={'card7'} display={{ xs: 'block', sm: 'none', lg: 'block' }}><OtherProfileCard data={data.other_links} /></Box>}

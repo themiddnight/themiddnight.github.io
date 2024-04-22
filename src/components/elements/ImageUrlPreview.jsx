@@ -83,7 +83,7 @@ export default function ImageUrlPreview({
 }
 
 ImageUrlPreview.propTypes = {
-  imageFile: PropTypes.object || PropTypes.string,
+  imageFile: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   imageUrl: PropTypes.string,
   imageUrlOriginal: PropTypes.string,
   onClear: PropTypes.func.isRequired,

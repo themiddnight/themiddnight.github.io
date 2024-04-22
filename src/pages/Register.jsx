@@ -17,9 +17,11 @@ import { useState } from "react";
 import { Helmet } from "react-helmet";
 
 import Themes from "../Themes";
+import Footer from "../components/elements/Footer";
 
 export default function RegistarPage() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const frontendApiKey = import.meta.env.VITE_API_KEY;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // regex test, email format
   const passwordRegex = /.{8,}/; // regex test, at least 8 any characters
 
@@ -48,7 +50,7 @@ export default function RegistarPage() {
 
     try {
       setIsSaving(true);
-      const response = await fetch(`${apiUrl}/auth/register`, {
+      const response = await fetch(`${apiUrl}/auth/register?key=${frontendApiKey}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,10 +110,12 @@ export default function RegistarPage() {
         <Alert severity="error">{message}</Alert>
       </Snackbar>
 
-      <Box display={"flex"} flexDirection={"column"} alignItems={"center"} height={"100dvh"} justifyContent={"center"}>
-        <Container maxWidth={'sm'}>
+      <Box display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
+        <Container maxWidth={'lg'}>
           <Fade in={true} timeout={500}>
-          <Card>
+          <Box>
+          <Container maxWidth='sm'>
+          <Card sx={{ mt: 10 }}>
             <CardHeader title="Register" />
             <CardContent>
               <Box display={"flex"} flexDirection={"column"} rowGap={2}>
@@ -192,6 +196,9 @@ export default function RegistarPage() {
               </Box>
             </CardContent>
           </Card>
+          </Container>
+          <Footer />
+          </Box>
           </Fade>
         </Container>
       </Box>

@@ -12,10 +12,13 @@ import {
   fetchResumeSectionData,
   updateResumeSectionData,
 } from "../../utils/fetch";
+import { resizeImage } from "../../utils/utils";
 
 import { EditPageTemplateFooter } from "../elements/EditPageTemplate";
 import IntroScreen from "../home/IntroScreen";
 import EditButtons from "../elements/EditButtons";
+import ImageFileInput from "../elements/ImageFileInput";
+import ImageUrlPreview from "../elements/ImageUrlPreview";
 
 const layoutOptions = [
   { label: "Two Columns", value: 0 },
@@ -23,18 +26,21 @@ const layoutOptions = [
 ];
 
 const backgroundOptions = [
-  { label: "Basic", value: 0 },
-  { label: "Colored", value: 1 },
+  { label: "Plain", value: 0 },
+  { label: "Random Color", value: 1 },
+  { label: "Image", value: 2 },
 ];
 
 export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessage }) {
   const [data, setData] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [clearFile, setClearFile] = useState(false);
 
   const fetchData = useCallback(async (resumeId) => {
     try {
       const data = await fetchResumeSectionData(resumeId, "settings");
+      data.background.image_url_original = data.background.image_url;
       setData(data);
       setIsLoaded(true);
     } catch (error) {
@@ -44,10 +50,18 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessag
 
   const handleSubmit = async () => {
     setIsSaving(true);
+    setClearFile(false);
     try {
+      if (data.background.image_file) {
+        const newData = { ...data };
+        newData.background.image_file = await resizeImage(data.background.image_file, 1440);
+        delete newData.background.image_url_original;
+        setData(newData);
+      }
       const result = await updateResumeSectionData(resumeId, "settings", data);
       setMessage(result);
       setIsSaveSuccess(null);
+      setClearFile(true);
       setTimeout(() => {
         setIsSaveSuccess(true);
         fetchData(resumeId);
@@ -63,6 +77,29 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessag
     }
   };
 
+  function handleImageChange(file) {
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setData(prev => ({
+        ...prev,
+        background: {
+          ...prev.background,
+          image_file: file,
+          image_url: imageUrl,
+        },
+      }));
+    } else {
+      setData(prev => ({
+        ...prev,
+        background: {
+          ...prev.background,
+          image_file: null,
+          image_url: prev.background.image_url_original,
+        },
+      }));
+    }
+  }
+
   useEffect(() => {
     fetchData(resumeId);
   }, [fetchData, resumeId]);
@@ -73,7 +110,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessag
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
-        height={"100vh"}
+        height={"100dvh"}
       >
         <CircularProgress />
       </Box>
@@ -93,40 +130,68 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessag
           <Typography variant="h6" gutterBottom>
             Main
           </Typography>
-          <Box display={"flex"} gap={2} px={{ xs: 0, sm: 3 }} py={2}>
-            <TextField
-              label="Layout"
-              helperText="It takes effect on the large screen"
-              select
-              fullWidth
-              SelectProps={{ native: true }}
-              size="small"
-              value={data.layout}
-              onChange={(e) => setData({ ...data, layout: +e.target.value })}
-            >
-              {layoutOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </TextField>
-            <TextField
-              label="Background Mode"
-              select
-              fullWidth
-              SelectProps={{ native: true }}
-              size="small"
-              value={data.background_mode}
-              onChange={(e) =>
-                setData({ ...data, background_mode: +e.target.value })
-              }
-            >
-              {backgroundOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </TextField>
+          <Box display={'flex'} flexDirection={'column'} gap={2} px={{ xs: 0, sm: 3 }} py={2}>
+            <Box display={"flex"} gap={2} alignItems={'baseline'}>
+              <TextField
+                label="Layout"
+                helperText="It takes effect on the large screen"
+                select
+                fullWidth
+                SelectProps={{ native: true }}
+                size="small"
+                value={data.layout}
+                onChange={(e) => setData({ ...data, layout: +e.target.value })}
+              >
+                {layoutOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
+              <TextField
+                label="Background Mode"
+                select
+                fullWidth
+                SelectProps={{ native: true }}
+                size="small"
+                value={data.background.mode}
+                onChange={(e) => setData({ ...data, background: { ...data.background, mode: +e.target.value } })}
+              >
+                {backgroundOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
+            </Box>
+            {data.background.mode === 2 && <Box display={"flex"} gap={2}>
+              <ImageUrlPreview
+                imageFile={data.background.image_file}
+                imageUrl={data.background.image_url}
+                imageUrlOriginal={data.background.image_url_original}
+                onClear={() =>
+                  setData({
+                    ...data,
+                    background: { ...data.background, image_url: "" },
+                  })
+                }
+                onRevert={() =>
+                  setData({
+                    ...data,
+                    background: {
+                      ...data.background,
+                      image_url: data.background.image_url_original,
+                    },
+                  })
+                }
+              />
+              <ImageFileInput
+                label="Background Image"
+                isClear={clearFile}
+                onChange={(file) => handleImageChange(file)}
+                sx={{ flexGrow: 1 }}
+              />
+            </Box>}
           </Box>
         </Box>
         <Divider />
@@ -191,6 +256,7 @@ export default function EditSettingsPage({ resumeId, setIsSaveSuccess, setMessag
 
       <EditPageTemplateFooter
         onSave={handleSubmit}
+        isSaving={isSaving}
         previewelement={
           <Box
             display={"flex"}

@@ -18,6 +18,7 @@ import Themes from "../Themes";
 
 export default function ResetPasswordPage() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const frontendApiKey = import.meta.env.VITE_API_KEY;
   const { token } = useParams();
   const [searchParams] = useSearchParams();
   const [password, setPassword] = useState("");
@@ -31,7 +32,7 @@ export default function ResetPasswordPage() {
   async function handleResetPassword(password) {
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${apiUrl}/auth/reset-password`, {
+      const response = await fetch(`${apiUrl}/auth/reset-password?key=${frontendApiKey}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +64,7 @@ export default function ResetPasswordPage() {
       <Helmet>
         <title>Reset Password</title>
       </Helmet>
-      <Box display={"flex"} flexDirection={"column"} alignItems={"center"} height={"100vh"} justifyContent={"center"}>
+      <Box display={"flex"} flexDirection={"column"} alignItems={"center"} height={"100dvh"} justifyContent={"center"}>
         <Container maxWidth={'sm'}>
           <Card>
             <CardHeader title="Reset Password" subheader={`For ${email}`} />

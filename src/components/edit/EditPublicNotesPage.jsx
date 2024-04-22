@@ -34,7 +34,6 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
 
   const handleSubmit = async () => {
     setIsSaving(true);
-    setActiveData({ public_notes: data.active });
     try {
       const result = await updateResumeSectionData(resumeId, "public_notes", data);
       setMessage(result);
@@ -42,6 +41,7 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
       setTimeout(() => {
         setIsSaveSuccess(true);
         fetchData(resumeId);
+        setActiveData({ public_notes: data.active });
         setIsSaving(false);
       }, 100);
     } catch (error) {
@@ -60,7 +60,7 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
 
   if (!isLoaded) {
     return (
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
           <CircularProgress />
         </Box>
     );
@@ -78,8 +78,9 @@ export default function EditPublicNotesPage({ resumeId, setIsSaveSuccess, setAct
       />
       
       <EditPageTemplateFooter
-        onSave={handleSubmit}
         dataActive={data.active}
+        isSaving={isSaving}
+        onSave={handleSubmit}
         previewelement={<PublicNotesCard resumeId={resumeId} data={data} />}
         mt={2}
       />

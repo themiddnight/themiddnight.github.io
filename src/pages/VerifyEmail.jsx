@@ -6,6 +6,7 @@ import Themes from "../Themes";
 
 export default function VerifyEmailPage() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const frontendApiKey = import.meta.env.VITE_API_KEY;
   const { token } = useParams();
   const [isVerifying, setIsVerifying] = useState(true);
   const [isVerified, setIsVerified] = useState(false);
@@ -13,7 +14,7 @@ export default function VerifyEmailPage() {
   useEffect(() => {
     async function verifyEmail() {
       try {
-        const response = await fetch(`${apiUrl}/auth/verify-email`, {
+        const response = await fetch(`${apiUrl}/auth/verify-email?key=${frontendApiKey}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +35,7 @@ export default function VerifyEmailPage() {
     }
 
     verifyEmail();
-  }, [apiUrl, token]);
+  }, [apiUrl, frontendApiKey, token]);
   
   return (
     <Themes>
@@ -47,13 +48,16 @@ export default function VerifyEmailPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100vh",
+          height: "100dvh",
         }}
       >
         <Typography variant="h4" gutterBottom>
           Verify Email
         </Typography>
-        {isVerifying && <Typography>Verifying...<CircularProgress /></Typography>}
+        {isVerifying && <Box display="flex" alignItems="center" gap={2}>
+          <Typography>Verifying...</Typography>
+          <CircularProgress size={20} />
+        </Box>}
         {isVerified && <Typography>
           Email verified! <Link href="/#/login">click to continue.</Link> 
         </Typography>}

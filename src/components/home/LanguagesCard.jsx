@@ -10,7 +10,7 @@ import {
   DriveFileRenameOutline,
   RecordVoiceOver,
   Hearing,
-  Language,
+  PublicRounded,
 } from "@mui/icons-material";
 import { TransitionGroup } from "react-transition-group";
 import { useState, useEffect } from "react";
@@ -64,7 +64,7 @@ export default function LanguagesCard({ data }) {
     <Card>
       <CardContent>
         <CardHeader>
-          <Language fontSize="large" />
+          <PublicRounded fontSize="large" />
           {data.title}
         </CardHeader>
         <Typography fontStyle={"italic"} mb={ data.subtitle ? 2 : 0 }>

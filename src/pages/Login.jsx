@@ -20,9 +20,11 @@ import { Helmet } from "react-helmet";
 import { sendResetPassword } from "../utils/fetch";
 
 import Themes from "../Themes";
+import Footer from "../components/elements/Footer";
 
 export default function LoginPage() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const frontendApiKey = import.meta.env.VITE_API_KEY;
 
   const [isMatched, setIsMatched] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -43,7 +45,7 @@ export default function LoginPage() {
 
     try {
       setIsSaving(true);
-      const response = await fetch(`${apiUrl}/auth/login`, {
+      const response = await fetch(`${apiUrl}/auth/login?key=${frontendApiKey}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -123,12 +125,14 @@ export default function LoginPage() {
         display={"flex"}
         flexDirection={"column"}
         alignItems={"center"}
-        height={"100vh"}
+        // height={"100dvh"}
         justifyContent={"center"}
       >
-        <Container maxWidth={"sm"}>
+        <Container>
           <Fade in={true} timeout={500}>
-            <Card>
+          <Box>
+          <Container maxWidth={"sm"}>
+            <Card sx={{ mt: 10 }}>
               <CardHeader title="Create your resume" subheader="Login" />
               <CardContent>
                 <Box display={"flex"} flexDirection={"column"} rowGap={2}>
@@ -202,6 +206,9 @@ export default function LoginPage() {
                 </Box>
               </CardContent>
             </Card>
+            </Container>
+            <Footer />
+          </Box>
           </Fade>
         </Container>
       </Box>

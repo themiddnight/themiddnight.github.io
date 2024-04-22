@@ -1,10 +1,21 @@
-import { Box, Container, IconButton, Snackbar, Alert, CircularProgress } from "@mui/material";
+import {
+  Box,
+  Container,
+  IconButton,
+  Snackbar,
+  Alert,
+  CircularProgress,
+} from "@mui/material";
 import { List } from "@mui/icons-material";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import { fetchResumeSummary, fetchResumeSectionData } from "../utils/fetch";
+import {
+  fetchResumeSummary,
+  // fetchResumeSectionData,
+  // updateResumeSectionData,
+} from "../utils/fetch";
 
 import Themes from "../Themes";
 import EditSidebar from "../components/elements/EditSidebar";
@@ -15,7 +26,7 @@ import EditExperiencesPage from "../components/edit/EditExperiencesPage";
 import EditEducationPage from "../components/edit/EditEducationPage";
 import EditProjectsPage from "../components/edit/EditProjectsPage";
 import EditSkillsPage from "../components/edit/EditSkillsPage";
-import EditToolsPage from "../components/edit/EditToolsPage";
+import EditCollectionsPage from "../components/edit/EditCollectionsPage";
 import EditLanguagesPage from "../components/edit/EditLanguagesPage";
 import EditCertificationsPage from "../components/edit/EditCertificationsPage";
 import EditOtherLinksPage from "../components/edit/EditOtherLinksPage";
@@ -30,7 +41,7 @@ const pageList = [
   { name: "education", title: "Education" },
   { name: "projects", title: "Projects" },
   { name: "skills", title: "Skills" },
-  { name: "tools", title: "Tools" },
+  { name: "collections", title: "Collections" },
   { name: "languages", title: "Languages" },
   { name: "certifications", title: "Certifications" },
   { name: "other_links", title: "Other Links" },
@@ -41,8 +52,7 @@ export default function EditPage() {
   const { resumeId } = useParams();
 
   const [sidebarData, setSidebarData] = useState({});
-  const [editPageData, setEditPageData] = useState({});
-  const [isLoaded, setIsLoaded] = useState([false, true]);
+  const [isSidebarLoaded, setIsSidebarLoaded] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSidebarHidden, setIsSidebarHidden] = useState(true);
@@ -51,48 +61,50 @@ export default function EditPage() {
   const [message, setMessage] = useState("");
   const [activeData, setActiveData] = useState({});
 
-  function handleChangePage(page){
+  function handleChangePage(page) {
     setSearchParams({ page: page.name });
     setIsSidebarHidden(true);
-    if (searchParams.get("page") === page.name) {
-      // refresh page
-      setCurrentPage({});
-      setTimeout(() => {
-        setCurrentPage(page);
-      }, 50);
-    }
+    // if the page is the same, reset the page
+    if (page.name === currentPage.name) setCurrentPage({})
+    setTimeout(() => {
+      setCurrentPage(page);
+    }, 100)
   }
 
+  // set current page from search params
   useEffect(() => {
-    const page = pageList.find((page) => page.name === searchParams.get("page"));
-    if (page) {
-      setCurrentPage(page);
-    }
+    const page = pageList.find(page => page.name === searchParams.get("page"));
+    if (page) setCurrentPage(page);
   }, [searchParams]);
 
+  // lock scroll when sidebar is open
   useEffect(() => {
-    if (!isSidebarHidden) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "scroll"
-    }
+    if (!isSidebarHidden) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "scroll";
   }, [isSidebarHidden]);
 
+  // update active section in sidebar when active data is changed
   useEffect(() => {
     const newActiveData = { ...sidebarData.data_active, ...activeData };
     setSidebarData({ ...sidebarData, data_active: newActiveData });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeData]);
 
+  // fetch summary data to sidebar
   useEffect(() => {
-    fetchResumeSummary(resumeId).then((data) => {
-      setSidebarData(data);
-      setIsLoaded([true, isLoaded[1]]);
-    });
+    fetchResumeSummary(resumeId)
+      .then((data) => {
+        setSidebarData(data);
+        setIsSidebarLoaded(true);
+      })
+      .catch(() => {
+        // if resume is not own by user, redirect to create page
+        window.location.href = "/#/create"; 
+      });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resumeId]);
 
-  if (!isLoaded.every((loaded) => loaded)) {
+  if (!isSidebarLoaded) {
     return (
       <Themes>
         <Box
@@ -110,16 +122,23 @@ export default function EditPage() {
   return (
     <Themes>
       <Helmet>
-        <title>Edit Resume</title>
+        <title>{sidebarData.owner} - Edit Resume</title>
       </Helmet>
 
       {/*  */}
       <IconButton
-        sx={{ 
-          display: { xs: "block", md: "none" }, 
-          position: "fixed", top: 0, right: 0, zIndex: 999, m: 2, 
-          borderRadius: 2, p: 0.6, pb: 0,
-          border: 1, borderColor: "divider",
+        sx={{
+          display: { xs: "block", md: "none" },
+          position: "fixed",
+          top: 0,
+          right: 0,
+          zIndex: 999,
+          m: 2,
+          borderRadius: 2,
+          p: 0.6,
+          pb: 0,
+          border: 1,
+          borderColor: "divider",
           boxShadow: 1,
           backdropFilter: "blur(10px)",
         }}
@@ -127,7 +146,7 @@ export default function EditPage() {
       >
         <List />
       </IconButton>
-      
+
       {/* backdrop */}
       <Box
         display={{ xs: isSidebarHidden ? "none" : "block", md: "none" }}
@@ -144,25 +163,37 @@ export default function EditPage() {
         onClick={() => setIsSidebarHidden(!isSidebarHidden)}
       />
 
-      {/* sidebar */}
       <Box display={"flex"}>
-        <EditSidebar 
-          resumeId={resumeId} 
+        {/* sidebar */}
+        <EditSidebar
+          resumeId={resumeId}
           data={sidebarData}
-          isSidebarHidden={isSidebarHidden} 
+          isSidebarHidden={isSidebarHidden}
           currentPage={currentPage}
           pageList={pageList}
           onClick={(index) => handleChangePage(pageList[index])}
         />
 
         <Container sx={{ px: { xs: 0, md: 1 } }}>
-
           {/* alear box */}
-          <Snackbar open={isSaveSuccess === true} autoHideDuration={5000} onClose={() => setIsSaveSuccess(null)}>
-            <Alert severity="success" onClose={() => setIsSaveSuccess(null)}>{`${message}`}</Alert>
+          <Snackbar
+            open={isSaveSuccess === true}
+            autoHideDuration={5000}
+            onClose={() => setIsSaveSuccess(null)}
+          >
+            <Alert
+              severity="success"
+              onClose={() => setIsSaveSuccess(null)}
+            >{`${message}`}</Alert>
           </Snackbar>
-          <Snackbar open={isSaveSuccess === false} onClose={() => setIsSaveSuccess(null)}>
-            <Alert severity="error" onClose={() => setIsSaveSuccess(null)}>{`Something wrong: ${message}`}</Alert>
+          <Snackbar
+            open={isSaveSuccess === false}
+            onClose={() => setIsSaveSuccess(null)}
+          >
+            <Alert
+              severity="error"
+              onClose={() => setIsSaveSuccess(null)}
+            >{`Something wrong: ${message}`}</Alert>
           </Snackbar>
 
           {/* edit pages */}
@@ -220,8 +251,8 @@ export default function EditPage() {
               setMessage={setMessage}
             />
           )}
-          {currentPage.name === "tools" && (
-            <EditToolsPage
+          {currentPage.name === "collections" && (
+            <EditCollectionsPage
               resumeId={resumeId}
               setActiveData={setActiveData}
               setIsSaveSuccess={setIsSaveSuccess}

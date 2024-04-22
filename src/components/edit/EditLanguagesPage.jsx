@@ -49,7 +49,6 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
 
   const handleSubmit = async () => {
     setIsSaving(true);
-    setActiveData({ languages: data.active });
     const promises = data.data.map(async (item) => {
       if (item.native) {
         item.skills.read.value = 100;
@@ -64,6 +63,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
       setMessage(result);
       setIsSaveSuccess(null);
       fetchData(resumeId);
+      setActiveData({ languages: data.active });
       setIsSaving(false);
       setTimeout(() => {
         setIsSaveSuccess(true);
@@ -84,7 +84,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -179,6 +179,7 @@ export default function EditLanguagesPage({ resumeId, setIsSaveSuccess, setActiv
       </EditPageTemplateBody>
 
       <EditPageTemplateFooter
+        dataActive={data.active}
         isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<LanguagesCard data={data} />}

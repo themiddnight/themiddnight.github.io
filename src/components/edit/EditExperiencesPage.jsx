@@ -47,7 +47,6 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
 
   const handleSubmit = async () => {
     setIsSaving(true);
-    setActiveData({ experiences: data.active });
     try {
       const result = await updateResumeSectionData(resumeId, "experiences", data);
       setMessage(result)
@@ -55,6 +54,7 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
       setTimeout(() => {
         setIsSaveSuccess(true);
         fetchData(resumeId);
+        setActiveData({ experiences: data.active });
         setIsSaving(false);
       }, 100);
     } catch (error) {
@@ -73,7 +73,7 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -188,6 +188,7 @@ export default function EditExperiencesPage({ resumeId, setIsSaveSuccess, setAct
       </EditPageTemplateBody>
 
       <EditPageTemplateFooter
+        dataActive={data.active}
         isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<ExperienceCard data={data} />}

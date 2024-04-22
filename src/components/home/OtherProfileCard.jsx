@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
-import { GroupsRounded, OpenInNewRounded } from "@mui/icons-material";
+import { LinkRounded, OpenInNewRounded } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -27,7 +27,7 @@ export default function OtherProfileCard({ data }) {
     <Card>
       <CardContent>
         <CardHeader>
-          <GroupsRounded fontSize="large" />
+          <LinkRounded fontSize="large" />
           {data.title}
         </CardHeader>
         <Typography fontStyle={"italic"} mb={ data.subtitle ? 2 : 0 }>

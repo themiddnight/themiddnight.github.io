@@ -5,6 +5,8 @@ import {
   TextField,
   CircularProgress,
   Chip,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
@@ -14,7 +16,7 @@ import {
   handleDeleteData,
   handleMoveField,
   handleDataChange,
-  handleImageChange,
+  handleDataImageChange,
   resizeImage,
 } from "../../utils/utils";
 import {
@@ -59,7 +61,6 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
   const handleSubmit = async () => {
     setIsSaving(true);
     setClearFile(false);
-    setActiveData({ projects: data.active });
     // convert image_file to base64 and attatch to data
     const newData = [...data.data];
     try {
@@ -88,6 +89,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
+      setActiveData({ projects: data.active });
       setIsSaving(false);
       setClearFile(true);
       setTimeout(() => {
@@ -109,7 +111,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -127,7 +129,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
         dataDisplayMode={data.display_mode}
         dataDisplayModeOptions={[
           { label: "List", value: 0 },
-          { label: "H-Scroll", value: 1 },
+          { label: "X-Scroll", value: 1 },
         ]}
         onChange={(key, value) => setData({ ...data, [key]: value })}
       />
@@ -138,7 +140,9 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
           handleAddData(data, setData, "data", {
             active: true,
             title: "",
-            created_at: "",
+            from: "",
+            to: "",
+            current: false,
             tags: [],
             image_file: null,
             image_path: "",
@@ -184,21 +188,41 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
                   onChange={(e) => handleDataChange(data, setData, "data", index, "title", e.target.value)}
                 />
               </Box>
-
-              <TextField
-                label="Created At"
-                variant="outlined"
-                size="small"
-                type="date"
-                sx={{ flexShrink: 0 }}
-                value={item.created_at}
-                InputLabelProps={{ shrink: true }}
-                onChange={(e) => handleDataChange(data, setData, "data", index, "created_at", e.target.value)}
-              />
-
-
             </Box>
-            <ImageFileInput label="Cover image:" onChange={(file) => handleImageChange(data, setData, "data", index, file)} isClear={clearFile} />
+            <Box display={'flex'} flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
+              <Box display={'flex'} gap={1}>
+                <TextField
+                  label="From"
+                  variant="outlined"
+                  size="small"
+                  type="date"
+                  fullWidth
+                  error={item.from === ""}
+                  value={item.from}
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e) => handleDataChange(data, setData, "data", index, 'from', e.target.value)}
+                />
+                <TextField
+                  label="To"
+                  variant="outlined"
+                  size="small"
+                  type="date"
+                  fullWidth
+                  error={item.to === "" && !item.current}
+                  value={item.to}
+                  disabled={item.current}
+                  InputLabelProps={{ shrink: true }}
+                  onChange={(e) => handleDataChange(data, setData, "data", index, 'to', e.target.value)}
+                />
+              </Box>
+
+              <FormControlLabel sx={{ ml: 0.5, flexShrink: 0 }}
+                control={<Checkbox checked={item.current} 
+                onChange={(e) => handleDataChange(data, setData, "data", index, 'current', e.target.checked)} />}
+                label="Current"
+              />
+            </Box>
+            <ImageFileInput label="Cover image:" onChange={(file) => handleDataImageChange(data, setData, "data", index, file)} isClear={clearFile} />
 
             <TextField
               label="Description"
@@ -301,6 +325,7 @@ export default function EditProjectsPage({ resumeId, setIsSaveSuccess, setActive
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<ProjectsCard data={data} />}
       />

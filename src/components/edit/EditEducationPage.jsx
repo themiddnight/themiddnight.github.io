@@ -46,7 +46,6 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
 
   const handleSubmit = async () => {
     setIsSaving(true);
-    setActiveData({ education: data.active });
     try {
       const result = await updateResumeSectionData(resumeId, "education", data);
       setMessage(result)
@@ -54,6 +53,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
       setTimeout(() => {
         setIsSaveSuccess(true);
         fetchData(resumeId);
+        setActiveData({ education: data.active });
         setIsSaving(false);
       }, 100);
     } catch (error) {
@@ -72,7 +72,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -188,6 +188,7 @@ export default function EditEducationPage({ resumeId, setIsSaveSuccess, setActiv
       </EditPageTemplateBody>
 
       <EditPageTemplateFooter
+        dataActive={data.active}
         isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<EducationCard data={data} />}

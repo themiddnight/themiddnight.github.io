@@ -43,7 +43,6 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
 
   const handleSubmit = async () => {
     setIsSaving(true);
-    setActiveData({ other_links: data.active });
     try {
       const result = await updateResumeSectionData(resumeId, "other_links", data);
       setMessage(result);
@@ -51,6 +50,7 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
       setTimeout(() => {
         setIsSaveSuccess(true);
         fetchData(resumeId);
+        setActiveData({ other_links: data.active });
         setIsSaving(false);
       }, 100);
     } catch (error) {
@@ -69,7 +69,7 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -123,6 +123,7 @@ export default function EditOtherLinksPage({ resumeId, setIsSaveSuccess, setActi
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<OtherProfileCard data={data} />}
       />

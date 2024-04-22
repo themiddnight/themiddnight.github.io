@@ -11,7 +11,7 @@ import {
   handleDeleteData,
   handleMoveField,
   handleDataChange,
-  handleImageChange,
+  handleDataImageChange,
   resizeImage,
 } from "../../utils/utils";
 import {
@@ -54,7 +54,6 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
   const handleSubmit = async () => {
     setIsSaving(true);
     setClearFile(false);
-    setActiveData({ certifications: data.active });
     // convert image_file to base64 and attatch to data
     const newData = [...data.data];
     try {
@@ -83,6 +82,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
       setIsSaveSuccess(null);
       // setData({ ...data, data: [] });
       fetchData(resumeId);
+      setActiveData({ certifications: data.active });
       setIsSaving(false);
       setClearFile(true);
       setTimeout(() => {
@@ -104,7 +104,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
 
   if (!isLoaded) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100vh"}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"100dvh"}>
         <CircularProgress />
       </Box>
     );
@@ -178,7 +178,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
               </Box>
                 <ImageFileInput
                   label="Icon:"
-                  onChange={(file) => handleImageChange(data, setData, "data", index, file)}
+                  onChange={(file) => handleDataImageChange(data, setData, "data", index, file)}
                   isClear={clearFile}
                   sx={{ flexGrow: 1 }}
                 />
@@ -231,6 +231,7 @@ export default function EditCertificationsPage({ resumeId, setIsSaveSuccess, set
 
       <EditPageTemplateFooter
         dataActive={data.active}
+        isSaving={isSaving}
         onSave={handleSubmit}
         previewelement={<CertificationsCard data={data} />}
       />

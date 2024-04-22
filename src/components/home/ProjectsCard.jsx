@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, Link, Typography, Chip, Divider, Collapse } from "@mui/material";
-import { OpenInNew, AccountTreeRounded } from "@mui/icons-material";
+import { OpenInNew, AppsRounded } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
 import { TransitionGroup } from "react-transition-group";
 import { useState, useEffect } from "react";
@@ -28,7 +28,7 @@ export default function ProjectsCard({ data }) {
     <Card>
       <CardContent>
         <CardHeader>
-          <AccountTreeRounded fontSize="large" />
+          <AppsRounded fontSize="large" />
           {data.title}
         </CardHeader>
 
@@ -55,8 +55,9 @@ export default function ProjectsCard({ data }) {
                 flexDirection={{ xs: "column", lg: "row" }}
                 borderRadius={"10px"}
                 overflow={"hidden"}
-                boxShadow={1}
-                bgcolor={ theme.palette.mode === "dark" ? { xs: "#44444466", lg: 'transparent' } : { xs: "#eee", lg: "transparent" } }
+                boxShadow={{ xs: 1, lg: 0 }}
+                bgcolor={ theme.palette.mode === "dark" ? { xs: "#44444466", lg: 'transparent' } : { xs: "#cccccc88", lg: "transparent" } }
+                border={"1px solid #00000011"}
               >
                 <ProjectContent data={project} display_mode={data.display_mode} />
               </Box>
@@ -108,7 +109,8 @@ export default function ProjectsCard({ data }) {
               borderRadius={"10px"}
               overflow={"hidden"}
               boxShadow={1}
-              bgcolor={ theme.palette.mode === "dark" ? "#44444488" : "#eee" }
+              bgcolor={ theme.palette.mode === "dark" ? "#44444488" : "#cccccc88" }
+              border={"1px solid #00000011"}
               sx={{
                 display: project.active ? "flex" : "none",
                 scrollSnapAlign: { xs: "center", md: "start" },
@@ -127,6 +129,10 @@ export default function ProjectsCard({ data }) {
 }
 
 const ProjectContent = ({ data, display_mode }) => {
+  function fromToString(from, to, current) {
+    return `${convertDate(from)} ${from && to ? " - " : "" } ${current ? "Present" : convertDate(to)}`;
+  }
+  
   return (
     <>
       {data.image_url && (
@@ -185,12 +191,12 @@ const ProjectContent = ({ data, display_mode }) => {
         >
           {data.tags.join(", ")}
         </Typography>
-        <Box
+        {/* <Box
           display={"flex"}
           justifyContent={"space-between"}
           alignItems={"baseline"}
           gap={2}
-        >
+        > */}
           <Typography 
             component={data.public_link ? Link : "span"}
             href={data.public_link}
@@ -201,10 +207,10 @@ const ProjectContent = ({ data, display_mode }) => {
           >
             {data.title}
           </Typography>
-          <Typography fontSize={"small"} align="right" flexShrink={0}>
-            {convertDate(data.created_at, false, false)}
+          <Typography fontSize={"small"}>
+            {fromToString(data.from, data.to, data.current)}
           </Typography>
-        </Box>
+        {/* </Box> */}
         <Box display={"flex"} flexWrap={"wrap"} gap={1} my={1}>
           {data.links.map((link, index) => (
             <Chip
@@ -217,7 +223,7 @@ const ProjectContent = ({ data, display_mode }) => {
               size="small"
               // color="primary"
               icon={<OpenInNew fontSize="small" />}
-              sx={{ px: 0.5 }}
+              sx={{ px: 0.5, ml: -0.5 }}
             />
           ))}
         </Box>

@@ -32,7 +32,7 @@ export default function EditButtons({
           flexDirection: "column",
         }}
       >
-        <Collapse in={open}>
+        <Collapse in={open} timeout={200}>
           <Box
             display="flex"
             flexDirection="column"

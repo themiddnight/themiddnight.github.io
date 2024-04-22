@@ -7,7 +7,7 @@ import {
   Collapse,
 } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
-import { TerminalRounded } from "@mui/icons-material";
+import { TipsAndUpdatesRounded } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -33,7 +33,7 @@ export default function SkillsCard({ data }) {
     <Card>
       <CardContent>
         <CardHeader>
-          <TerminalRounded fontSize="large" />
+          <TipsAndUpdatesRounded fontSize="large" />
           {data.title}
         </CardHeader>
         <Typography fontStyle={"italic"} mb={ data.subtitle ? 2 : 0 }>
