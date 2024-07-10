@@ -104,7 +104,7 @@ export default function ProfileCard({ data = {} }) {
             <ListItemIcon>
               <EmailRounded color={"primary"} />
             </ListItemIcon>
-            <Link href={`mailto:the.${data.contact.email}`} sx={{ paddingBlock: "5px" }}>
+            <Link href={`mailto:${data.contact.email}`} sx={{ paddingBlock: "5px" }}>
               {data.contact.email}
             </Link>
           </ListItem>}
