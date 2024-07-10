@@ -200,6 +200,7 @@ const ProjectContent = ({ data, display_mode }) => {
           <Typography 
             component={data.public_link ? Link : "span"}
             href={data.public_link}
+            target={"_blank"}
             fontSize={20}
             fontWeight={"bold"}
             noWrap
